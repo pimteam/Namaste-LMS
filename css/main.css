@@ -1,0 +1,38 @@
+.namaste-form label {
+	font-weight:bold;
+	min-width: 150px;
+	display:block;
+	float:left;
+}
+
+.namaste-form div:not(.wp-editor-tools) {
+	 margin-bottom:15px;
+}
+
+.namaste-box {padding:10px;}
+
+.namaste-error {
+	color: red;
+	font-weight: bold;
+}
+
+.namaste-note {
+	background-color: #E5FFF5;
+	padding: 5px;
+	font-weight: bold;
+}
+
+
+.namaste-dashed {
+	border: 1px dashed black;
+}
+
+/* for completed/incomplete lessons and maybe other items */
+.namaste-completed a {
+	color:green;
+}
+
+.namaste-incomplete a {
+	color:red;
+	font-weight:bold;
+}
