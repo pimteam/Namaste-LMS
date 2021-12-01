@@ -1,8 +1,8 @@
 <div class="wrap">
-	<h1><?php _e('My Gradebook', 'namaste');?></h1>
-	
-	<?php if(sizeof($courses)):?>
-		<form method="get" action="admin.php">
+	<?php if(!$course_id):?>
+		<h1><?php _e('My Gradebook', 'namaste');?></h1>
+	<?php if(count($courses)):?>
+		<form method="get" action="<?php echo empty($in_shortcode)? 'admin.php' : $current_url;?>">
 		<input type="hidden" name="page" value="namaste_my_gradebook">
 		<p><?php _e('Select course:', 'namaste')?> <select name="course_id" onchange="this.form.submit();">
 		<option value=""><?php _e('- please select -', 'namaste')?></option>
@@ -14,20 +14,22 @@
 		</form>
 	<?php else:?>
 		<p><?php _e('You need to enroll some courses first.', 'namaste')?></p>
-	<?php endif;?>	
+	<?php endif;
+	endif; // end if not $course_id?>	
 	
 	<?php if(!empty($this_course->ID)):?>
-		<h2><?php printf(__("My grades in %s", 'namaste'), $this_course->post_title);?></h2>
+		<h2><?php printf(__("My grades in %s", 'namaste'), stripslashes($this_course->post_title));?></h2>
 		
 		<p><?php _e('Final grade for the whole course:', 'namaste');?></p>
 		
 		<table class="widefat">
 			<tr><th><?php _e('Lesson', 'namaste')?></th><th><?php _e('Grades from assignments', 'namaste')?></th><th><?php _e('Final grade', 'namaste')?></th></tr>
-			<?php foreach($lessons as $lesson):?>
-				<tr><td><?php echo $lesson->post_title?></td>
+			<?php foreach($lessons as $lesson):
+				$class = ('alternate' == @$class) ? '' : 'alternate';?>
+				<tr class="<?php echo $class?>"><td><?php echo $lesson->post_title?></td>
 				<td><?php if(sizeof($lesson->homeworks)):?><table class="widefat">
 					<?php foreach($lesson->homeworks as $homework):?>
-						<tr><th colspan="2"><?php echo __('Assignment:', 'namaste').' '.$homework->title?></th></tr>
+						<tr class="alternate"><th colspan="2"><?php echo __('Assignment:', 'namaste').' '.stripslashes($homework->title)?></th></tr>
 						<?php if(sizeof($homework->solutions)): 
 							echo "<tr><th>".__("Solution", 'namaste')."</td><td>".__('Grade', 'namaste')."</td></tr>";
 							foreach($homework->solutions as $solution):?>

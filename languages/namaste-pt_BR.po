@@ -1,0 +1,1997 @@
+# Copyright (C) 2018 Namaste! LMS
+# This file is distributed under the same license as the Namaste! LMS package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Namaste! LMS 2.1.5\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/namaste\n"
+"POT-Creation-Date: 2014-07-10 16:10:35+00:00\n"
+"PO-Revision-Date: 2018-03-08 00:36-0300\n"
+"Last-Translator: guido nietmann <guidonietmann@gmail.com>\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: controllers/ajax.php:34
+msgid "You are not allowed to view this"
+msgstr "Você não está autorizado a ver isso"
+
+#: controllers/ajax.php:70
+msgid "You are not allowed to grade"
+msgstr "Você não tem permissão para se graduar"
+
+#: controllers/certificates.php:46
+msgid "Certificate added"
+msgstr "Certificado adicionado"
+
+#: controllers/certificates.php:47
+msgid "Certificate saved"
+msgstr "Certificado salvo"
+
+#: controllers/certificates.php:48
+msgid "Certificate deleted"
+msgstr "Certificado apagado"
+
+#: controllers/certificates.php:75
+msgid "You are not allowed to access this certificate"
+msgstr "Você não tem permissão para acessar este certificado"
+
+#: controllers/courses.php:79
+msgid "You enrolled in \"%s\""
+msgstr "Você está matriculado em \"%s\""
+
+#: controllers/courses.php:80
+msgid ""
+"Thank you for your interest in enrolling this course. A manager will review "
+"your application."
+msgstr ""
+"Obrigado pelo seu interesse em matricular-se neste curso. Um supervisor irá "
+"rever sua solicitação."
+
+#: controllers/courses.php:82
+msgid "You have already enrolled in this course"
+msgstr "Você já está matriculado neste curso"
+
+#: controllers/homeworks.php:10
+msgid "You are not enrolled in this course!"
+msgstr "Você não está matriculado neste curso!"
+
+#: controllers/homeworks.php:15
+msgid "You cannot submit an empty solution"
+msgstr "Você não pode enviar uma resposta vazia"
+
+#: controllers/homeworks.php:39
+msgid "Submitted solution to assignment \"%s\""
+msgstr "Solução enviada para a tarefa \"%s\""
+
+#: controllers/homeworks.php:55
+msgid "You are not allowed to see these solutions"
+msgstr "Você não tem permissão para ver estas respostas"
+
+#: controllers/homeworks.php:104
+msgid "You are not allowed to do this"
+msgstr "Você não tem permissão para fazer isso"
+
+#: controllers/homeworks.php:118
+msgid "Solution to assignment %s was %s"
+msgstr "Solução para a tarefa %s foi %s"
+
+#: controllers/homeworks.php:123
+msgid "Received %d points for completing assignment \"%s\"."
+msgstr "Recebeu %d pontos por completar a tarefa \"%s\"."
+
+#: controllers/homeworks.php:140
+msgid "There is nothing to download."
+msgstr "Não há nada para baixar."
+
+#: controllers/homeworks.php:142
+msgid "You can download only your own solutions."
+msgstr "Você pode baixar apenas suas próprias respostas."
+
+#: controllers/shortcodes.php:16
+msgid "This lesson has been completed."
+msgstr ""
+"Esta aula foi completada\n"
+"."
+
+#: controllers/shortcodes.php:33 views/manage-students.php:36
+#: views/manage-students.php:59 views/student-lessons.php:46
+msgid "Completed"
+msgstr "Completado"
+
+#: controllers/shortcodes.php:34
+msgid "Not completed"
+msgstr "Não completado"
+
+#: controllers/shortcodes.php:50
+msgid "You need to be <a href=\"%s\">logged in</a> to enroll in this course"
+msgstr ""
+"Você precisa estar <a href=\"%s\">logado</a> para se matricular neste curso"
+
+#: controllers/shortcodes.php:90
+msgid "You are enrolled in this course."
+msgstr "Você está matriculado neste curso."
+
+#: controllers/shortcodes.php:91
+msgid "Your enroll request is received. Waiting for manager approval."
+msgstr ""
+"Sua solicitação de matrícula foi recebida. Aguarde a aprovação de um "
+"supervisor."
+
+#: controllers/shortcodes.php:92
+msgid "You have completed this course."
+msgstr "Você completou este curso."
+
+#: controllers/shortcodes.php:93
+msgid "Your enrollment request is rejected."
+msgstr "Sua solicitação de matrícula foi rejeitada."
+
+#: controllers/shortcodes.php:129
+msgid "User"
+msgstr "Aluno"
+
+#: controllers/shortcodes.php:129
+msgid "Points"
+msgstr "Pontos"
+
+#: controllers/shortcodes.php:178
+msgid "This content is for logged in users."
+msgstr "Este conteúdo é apenas para usuários logados."
+
+#: controllers/shortcodes.php:192
+msgid "next lesson"
+msgstr "próxima aula"
+
+#: controllers/shortcodes.php:211
+msgid "previous lesson"
+msgstr "aula anterior"
+
+#: controllers/shortcodes.php:278
+msgid "Lesson completed!"
+msgstr "Aula completada!"
+
+#: controllers/shortcodes.php:282
+msgid "Mark as completed"
+msgstr "Marcar como completado"
+
+#: models/course-model.php:8
+msgid "Namaste! Courses"
+msgstr "Cursos Namaste"
+
+#: models/course-model.php:11
+msgid "Courses"
+msgstr "Cursos"
+
+#: models/course-model.php:12 models/lesson-model.php:653
+msgid "Course"
+msgstr "Curso"
+
+#: models/course-model.php:13
+msgid "Add New Course"
+msgstr "Adicionar novo Curso"
+
+#: models/course-model.php:18
+msgid "namaste-course"
+msgstr "cursos"
+
+#: models/course-model.php:19
+msgid "This will create a new course in your Namaste! LMS."
+msgstr "Isso irá criar um novo curso."
+
+#: models/course-model.php:56 models/lesson-model.php:28
+#: models/namaste-model.php:212
+msgid "Namaste! Settings"
+msgstr "Configurações do Namaste"
+
+#: models/course-model.php:58
+msgid "Advanced Reports"
+msgstr "Relatórios avançados"
+
+#: models/course-model.php:103
+msgid "For advanced reports on this course, <a href=\"%s\">click here</a>."
+msgstr "Por relatórios avançados deste curso, <a href=\"%s\">clique aqui</a>."
+
+#: models/course-model.php:105
+msgid ""
+"You can get <b>advanced reports</b> on this course if you install the <a "
+"href=\"%s\" target=\"_blank\">Namaste! Reports</a> plugin."
+msgstr ""
+"Você pode acessar <b>relatórios avançados</b> neste curso se instalar o "
+"plugin <a href=\"%s\" target=\"_blank\">Namaste! Reports</a>."
+
+#: models/course-model.php:158
+msgid ""
+"You are enrolled in this course. Check \"My courses\" link in your dashboard "
+"to see the lessons and to-do list"
+msgstr ""
+"Você está matriculado neste curso. Cheque o link \"Meus Cursos\" em sua área "
+"de usuário para ver as aulas e a lista de tarefas"
+
+#: models/course-model.php:159
+msgid ""
+"You can enroll in this course from your student dashboard. You need to be "
+"logged in."
+msgstr ""
+"Você pode se matricular neste curso a partir de sua área de usuário. Você "
+"precisa estar logado."
+
+#: models/course-model.php:204
+msgid "Received %d points for completing course \"%s\"."
+msgstr "%d pontos recebidos por completar o curso \"%s\"."
+
+#: models/course-model.php:214
+msgid "Completed course \"%s\""
+msgstr "Curso completado: \"%s\""
+
+#: models/course-model.php:249
+msgid ""
+"You cannot enroll this course - other courses have to be completed first."
+msgstr ""
+"Você não pode se matricular neste curso - outros cursos devem ser "
+"completados primeiro."
+
+#: models/course-model.php:264 models/student-model.php:90
+msgid "Enrolled in course %s. Status: %s"
+msgstr "Matriculado(a) no curso %s. Status: %s"
+
+#: models/course-model.php:290
+msgid "Payment for course"
+msgstr "Pagamento pelo curso"
+
+#: models/course-model.php:291
+msgid "Enroll for"
+msgstr "Matricular-se em"
+
+#: models/course-model.php:305
+msgid "Click to Enroll"
+msgstr "Clique aqui para se matricular"
+
+#: models/course-model.php:321 models/lesson-model.php:654
+msgid "Visits (unique/total)"
+msgstr "Visitas (únicas/total)"
+
+#: models/course-model.php:348
+msgid "These courses should be completed before you can enroll:"
+msgstr "Estes cursos devem ser completados antes de você poder se matricular:"
+
+#: models/homework-model.php:30
+msgid "Homework added"
+msgstr "Tarefa adicionada"
+
+#: models/homework-model.php:44
+msgid "Homework deleted"
+msgstr "Tarefa apagada"
+
+#: models/homework-model.php:57
+msgid "Homework saved"
+msgstr "Tarefa salva"
+
+#: models/homework-model.php:99
+msgid "You are not allowed to see this page"
+msgstr "Você não tem permissão para visualizar esta página"
+
+#: models/lesson-model.php:6
+msgid "Namaste! Lessons"
+msgstr "Aulas"
+
+#: models/lesson-model.php:9 views/my_courses.php:15
+msgid "Lessons"
+msgstr "Aulas"
+
+#: models/lesson-model.php:10 views/my-gradebook.html.php:25
+#: views/student-lessons.php:17
+msgid "Lesson"
+msgstr "Aula"
+
+#: models/lesson-model.php:11
+msgid "Add New Lesson"
+msgstr "Adicionar nova aula"
+
+#: models/lesson-model.php:16
+msgid "namaste-lesson"
+msgstr "aula"
+
+#: models/lesson-model.php:17
+msgid "This will create a new lesson in your Namaste! LMS."
+msgstr "Isto irá criar uma nova aula em seu LMS Namaste!."
+
+#: models/lesson-model.php:162
+msgid "You must enroll in the course first before you can see the lessons"
+msgstr ""
+"Você precisa se matricular para o curso antes de poder visualizar suas aulas"
+
+#: models/lesson-model.php:170
+msgid ""
+"The lesson cannot be completed because there are unsatisfied requirements"
+msgstr "A aula não pode ser completada porque há requisitos não cumpridos"
+
+#: models/lesson-model.php:219 views/manage-students.php:61
+#: views/student-lessons.php:44
+msgid "Not started"
+msgstr "Não iniciado"
+
+#: models/lesson-model.php:224
+msgid "Completed on"
+msgstr "Completado em"
+
+#: models/lesson-model.php:230 views/manage-students.php:60
+#: views/student-lessons.php:45
+msgid "In progress"
+msgstr "Em progresso"
+
+#: models/lesson-model.php:249
+msgid "You need to be logged in to access this lesson."
+msgstr "Você precisa estar logado para ver esta aula."
+
+#: models/lesson-model.php:263
+msgid "In order to see this lesson you first have to be enrolled in the course"
+msgstr "Para visualizar esta aula você precisa se matricular no curso primeiro"
+
+#: models/lesson-model.php:292
+msgid "Before accessing this lesson you must complete the following lessons:"
+msgstr "Antes de acessar esta aula você precisa completar as seguintes aulas:"
+
+#: models/lesson-model.php:330
+msgid "Started reading lesson \"%s\""
+msgstr "Iniciada a leitura de \"%s\""
+
+#: models/lesson-model.php:428
+msgid "Received %d points for completing lesson \"%s\"."
+msgstr "%d pontos recebidos por completar a aula \"%s\"."
+
+#: models/lesson-model.php:437
+msgid "Completed lesson \"%s\""
+msgstr "Aula completada: \"%s\""
+
+#. Plugin Name of the plugin/theme
+#: models/namaste-model.php:206
+msgid "Namaste! LMS"
+msgstr "Namaste! LMS"
+
+#: models/namaste-model.php:208 views/student-lessons.php:19
+msgid "Assignments"
+msgstr "Atribuições"
+
+#: models/namaste-model.php:209
+msgid "Students"
+msgstr "Estudantes"
+
+#: models/namaste-model.php:210
+msgid "Certificates"
+msgstr "Certificados"
+
+#: models/namaste-model.php:211 views/gradebook.html.php:2
+msgid "Gradebook"
+msgstr "Livro de Graduações"
+
+#: models/namaste-model.php:212
+msgid "Settings"
+msgstr "Configurações"
+
+#: models/namaste-model.php:213
+msgid "Help"
+msgstr "Ajuda"
+
+#: models/namaste-model.php:214
+msgid "Namaste! Plugins &amp; API"
+msgstr "Namaste! Plugins &amp; API"
+
+#: models/namaste-model.php:214
+msgid "Plugins &amp; API"
+msgstr "Plugins &amp; API"
+
+#: models/namaste-model.php:217
+msgid "Student Lessons"
+msgstr "Aulas do Aluno"
+
+#: models/namaste-model.php:218
+msgid "Homeworks"
+msgstr "Tarefas"
+
+#: models/namaste-model.php:219 views/add-note.php:15
+msgid "Send note"
+msgstr "Enviar nota"
+
+#: models/namaste-model.php:220 views/lesson-homeworks.php:42
+#: views/lesson-homeworks.php:44
+msgid "Submit solution"
+msgstr "Enviar solução"
+
+#: models/namaste-model.php:221 views/homeworks.php:29
+msgid "View solutions"
+msgstr "Ver respostas"
+
+#: models/namaste-model.php:222
+msgid "View all solutions"
+msgstr "Ver todas as respostas"
+
+#: models/namaste-model.php:223
+msgid "View Certificate"
+msgstr "Ver Certificado"
+
+#: models/namaste-model.php:224
+msgid "Download solution"
+msgstr "Baixar solução"
+
+#: models/namaste-model.php:230 views/my_courses.php:1
+msgid "My Courses"
+msgstr "Meus Cursos"
+
+#: models/namaste-model.php:231 views/my-certificates.php:1
+msgid "My Certificates"
+msgstr "Meus Certificados"
+
+#: models/namaste-model.php:232 views/my-gradebook.html.php:2
+msgid "My Gradebook"
+msgstr "Meu livro de graduação"
+
+#: models/student-model.php:64
+msgid "Sorry, I cannot find user with this email or user handle."
+msgstr ""
+"Desculpe, não foi possível encontrar um usuário com este login ou e-mail."
+
+#: models/student-model.php:68
+msgid ""
+"This user's role does not allow them to use Namaste! LMS. You'll have either "
+"to change their role or allow the role work with the LMS from the Settings "
+"page"
+msgstr ""
+"Este papel de usuário não permite utilizar o Namaste! LMS. Você precisa ou "
+"mudar o papel de usuário ou permitir que este papel possa utilizar com o LMS "
+"na página de configurações"
+
+#: models/student-model.php:75
+msgid "This user is already enrolled in the course"
+msgstr "Este usuário já está matriculado no curso"
+
+#: models/student-model.php:84
+msgid "User successfully enrolled in the course"
+msgstr "Usuário matriculado com sucesso no curso"
+
+#: models/student-model.php:106
+msgid "Enrollment in %s has been approved."
+msgstr "Matrícula em %s foi aprovada."
+
+#: models/student-model.php:110
+msgid "Enrollment in %s has been rejected."
+msgstr "Matrícula em %s foi rejeitada."
+
+#: models/student-model.php:169
+msgid "You cannot change someone else's status"
+msgstr "Você não pode alterar o status de outra pessoa"
+
+#: views/add-note.php:1
+msgid "Send Note"
+msgstr "Enviar nota"
+
+#: views/add-note.php:4
+msgid "Use this page to send a note about assignments"
+msgstr "Uste esta página para enviar uma nota sobre atribuições"
+
+#: views/add-note.php:4
+msgid "for student"
+msgstr "para estudante"
+
+#: views/add-note.php:7 views/view-solutions.php:5
+msgid "Course:"
+msgstr "Curso:"
+
+#: views/add-note.php:8 views/view-solutions.php:4
+msgid "Lesson:"
+msgstr "Aula:"
+
+#: views/add-note.php:10
+msgid "Back to assignments for the student on this lesson"
+msgstr "Voltar às atribuições para os alunos desta aula"
+
+#: views/certificate-form.php:1
+msgid "Add/Edit Certificate"
+msgstr "Adicionar/Editar Certificado"
+
+#: views/certificate-form.php:5
+msgid "Certificate Title:"
+msgstr "Título do Certificado:"
+
+#: views/certificate-form.php:7
+msgid "Certificate Contents:"
+msgstr "Conteúdo do Certificado:"
+
+#: views/certificate-form.php:9
+msgid "You can use the following variables in the certificate contents:"
+msgstr "Você pode usar as seguintes variáveis no conteúdo do certificado:"
+
+#: views/certificate-form.php:11
+msgid "- The user full name or login name (whatever is available)"
+msgstr "- O nome completo do usuário ou login (o que estiver disponível)"
+
+#: views/certificate-form.php:12
+msgid ""
+"- The names of the course which were completed to acquire this certificate"
+msgstr "- Os nomes do curso que foi completado para adquirir este certificado"
+
+#: views/certificate-form.php:13
+msgid "- Date when the certificate was acquired"
+msgstr "- Data quando o certificado foi adquirido"
+
+#: views/certificate-form.php:15
+msgid "Assign this certificate upon completing all of the following courses:"
+msgstr "Atribuir este certificado ao completar todos os seguintes cursos:"
+
+#: views/certificate-form.php:17
+msgid "You have not created any courses yet!"
+msgstr "Você ainda não criou nenhum curso!"
+
+#: views/certificate-form.php:27
+msgid "Save Certificate"
+msgstr "Salvar Certificado"
+
+#: views/certificate-form.php:29
+msgid "Delete"
+msgstr "Excluir"
+
+#: views/certificate-form.php:38 views/homework.php:20
+#: views/manage-students.php:82
+msgid "Are you sure?"
+msgstr "Você tem certeza?"
+
+#: views/certificate-form.php:46
+msgid "Please enter certificate title"
+msgstr "Por favor preencha o título do certificado"
+
+#: views/certificates.php:1
+msgid "Manage Certificates"
+msgstr "Gerenciar Certificados"
+
+#: views/certificates.php:8
+msgid ""
+"Certificates can optionally be assigned to users upon completion of courses."
+msgstr ""
+"Certificados podem opcionalmente ser atribuídos a usuários após a conclusão "
+"dos cursos."
+
+#: views/certificates.php:10
+msgid "Create new certificate"
+msgstr "Criar novo certificado"
+
+#: views/certificates.php:14
+msgid "Certificate title"
+msgstr "Tìtulo do Certificado"
+
+#: views/certificates.php:14 views/certificates.php:16 views/homeworks.php:29
+#: views/homeworks.php:34
+msgid "Edit"
+msgstr "Editar"
+
+#: views/certificates.php:20
+msgid "You have not added any certificates yet."
+msgstr "Você ainda não recebeu nenhum certificado."
+
+#: views/course-meta-box.php:1
+msgid "Enrollment mode:"
+msgstr "Modo de Matrícula:"
+
+#: views/course-meta-box.php:3 views/course-meta-box.php:43
+#: views/lesson-meta-box.php:95
+msgid "You can use the shortcode"
+msgstr "Você pode usar o atalho"
+
+#: views/course-meta-box.php:3
+msgid ""
+"to display enrollment button (or enrolled/pending message) in the course "
+"content"
+msgstr ""
+"para exibir o botão de matrícula (ou a mensagem de matrícula pendente) no "
+"conteúdo do curso"
+
+#: views/course-meta-box.php:5
+msgid "Logged in users can enroll this course themselves."
+msgstr "Usuários logados podem se matricular neste curso sozinhos."
+
+#: views/course-meta-box.php:7
+msgid "Admin manually approves/enrolls students in courses"
+msgstr "Administrador irá matricular/aprovar os alunos neste curso"
+
+#: views/course-meta-box.php:10
+msgid "Students need to pay a fee of"
+msgstr "Aluno deve pagar uma taxa de"
+
+#: views/course-meta-box.php:10
+msgid "to enroll this course. (Leave it 0 for no fee.)"
+msgstr "para matricular-se neste curso. (Deixe 0 para Curso Gratuito.)"
+
+#: views/course-meta-box.php:13
+msgid "Course Access / Pre-requisites"
+msgstr "Acesso ao Curso / Pré-requisitos"
+
+#: views/course-meta-box.php:16
+msgid "There are no other courses so every student can enroll in this course."
+msgstr ""
+"Não existem outros cursos então todos os alunos podem se matricular neste "
+"curso."
+
+#: views/course-meta-box.php:18
+msgid ""
+"This course will be accessible only after the following courses are "
+"completed:"
+msgstr ""
+"Este curso será acessível apenas após os seguintes cursos terem sido "
+"completados:"
+
+#: views/course-meta-box.php:24
+msgid "Course completeness"
+msgstr "Andamento do Curso"
+
+#: views/course-meta-box.php:27
+msgid ""
+"This course has no lessons assigned so it can never be completed. Please "
+"create and assign some lessons to this course."
+msgstr ""
+"Este curso não tem aulas atribuídas então ele nunca poderá ser completado. "
+"Por favor crie e atribua algumas aulas a este curso."
+
+#: views/course-meta-box.php:29
+msgid ""
+"The following lessons must be completed in order to complete this course. "
+"Please select at least one."
+msgstr ""
+"A aula seguinte deve ser completada para completar este curso. Por favor "
+"selecione ao menos uma."
+
+#: views/course-meta-box.php:38 views/homework.php:11
+#: views/lesson-meta-box.php:89 views/options.php:57 views/options.php:59
+#: views/options.php:61
+msgid "Reward"
+msgstr "Recompensa"
+
+#: views/course-meta-box.php:38
+msgid "points for completing this course."
+msgstr "pontos por completar este curso."
+
+#: views/course-meta-box.php:41 views/lesson-meta-box.php:93
+msgid "Shortcodes"
+msgstr "Atalhos"
+
+#: views/course-meta-box.php:43
+msgid ""
+"inside the course content to display what the student needs to do to "
+"complete the course."
+msgstr ""
+"dentro do conteúdo do curso para exibir o que os estudantes devem fazer para "
+"completar o curso."
+
+#: views/course-meta-box.php:44 views/lesson-meta-box.php:97
+msgid "The shortcode"
+msgstr "O código de atalho"
+
+#: views/course-meta-box.php:44
+msgid "will display the lessons in the course."
+msgstr "irá exibir as aulas do curso."
+
+#: views/course-meta-box.php:44
+msgid "It allows more advanced configurations explained on the "
+msgstr "Isto permite configurações mais avançadas explicadas em "
+
+#: views/course-meta-box.php:44
+msgid "help page."
+msgstr "página de ajuda."
+
+#: views/course-meta-box.php:46 views/lesson-meta-box.php:99
+msgid "Did you know?"
+msgstr "Você sabia?"
+
+#: views/course-meta-box.php:49
+msgid ""
+"You can limit the access to this course also by <a href=\"%s\" target="
+"\"_blank\">class / group</a>."
+msgstr ""
+"Você pode limitar o acesso a este curso também por <a href=\"%s\" target="
+"\"_blank\">classe / grupo</a>."
+
+#: views/course-meta-box.php:51
+msgid ""
+"If you <a href=\"%s\" target=\"_blank\">upgrade to PRO</a> you will be able "
+"to assign courses to classes and restrict access based on class, have "
+"different managers for different classes, and a lot more."
+msgstr ""
+"Se você <a href=\"%s\" target=\"_blank\">atualizar para PRO</a>você será "
+"capaz de atribuir cursos à classes e restringir acesso baseado em classe, "
+"ter supervisores diferentes para aulas diferentes, e muitas outras opções."
+
+#: views/course-pay.php:2
+msgid "Enrolling in course"
+msgstr "Matriculando no curso"
+
+#: views/course-pay.php:4
+msgid ""
+"This is a premium course. There is a fee of <strong>%s %s</strong> to enroll "
+"it."
+msgstr ""
+"Este é um curso Premium. Há uma taxa de <strong>%s %s</strong> para se "
+"matricular."
+
+#: views/course-pay.php:11
+msgid "Subscribe for"
+msgstr "Inscrever-se para"
+
+#: views/gradebook.html.php:6 views/homeworks.php:6 views/lesson-meta-box.php:4
+#: views/manage-students.php:16 views/my-gradebook.html.php:7
+msgid "Select course:"
+msgstr "Selecione o curso:"
+
+#: views/gradebook.html.php:7 views/homeworks.php:7 views/homeworks.php:61
+#: views/my-gradebook.html.php:8
+msgid "- please select -"
+msgstr "- selecionar -"
+
+#: views/gradebook.html.php:16
+msgid "Grades of the students in %s"
+msgstr "Graduação dos alunos em %s"
+
+#: views/gradebook.html.php:19 views/manage-students.php:47
+msgid "Student"
+msgstr "Estudante"
+
+#: views/gradebook.html.php:19
+msgid "Lessons Grades (Shows also grades from assignments)"
+msgstr "Graduação das Aulas (Também mostra as notas das atribuições)"
+
+#: views/gradebook.html.php:19
+msgid "Final grade for the course"
+msgstr "Graduação final para o curso"
+
+#: views/gradebook.html.php:32
+msgid "| Final:"
+msgstr "| Final:"
+
+#: views/gradebook.html.php:40
+msgid "Lesson not started"
+msgstr "Aula não iniciada"
+
+#: views/gradebook.html.php:54
+msgid "Shortcode to display final course grade for a student:"
+msgstr "Atalho para exibir a graduação final de um curso para o estudante:"
+
+#: views/gradebook.html.php:55
+msgid ""
+"When userlogin is left empty it will display the grade of the current user. "
+"If you pass username, it will display the grade of that user. The \"whenempty"
+"\" parameter lets you define text to show when there is no grade assigned "
+"yet."
+msgstr ""
+"Quando o login de usuário é deixado em branco será exibida a grade do "
+"usuário atual. Se você informar o nome de usuário, será exibida a graduação "
+"de tal usuário. O paramentro \"quando-vazio\" permite a você definir texto a "
+"ser exibido quando não há graduação atribuída ainda."
+
+#: views/help.html.php:2
+msgid "Namaste! LMS Help"
+msgstr "Ajuda do Namaste! LMS"
+
+#: views/help.html.php:4
+msgid ""
+"We are just starting to add some helpful information so please bear with us "
+"until it is extended. For now you can learn about the available shortcodes. "
+"Do not forget also to check the <a href=\"http://namaste-lms.org/help.php\" "
+"target=\"_blank\">quick help guide on our site</a>."
+msgstr ""
+"Estamos apenas começando a adicionar informações úteis então por favor tenha "
+"paciência enquanto ele é ampliado. Por enquanto você pode aprender sobre os "
+"atalhos disponívels. Não se esqueça também de checar o <a href=\"http://"
+"namaste-lms.org/help.php\" target=\"_blank\">guia rápido de ajuda em nosso "
+"site</a>."
+
+#: views/help.html.php:6
+msgid "Please Rate Us!"
+msgstr "Por favor nos classifique!"
+
+#: views/help.html.php:8
+msgid ""
+"Several hundred hours of development have been invested into the development "
+"of this free plugin. Now we need <a href=\"%s\" target=\"_blank\">five "
+"minutes of your time and five stars</a> to help the core plugin stay free!"
+msgstr ""
+"Centenas de horas foram investidas no desenvolvimento deste plugin gratuito. "
+"Agora nós precisamos de <a href=\"%s\" target=\"_blank\">1 minuto e cinco "
+"estrelas</a> para ajudar o componente principal deste plugin a continuar "
+"gratuito!"
+
+#: views/help.html.php:10
+msgid "Available Shortcodes"
+msgstr "Atalhos disponíveis"
+
+#: views/help.html.php:12
+msgid ""
+"This is flexible shortcode that can be placed inside a lesson or course "
+"content. It will display what the logged in student still needs to do to "
+"complete the given lesson or course."
+msgstr ""
+"Este é um atalho flexível que pode ser colocado dentro de uma aula ou "
+"conteúdo de curso. Ele irá exibir o que o estudante logado ainda precisa "
+"fazer para completar a aula ou curso em questão."
+
+#: views/help.html.php:14
+msgid ""
+"displays enroll button or \"enrolled/pending enrollment\" message in the "
+"course."
+msgstr ""
+"exibe o botão de matrícula ou a mensagem de \"Matriculado/Pagamento Pendente"
+"\"."
+
+#: views/help.html.php:16
+msgid ""
+"Displays simplified version of the student dashboard - the same table with "
+"all the available courses but without the \"view lessons\" link. Instead of "
+"this link you can include the shortcode for \"lessons in course\" (given "
+"below) in the course page itself."
+msgstr ""
+"Exibe o a versão simplificada do Painel de Controle do estudante - a mesma "
+"tabela com todos os cursos disponíveis, mas sem o link de \"visualizar aulas"
+"\". Em vez do link você pode incluir um atalho para as \"aulas do curso"
+"\" (dado abaixo) na página do próprio curso."
+
+#: views/help.html.php:18 views/help.html.php:20 views/help.html.php:23
+#: views/help.html.php:26
+msgid "or"
+msgstr "ou"
+
+#: views/help.html.php:18
+msgid ""
+"will display all the lessons in a course along with links to them. If you "
+"use the second format and pass \"status\" as first argument, the shortcode "
+"will output the lessons in a table where the second argument will be the "
+"current status (started, not started, completed). You can also pass a number "
+"in place of the argument \"y\" to specify a course ID (otherwise current "
+"course ID is used). This might be useful if you are manually or "
+"programmatically creating some list of courses along with the lessons in "
+"them. If you want to use the course ID argument but not the status columng, "
+"pass 0 in pace of status like this: [namaste-course-lesson 0 5]. The third "
+"format lets you specify ordering using SQL field names from the posts table. "
+"For example [namaste-course-lessons 0 0 post_date DESC] will return the "
+"lessons displayed by the order of publishing, descending (latest lesson will "
+"be shown on top)."
+msgstr ""
+"exibirá todas as lições em um curso, juntamente com links para eles. Se você "
+"usar o segundo formato e passar o \"status\" como primeiro argumento, o "
+"código curto emitirá as lições em uma tabela onde o segundo argumento será o "
+"status atual (iniciado, não iniciado, concluído). Você também pode passar um "
+"número no lugar do argumento \"y\" para especificar um ID do curso (caso "
+"contrário, o ID do curso atual é usado). Isso pode ser útil se você estiver "
+"criando manualmente ou programáticamente uma lista de cursos, juntamente com "
+"as lições neles. Se você quiser usar o argumento do ID do curso, mas não o "
+"status da coluna, passe 0 no ritmo do status como este: [namaste-course-"
+"lesson 0 5]. O terceiro formato permite que você especifique o pedido usando "
+"nomes de campos SQL da tabela de posts. Por exemplo [namaste-course-lessons "
+"0 0 post_date DESC] retornará as lições exibidas pela ordem de publicação, "
+"descendente (a última lição será mostrada no topo)."
+
+#: views/help.html.php:18
+msgid "Note that status column will be shown only for logged in users."
+msgstr ""
+"Note que a coluna de status será exibida apenas para usuários que estiverem "
+"logados."
+
+#: views/help.html.php:21
+msgid ""
+"can be used only in a course page and will display the first lesson from the "
+"course. You can replace \"hyperlinked text\" with your own text. If you omit "
+"the parameter the link will say \"first lesson\"."
+msgstr ""
+"pode ser usado apenas em uma página de curso e irá exibir a primeira aula do "
+"curso. Você pode substituir o \"texto linkado\" com seu próprio texto. Se "
+"você omitir o parâmetro, o link irá dizer \"primeira aula\"."
+
+#: views/help.html.php:24
+msgid ""
+"can be used only in a lesson and will display the next lesson from the "
+"course. You can replace \"hyperlinked text\" with your own text. If you omit "
+"the parameter the link will use the lesson title as hyperlinked text."
+msgstr ""
+"pode ser usado apenas em uma aula e irá exibir a próxima aula do curso. Você "
+"pode substituir o \"texto linkado\" com seu próprio texto. Se você omitir o "
+"parâmetro, o link irá utilizar o título da aula."
+
+#: views/help.html.php:27
+msgid ""
+"Similar to the above, used to display a link for the previous lesson in this "
+"course. Note that lessons are ordered in the order of creation."
+msgstr ""
+"Similar ao acima, utilizado para exibir um link para a aula anterior deste "
+"curso. Note que aulas estão ordenadas pela ordem de criação."
+
+#: views/help.html.php:29
+msgid ""
+"(where X is lesson ID) will output the assignments to the lesson on the "
+"front-end. The links to submit and view solutions will also work. You can "
+"omit the \"lesson_id\" parameter and pass it as URL variable. This could be "
+"useful if you are manually building a page with lessons and want to give "
+"links to assignments from it."
+msgstr ""
+"(onde X é o ID da aula) irá exibir as atribuições para a aula no front-end. "
+"Os links para enviar e ver as respostas tamém irão funcionar. Você pode "
+"omitir o parâmetro \"lesson_id\" e passa-lo como uma variável URL. Isso pode "
+"ser útil se você estiver criando uma página com aulas manualmente e desejar "
+"criar links de tarefas a partir dela."
+
+#: views/help.html.php:31
+msgid "Redesigning and Customizing the Views / Templates"
+msgstr "Redesenhando e Customizando os Views / Templates"
+
+#: views/help.html.php:33
+msgid "Only for advanced users!"
+msgstr "Apenas para usuários avançados!"
+
+#: views/help.html.php:35
+msgid ""
+"You can safely customize all files from the \"views\" folders by placing "
+"their copies in your theme folder. Simply create folder \"namaste\" <b>in "
+"your theme root folder</b> and copy the files you want to custom from \"views"
+"\" folder directly there."
+msgstr ""
+"Você pode customizar todos os arquivos das pastas \"views\" com segurança ao "
+"colocar cópias deles na pasta de seu tema. Simplesmente crie uma pasta "
+"\"namaste\" na <b> pasta raíz de seu tema</b> e copie os arquivos da pasta "
+"\"views\" diretamente para lá."
+
+#: views/help.html.php:37
+msgid "For example:"
+msgstr "Por exemplo:"
+
+#: views/help.html.php:40
+msgid ""
+"If you are using the Twenty Fourteen theme, you should create folder "
+"\"namaste\" under it so the structure will now be something like <b>wp-"
+"content/themes/twentyfourteen/namaste</b>. (The files that are above the new "
+"\"namaste\" folder should remain where they are)"
+msgstr ""
+"Se você está usando o tema Twenty Fourteen, você deve criar uma pasta "
+"\"namaste\" abaixo dele assim a estrutura será algo como <b>wp-content/"
+"themes/twentyfourteen/namaste</b>. (Os arquivos que estão acima da nova "
+"pasta \"namaste\" devem permanecer onde estão)"
+
+#: views/help.html.php:41
+msgid ""
+"Then if you want to modify the \"Manage Certificates\" page copy the file "
+"certificates.php from the plugin \"views\" folder and place it in the new "
+"\"namaste\" folder so you will have  <b>wp-content/themes/twentyfourteen/"
+"namaste/certificates.php</b>"
+msgstr ""
+"Então se você desejar modificar a página de \"Gerenciar Certificados\" copie "
+"o arquivo certificates.php da pasta \"views\" do plugin e coloque-o na nova "
+"pasta \"namaste\", de forma que você tenha <b>wp-content/themes/"
+"twentyfourteen/namaste/certificates.php</b>"
+
+#: views/help.html.php:44
+msgid ""
+"Don't worry if you use modified WordPress directory structure and don't have "
+"'wp-content' folder. The trick will work with any structure as long as you "
+"follow the same logic."
+msgstr ""
+"Não se preocupe se você usa uma estrutura de diretórios modificada e não "
+"possui uma pasta \"wp-content\". O truque irá funcionar com qualquer "
+"estrutura desde que você siga a mesma lógica."
+
+#: views/help.html.php:46
+msgid ""
+"Then feel free to modify the code, but of course be careful not to mess with "
+"the PHP or Javascript inside. This will let you change the design and even "
+"part of the functionality and not lose these changes when the plugin is "
+"upgraded. Be careful: we can not provide support for your custom versions of "
+"our views."
+msgstr ""
+"Então sinta-se a vontade para modificar o código, mas claro, seja cuidadoso "
+"para não danificar o código PHP ou Javascript contido. Isso irá lhe permitir "
+"fazer alterações no design e mesmo em parte da funcionalidade sem perder "
+"estas alterações quando o plugin for atualizado. ATENÇÃO: Nós não podemos "
+"prover suporte para suas versões customizadas de seus views."
+
+#: views/homework-notes.php:1
+msgid "Admin notes for assignment"
+msgstr "Notas do admin sobre a atribuição"
+
+#: views/homework-notes.php:3
+msgid "There aren't any notes yet."
+msgstr "Ainda não há notas."
+
+#: views/homework.php:1
+msgid "Manage Assignment in"
+msgstr "Gerenciar atribuição em"
+
+#: views/homework.php:5
+msgid "Title:"
+msgstr "Título:"
+
+#: views/homework.php:6
+msgid "Description/Requirements:"
+msgstr "Descrição/Requerimentos:"
+
+#: views/homework.php:8
+msgid "Accept file upload as solution"
+msgstr "Aceitas envio de arquivos como solução"
+
+#: views/homework.php:11
+msgid "points for successfully completing this assignment."
+msgstr "pontos por ter completado esta atribuição com sucesso."
+
+#: views/homework.php:17
+msgid "Create Assignment"
+msgstr "Criar Atribuição"
+
+#: views/homework.php:19
+msgid "Save Assignment"
+msgstr "Salvar Atribuição"
+
+#: views/homework.php:20
+msgid "Delete Assignment"
+msgstr "Apagar Atribuição"
+
+#: views/homework.php:30
+msgid "Please enter at least title for the assignment"
+msgstr "Por favor preencha ao menos o título para a atribuição"
+
+#: views/homeworks.php:1
+msgid "Assignments / Homework"
+msgstr "Atribuições / Tarefas"
+
+#: views/homeworks.php:15 views/homeworks.php:60
+msgid "Select lesson:"
+msgstr "Selecione a aula:"
+
+#: views/homeworks.php:26
+msgid "Click here to create new assignment"
+msgstr "Clique aqui para criar uma nova atribuição"
+
+#: views/homeworks.php:29
+msgid "Title"
+msgstr "Título"
+
+#: views/homeworks.php:37
+msgid "solutions"
+msgstr "respostas"
+
+#: views/homeworks.php:38
+msgid "No solutions"
+msgstr "Não há respostas"
+
+#: views/homeworks.php:42
+msgid "Shortcode to publish these assignments on the front-end:"
+msgstr "Atalho para publicar estas atribuições no front-end:"
+
+#: views/homeworks.php:44
+msgid "You have to select course and lesson before you can create assignments"
+msgstr ""
+"Você precisa selecionar um curso e aula antes de poder criar atribuições"
+
+#: views/lesson-homeworks.php:1
+msgid "Assignments for lesson"
+msgstr "Atribuição para aula"
+
+#: views/lesson-homeworks.php:4
+msgid "Showing assignments of"
+msgstr "Exibindo atribuições de"
+
+#: views/lesson-homeworks.php:8
+msgid "Back to the lessons page in this course"
+msgstr "Voltar à página de aulas deste curso"
+
+#: views/lesson-homeworks.php:12
+msgid "There are no homeworks in this lesson"
+msgstr "Não há tarefas para esta aula"
+
+#: views/lesson-homeworks.php:17
+msgid "Assignment title and description"
+msgstr "Título e descrição da atribuição"
+
+#: views/lesson-homeworks.php:17
+msgid "Solutions"
+msgstr "Respostas"
+
+#: views/lesson-homeworks.php:18 views/lesson-homeworks.php:61
+msgid "Notes"
+msgstr "Notas"
+
+#: views/lesson-homeworks.php:24 views/lesson-homeworks.php:49
+msgid "None yet."
+msgstr "Nenhum ainda."
+
+#: views/lesson-homeworks.php:30 views/lesson-homeworks.php:31
+msgid "%d solutions"
+msgstr "%d soluções"
+
+#: views/lesson-homeworks.php:36
+msgid "A solution has been accepted and the assignment is completed."
+msgstr "Uma solução foi aceita e a atribuição foi completada."
+
+#: views/lesson-homeworks.php:53
+msgid "Add note"
+msgstr "Adicionar nota"
+
+#: views/lesson-meta-box.php:1
+msgid "Assign to Courses:"
+msgstr "Atribuir a Cursos:"
+
+#: views/lesson-meta-box.php:3
+msgid "No courses have been created yet!"
+msgstr "Nenhum curso foi criando ainda!"
+
+#: views/lesson-meta-box.php:11
+msgid "Lesson Access"
+msgstr "Acesso a Aulas"
+
+#: views/lesson-meta-box.php:14
+msgid ""
+"There are no other lessons in this course. So this lesson will be accessible "
+"to anyone who enrolled the course."
+msgstr ""
+"Não há outras aulas neste curso. Assim esta aula estará disponível a "
+"qualquer um que se matricular neste curso."
+
+#: views/lesson-meta-box.php:16
+msgid ""
+"This lesson will be accessible only after the following lessons are "
+"completed:"
+msgstr ""
+"Esta aula será acessível apenas depois que as seguintes aulas tiverem sido "
+"completadas:"
+
+#: views/lesson-meta-box.php:22
+msgid "Lesson Completeness"
+msgstr "Andamento da Aula"
+
+#: views/lesson-meta-box.php:24
+msgid ""
+"The minimum requirement for a lesson to be completed is to be visited by the "
+"student. However you can add some extra requirements here:"
+msgstr ""
+"Os requerimentos mínimos para a aula ser completada é ser visitada pelo "
+"estudante. Entretanto, você pode adicionar alguns requerimentos extras aqui:"
+
+#: views/lesson-meta-box.php:26
+msgid ""
+"Lesson completion will be manually verified and approved by the admin for "
+"every student."
+msgstr ""
+"O admin irá verificar e aprovar cada estudante por ter completado a aula."
+
+#: views/lesson-meta-box.php:29
+msgid "The following assignments/homework must be completed:"
+msgstr "As seguintes tarefas precisam ser completados:"
+
+#: views/lesson-meta-box.php:38
+msgid ""
+"The following quiz must be completed (will take effect only if the quiz is "
+"published):"
+msgstr ""
+"O quis a seguir precisa ser completado (irá funcionar apenas se o quis "
+"estiver publicado):"
+
+#: views/lesson-meta-box.php:40
+msgid "- No quiz required -"
+msgstr "- Nenhum quis requerido -"
+
+#: views/lesson-meta-box.php:46
+msgid "with any of the following grade(s) achieved:"
+msgstr "com qualquer um dos graus atingido:"
+
+#: views/lesson-meta-box.php:50 views/lesson-meta-box.php:72
+msgid "- Any grade -"
+msgstr "- Qualquer grau -"
+
+#: views/lesson-meta-box.php:84
+msgid ""
+"If you install %s or %s you can also require certain tests and quizzes to be "
+"completed."
+msgstr ""
+"Se você instalar %s ou %s você também poderá exigir que determinados testes "
+"e quizzes sejam completados."
+
+#: views/lesson-meta-box.php:89
+msgid "points for completing this lesson."
+msgstr "pontos por completar esta aula."
+
+#: views/lesson-meta-box.php:95
+msgid ""
+"inside the lesson content to display what the student needs to do to "
+"complete the lesson."
+msgstr ""
+"dentro do conteúo da aula para exibir o que o estudante precisa fazer para "
+"completar a aula."
+
+#: views/lesson-meta-box.php:97
+msgid ""
+"will display a \"Mark Completed\" button so the student can mark the lesson "
+"completed themselves. <b>If such button is included in the lesson it will "
+"not be marked as completed until the student does it!</b> The button will "
+"appear <b>only after the \"Lesson Completeness\" requirements are satisfied."
+"</b>"
+msgstr ""
+"irá exibir um botão \"Marca Completada\" de forma que o estudante possa "
+"marcar a aula como completada por si. <b>Se este botão estiver incluído na "
+"aula ela não será marcada como completa atém que o estudante o faça!</b> O "
+"botão só irá aparecer <b>após os requerimentos para completar a aula tenham "
+"sido satisfeitos.</b>"
+
+#: views/lesson-meta-box.php:101
+msgid ""
+"You can set <a href=\"%s\" target=\"_blank\">delayed access</a> to this "
+"lesson."
+msgstr ""
+"Você pode confirar um<a href=\"%s\" target=\"_blank\">acesso com atraso</a> "
+"para esta aula."
+
+#: views/lesson-meta-box.php:103
+msgid ""
+"If you <a href=\"%s\" target=\"_blank\">upgrade to PRO</a> you will be able "
+"to set delayed access to this lesson, namage classes and teachers, and a lot "
+"more."
+msgstr ""
+"Se você <a href=\"%s\" target=\"_blank\">atualizar para PRO</a> você poderá "
+"configurar acesso com atraso a essa aula, classes, professores e muito mais."
+
+#: views/lesson-todo.php:2
+msgid "'s todo items in lesson"
+msgstr "itens a cumprir na aula"
+
+#: views/lesson-todo.php:8
+msgid "To-do Assignments:"
+msgstr "Atribuições a serem cumpridas:"
+
+#: views/lesson-todo.php:19
+msgid "To-do Test/Exam:"
+msgstr "Testes?Exames a serem cumpridos:"
+
+#: views/lesson-todo.php:22
+msgid "Manual manager approval is also required to complete this lesson."
+msgstr ""
+"Aprovação manual por um supervisor é requerida para completar esta aula."
+
+#: views/lesson-todo.php:24
+msgid ""
+"All the requirements are completed. Maybe a manager has set this \"In "
+"progress\" status manually."
+msgstr ""
+"Todos os requerimentos foram completados. Talvez um supervisor tenha "
+"configurado este status para \"em progresso\" manualmente."
+
+#: views/manage-students.php:2
+msgid "Student Enrollments"
+msgstr "Matrículas de Estudantes"
+
+#: views/manage-students.php:5
+msgid "Nothing to do here as you have not created any courses yet!"
+msgstr "Nada para fazer aqui já que você ainda não criou nenhum curso!"
+
+#: views/manage-students.php:24
+msgid "Enroll student in the course:"
+msgstr "Matricular estudante no curso:"
+
+#: views/manage-students.php:25
+msgid "Enter email or user login"
+msgstr "Preencha seu e-mail ou login de usuário"
+
+#: views/manage-students.php:26
+msgid "Enroll"
+msgstr "Matricular-se"
+
+#: views/manage-students.php:31
+msgid "Filter by student/course status:"
+msgstr "Filtrar por status de estudante/curso:"
+
+#: views/manage-students.php:32
+msgid "Any status"
+msgstr "Qualquer status"
+
+#: views/manage-students.php:33 views/view-solutions.php:50
+msgid "Pending"
+msgstr "Pendente"
+
+#: views/manage-students.php:34
+msgid "Enrolled"
+msgstr "Matriculado"
+
+#: views/manage-students.php:35 views/view-solutions.php:52
+msgid "Rejected"
+msgstr "Negado"
+
+#: views/manage-students.php:41
+msgid "There are no students enrolled in this course yet."
+msgstr "Não há estudantes matriculados neste curso ainda."
+
+#: views/manage-students.php:45
+msgid ""
+"The below table shows all students enrolled in this course allong with the "
+"status for every lesson in it"
+msgstr ""
+"A tabela abaixo exibe todos os estudantes matriculados neste curso junto com "
+"o status de cada aula nele"
+
+#: views/manage-students.php:51 views/my_courses.php:16
+#: views/student-lessons.php:24 views/view-solutions.php:39
+msgid "Status"
+msgstr "Status"
+
+#: views/manage-students.php:65
+msgid "approve"
+msgstr "aprovar"
+
+#: views/manage-students.php:65
+msgid "reject"
+msgstr "rejeitar"
+
+#: views/manage-students.php:68
+msgid "Cleanup"
+msgstr "Limpar"
+
+#: views/manage-students.php:75
+msgid ""
+"Don't forget that you can get <a href='%s'>Advanced Reports</a> for your "
+"students performance."
+msgstr ""
+"Não esqueça que você pode ter <a href='%s'>Relatórios Avançados</a> para a "
+"performance de seus alunos."
+
+#: views/manage-students.php:77
+msgid ""
+"You can get advanced reports and ranking shortcodes with the <a href='%s' "
+"target='_blank'>Namaste! Reports</a> plugin."
+msgstr ""
+"Você pode conseguir relatórios avançados e atalhos para ranking com o plugin "
+"<a href='%s' target='_blank'>Namaste! Reports</a>."
+
+#: views/manage-students.php:89 views/student-lessons.php:63
+msgid "Lesson progress"
+msgstr "Progresso da Aula"
+
+#: views/manage-students.php:95
+msgid ""
+"Are you sure to cleanup this record? It will be removed from the system and "
+"history and the user will be able to enroll or request enrollment again"
+msgstr ""
+"Você tem certeza de que deseja apagar este registro? Ele será removido do "
+"systema e do histórico, e o usuário será capaz de se matricular ou solicitar "
+"matrícula novamente"
+
+#: views/my-certificates.php:4
+msgid "You have not achieved any certificates yet."
+msgstr "Você ainda não recebeu nenhum certificado."
+
+#: views/my-certificates.php:10
+msgid "Certificate"
+msgstr "Certificado"
+
+#: views/my-certificates.php:10
+msgid "Date"
+msgstr "Data"
+
+#: views/my-certificates.php:10
+msgid "Completed course(s)"
+msgstr "Curso(s) completado(s)"
+
+#: views/my-gradebook.html.php:16
+msgid "You need to enroll some courses first."
+msgstr "Você precisa se matricular em um curso primeiro."
+
+#: views/my-gradebook.html.php:20
+msgid "My grades in %s"
+msgstr "Minhas notas em %s"
+
+#: views/my-gradebook.html.php:22
+msgid "Final grade for the whole course:"
+msgstr "Nota final para todo o curso:"
+
+#: views/my-gradebook.html.php:25
+msgid "Grades from assignments"
+msgstr "Notas das atribuições"
+
+#: views/my-gradebook.html.php:25
+msgid "Final grade"
+msgstr "Nota final"
+
+#: views/my-gradebook.html.php:30
+msgid "Assignment:"
+msgstr "Atribuição:"
+
+#: views/my-gradebook.html.php:32
+msgid "Solution"
+msgstr "Resposta"
+
+#: views/my-gradebook.html.php:32 views/view-solutions.php:41
+msgid "Grade"
+msgstr "Graduação"
+
+#: views/my-gradebook.html.php:34 views/view-solutions.php:35
+msgid "Solution submitted at %s"
+msgstr "Solução enviada as %s"
+
+#: views/my-gradebook.html.php:35 views/my-gradebook.html.php:42
+#: views/view-solutions.php:72
+msgid "Not graded"
+msgstr "Não graduado"
+
+#: views/my-gradebook.html.php:38
+msgid "No solutions submitted yet."
+msgstr "Não há soluções enviadas ainda."
+
+#: views/my-gradebook.html.php:41
+msgid "No assignments"
+msgstr "Não há atribuições"
+
+#: views/my_courses.php:4
+msgid "No courses are available at this time."
+msgstr "Não há cursos disponíveis no momento."
+
+#: views/my_courses.php:14
+msgid "Course title &amp; description"
+msgstr "Título do curso e descrição"
+
+#: views/my_courses.php:23
+msgid "Enroll to get access to the lessons"
+msgstr "Matricule-se para obter acesso às aulas"
+
+#: views/my_courses.php:25
+msgid "View lessons"
+msgstr "Ver aulas"
+
+#: views/my_courses.php:32
+msgid "Pending enrollment"
+msgstr "Matrícula pendente"
+
+#: views/my_courses.php:33
+msgid "Application rejected"
+msgstr "Aplicação rejeitada"
+
+#: views/my_courses.php:35
+msgid "Enrolled on %s"
+msgstr "Matriculado em %s"
+
+#: views/my_courses.php:38
+msgid "Completed on %s"
+msgstr "Completado em %s"
+
+#: views/options.php:2
+msgid "Namaste! LMS Options"
+msgstr "Opções do Namaste! LMS"
+
+#: views/options.php:6
+msgid "Wordpress roles with access to the learning material"
+msgstr "Papéis do Wordpress com acesso ao material de estudo"
+
+#: views/options.php:8
+msgid ""
+"By default Namaste! LMS creates a role \"student\" which is the only role "
+"allowed to work with the learning material. The idea behind this is to allow "
+"the admin have better control over which users can access it. However, you "
+"can enable the other existing user roles here. Note that this setting is "
+"regarding consuming content, and not creating it."
+msgstr ""
+"Por padrão, o Namaste! LMS cria um papel \"estudante\" que é o único papel "
+"com permissão de trabalhar com o material de estudo. A idéia por trás disso "
+"é permitir ao admin ter um controle melhor sobre quais usuários podem "
+"acessar o material. Entretanto, você pode habilitar os outros papéis de "
+"usuário aqui. Note que esta configuração é sobre consumir conteúdo, não "
+"sobre cria-lo."
+
+#: views/options.php:16
+msgid "Wordpress roles that can administrate the LMS"
+msgstr "Papéis do Wordpress que podem administrar o LMS"
+
+#: views/options.php:18
+msgid ""
+"By default this is only the blog administrator. Here you can enable any of "
+"the other roles as well"
+msgstr ""
+"Por padrão apenas o administrador. Você pode habilitar outros papéis de "
+"usuário também"
+
+#: views/options.php:27
+msgid "Blog / Archive Pages Behavior"
+msgstr "Comportamento da Página de Blog / Arquivo"
+
+#: views/options.php:29
+msgid "Show courses as blog post in home and archive pages"
+msgstr ""
+"Exibir cursos como postagem de blog na página inicial e nas páginas de "
+"arquivo"
+
+#: views/options.php:32
+msgid "Save Options"
+msgstr "Salvar opções"
+
+#: views/options.php:39
+msgid "Grade and Point Systems"
+msgstr "Sistema de Graduação e Pontuação"
+
+#: views/options.php:41
+msgid "Use grading system*"
+msgstr "Usar sistema de graduação*"
+
+#: views/options.php:42
+msgid ""
+"* Using a grading system allows you to rate student performance in courses, "
+"lessons, and assignments, and keeping a gradebook. Grading individual "
+"lessons is optional."
+msgstr ""
+"*Usar um sistema de graduação permite a você qualificar o estudante em "
+"cursos, aulas, e atribuições, e a manter um livro de graduações. Graduar "
+"aulas individualmente é opcional."
+
+#: views/options.php:45
+msgid ""
+"Enter your grades in the box, separated by comma. Start with the best "
+"possible grade and go right to the worst:"
+msgstr ""
+"Preencha suas notas no box, separadas por vírgula. Comece com a melhor nota "
+"possível e vá em direção à pior:"
+
+#: views/options.php:51
+msgid "Use points system*"
+msgstr "Usar sistema de pontuação*"
+
+#: views/options.php:52
+msgid ""
+"* Points system can be used alone or together with a grading system. It lets "
+"you reward your students with points for completing lessons, courses, or "
+"assignments. These points will be displayed, and in the future (and in "
+"additional plugins) used to create leaderboards, redeem rewards, etc."
+msgstr ""
+"*O sistema de pontuação pode ser usado sozinho ou junto a sistema de "
+"graduação. Ele permite a você premiar seu estudante com pontos por completar "
+"aulas, cursos, e atribuições. Estes pontos serão exibidos, e no futuro (e "
+"num plugin adicional) poderão ser usados para criar quadros de liderança, "
+"premiações, etc."
+
+#: views/options.php:55
+msgid ""
+"Default reward values. They can be overridden for every individual course, "
+"lesson, or assignment."
+msgstr ""
+"Valores padrão de recompensa. Eles podem ser sobreescritos para cada curso, "
+"aula, ou atribuição individualmente."
+
+#: views/options.php:57
+msgid "points for completing a course"
+msgstr "pontos por completar um curso"
+
+#: views/options.php:59
+msgid "points for completing a lesson"
+msgstr "pontos por completar uma aula"
+
+#: views/options.php:61
+msgid "points for successfully completing a homework / assignment"
+msgstr "pontos por completar uma tarefa / atribuição"
+
+#: views/options.php:63
+msgid "Shortcodes enabled by using a points system"
+msgstr "Atalhos habilitados por utilizar um sistema de pontuação"
+
+#: views/options.php:64
+msgid ""
+"If you activate a points system the following shortcodes become available:"
+msgstr ""
+"Se você ativar o sistema de pontuação os atalhos a seguir se tornarão "
+"disponíveis:"
+
+#: views/options.php:67 views/options.php:68
+msgid "and"
+msgstr "e"
+
+#: views/options.php:67
+msgid ""
+"(where \"x\" is given user ID) outputs the total number of points the user "
+"has earned."
+msgstr ""
+"(onde x é o Id de usuário informado) irá retornar o total de número de "
+"pontos que o usuário conquistou."
+
+#: views/options.php:68
+msgid ""
+"displays a leaderboard based on collected points. Replace \"x\" with the "
+"number of users you want to show. When you use the second shortcode the "
+"usernames will be shown in a table with the points collected in front of "
+"them."
+msgstr ""
+"exibe um quadro de liderança baseado nos pontos coletados. Substitua \"x\" "
+"com o número de usuários que você deseja exibir. Quando você utiliza o "
+"segundo atalho os nomes de usuários serão exibidos numa tabela com os pontos "
+"coletados em sua frente."
+
+#: views/options.php:72
+msgid "Save grade and points settings"
+msgstr "Salvar configurações de graduação e pontuação"
+
+#: views/options.php:78
+msgid "Payment Settings"
+msgstr "Configurações de pagamento"
+
+#: views/options.php:80
+msgid "Payment currency:"
+msgstr "Moeda de pagamento:"
+
+#: views/options.php:88
+msgid ""
+"Here you can specify payment methods that you will accept to give access to "
+"courses. When a course requires payment, the enrollment (pending or active - "
+"depends on your other course settings) will be entered after the payment is "
+"completed."
+msgstr ""
+"Aqui você pode especificar métodos de pagamento que você irá aceitar para "
+"dar acesso aos cursos. Quando um curso requer pagamento, a matrícula "
+"(pendente ou ativa - dependendo de suas outras configurações do curso) será "
+"feita assim que o pagamento for completado."
+
+#: views/options.php:90
+msgid "Accept PayPal"
+msgstr "Aceitar Paypal"
+
+#: views/options.php:93
+msgid "Your Paypal ID:"
+msgstr "Seu ID Paypal:"
+
+#: views/options.php:96
+msgid "Accept Stripe"
+msgstr "Aceitar Stripe"
+
+#: views/options.php:99
+msgid "Your Public Key:"
+msgstr "Sua Chave Pública:"
+
+#: views/options.php:100
+msgid "Your Secret Key:"
+msgstr "Sua Chave Secreta:"
+
+#: views/options.php:103
+msgid "Accept other payment methods"
+msgstr "Aceitar outras formas de pagamento"
+
+#: views/options.php:104
+msgid ""
+"This option lets you paste your own button HTML code or other manual "
+"instructions, for example bank wire. These payments will have to be "
+"processed manually unless you can build your own script to verify them."
+msgstr ""
+"Esta opção lhe permite colar seu próprio código de botão HTML ou outras "
+"instruções manuais, por exemplo, seus dados bancários. Estes pagamentos "
+"terão que ser processados manualmente a não ser que você possa criar seu "
+"próprio script para verifica-los."
+
+#: views/options.php:107
+msgid ""
+"Enter text or HTML code for payment button(s). You can use the following "
+"variables: {{course-id}}, {{course-name}}, {{user-id}}, {{amount}}."
+msgstr ""
+"Preencha o texto ou código HTML para o botão de pagamento. Você pode usar as "
+"seguintes variáveis: {{course-id}}, {{course-name}}, {{user-id}}, {{amount}}."
+
+#: views/options.php:111
+msgid "Save payment settings"
+msgstr "Salvar configurações de Pagamento"
+
+#: views/options.php:114
+msgid "View payments errorlog"
+msgstr "Ver log de erros dos pagamentos"
+
+#: views/options.php:124
+msgid "Exam/Test Related Settings"
+msgstr "Examinar / Testar configurações relacionadas"
+
+#: views/options.php:126
+msgid ""
+"Namaste LMS utilizes the power of existing Wordpress plugins to handle "
+"exams, tests and quizzes. At this moment it can connect with two plugins:"
+msgstr ""
+"O Namaste! LMS utiliza o poder de plugins existentes do Wordpress para lidar "
+"com exames, testes e quizzes. Neste momento ele pode se conectar com 2 plug-"
+"ins:"
+
+#: views/options.php:126
+msgid "(Free) and "
+msgstr "(Grátis) e "
+
+#: views/options.php:126
+msgid "(Premium)"
+msgstr "(Premium)"
+
+#: views/options.php:128
+msgid ""
+"If you have any of these plugins installed and activated, please choose "
+"which one to use for handling tests below:"
+msgstr ""
+"Se você tiver qualquer um destes plugins instalados e ativados, por favor "
+"escolha qual você deseja utilizar para os testes abaixo:"
+
+#: views/options.php:130
+msgid "I don not need to create any exams or tests."
+msgstr "Eu não preciso criar nenhum exame ou teste."
+
+#: views/options.php:133
+msgid "I will create exams with Watu."
+msgstr "Eu irei criar os exames com Watu."
+
+#: views/options.php:137
+msgid "I will create exams with WatuPRO."
+msgstr "Eu irei criar os exames com WatuPRO."
+
+#: views/options.php:141
+msgid ""
+"When I cleanup student course data from the \"Manage Students\" page I want "
+"any related exam data for this student also to be REMOVED."
+msgstr ""
+"Quando eu limpar os dados de um curso de aluno da página \"Gerenciar "
+"Estudantes\" eu quero que todos os dados relativos à prova deste aluno "
+"também sejam REMOVIDAS."
+
+#: views/options.php:144
+msgid "Save Exam Options"
+msgstr "Salvar Respostas do Exame"
+
+#: views/sidebar.html.php:22
+msgid "Go PRO!"
+msgstr "Atualize para PRO!"
+
+#: views/sidebar.html.php:24
+msgid "Get more powerful features by"
+msgstr "Receba mais recursos poderosos por"
+
+#: views/sidebar.html.php:24
+msgid "upgrading to the PRO version:"
+msgstr "atualizando para a versão PRO:"
+
+#: views/sidebar.html.php:27
+msgid "Premium support"
+msgstr "Suporte Premium"
+
+#: views/sidebar.html.php:27
+msgid "Free email support for 1 year after purchase"
+msgstr "Suporte por e-mail por 1 ano após a compra"
+
+#: views/sidebar.html.php:28
+msgid "Create classes and limit access to courses based on them."
+msgstr "Criar classes e limitar o acesso a cursos baseado nelas."
+
+#: views/sidebar.html.php:29
+msgid ""
+"Assign teachers to the classes to have your team members manage content."
+msgstr ""
+"Atribuir professores às aulas para os membros do seu time poderem gerenciar "
+"conteúdo."
+
+#: views/sidebar.html.php:30
+msgid "Delayed access to course material."
+msgstr "Acesso com atraso ao material do curso."
+
+#: views/sidebar.html.php:31
+msgid "Shortcodes to let users sign-up for classes."
+msgstr "Atalhos para permitir os usuários a se matricular em classes."
+
+#: views/sidebar.html.php:32
+msgid "Progress bar shows users how they do in each course."
+msgstr "Barra de progresso exibe como os usuários estão em cada curso."
+
+#: views/sidebar.html.php:34
+msgid "Localization-ready"
+msgstr "Localização disponível"
+
+#: views/sidebar.html.php:34
+msgid "with translation .pot file"
+msgstr "com arquivo de tradução .pot"
+
+#: views/sidebar.html.php:35
+msgid "Unlimited domains license"
+msgstr "Licença para domínios ilimitados"
+
+#: views/sidebar.html.php:35
+msgid "for domains you own"
+msgstr "para domínios que lhe pertencem"
+
+#: views/sidebar.html.php:36
+msgid "And more - just come to see!"
+msgstr "E mais - Venha conhecer!"
+
+#: views/sidebar.html.php:39
+msgid "Just go ahead and"
+msgstr "Vá adiante e"
+
+#: views/sidebar.html.php:39
+msgid "take the tour"
+msgstr "faça o tour"
+
+#: views/sidebar.html.php:39
+msgid "or check the"
+msgstr "ou confira o"
+
+#: views/sidebar.html.php:39
+msgid "online demo."
+msgstr "da demo online."
+
+#: views/sidebar.html.php:41
+msgid ""
+"Upgrading to PRO comes with 60 days money-back guarantee, one year free "
+"upgrades and one year free support."
+msgstr ""
+"Atualizar para PRO vem com 60 dias de garantia de devolução do seu dinheiro, "
+"e um ano de atualizações grátis e um ano de suporte gratuito."
+
+#: views/sidebar.html.php:45
+msgid "Help To Spread The Word!"
+msgstr "Ajude a espalhar a palavra!"
+
+#: views/sidebar.html.php:47
+msgid "If you like this plugin you can do some of the following:"
+msgstr "Se você gostou deste plugin você pode fazer uma das coisas a seguir:"
+
+#: views/sidebar.html.php:50
+msgid "Rate it 5 starts at Wordpress.org"
+msgstr "Classifique-o com 5 estrelas no Wordpress.org"
+
+#: views/sidebar.html.php:51
+msgid "Let others know about it by blogging or posting"
+msgstr "Fale sobre ele a outras pessoas blogando ou postando"
+
+#: views/sidebar.html.php:51
+msgid "our home page"
+msgstr "nossa página inicial"
+
+#: views/sidebar.html.php:51
+msgid "on social networks."
+msgstr "nas redes sociais."
+
+#: views/sidebar.html.php:52
+msgid "Go PRO"
+msgstr "Atualize para PRO"
+
+#: views/sidebar.html.php:52
+msgid "to empower your site with extra benefits"
+msgstr "para dar mais poder a seu site com benefícios extras"
+
+#: views/sidebar.html.php:57
+msgid "Need Support?"
+msgstr "Precisa de suporte?"
+
+#: views/sidebar.html.php:59
+msgid "Please ask your question in the"
+msgstr "Por favor faça sua pergunta no"
+
+#: views/sidebar.html.php:59
+msgid "support forum at WordPress."
+msgstr "fórum de suporte em Wordpress."
+
+#: views/solution-submitted.php:1
+msgid "Solution submitted"
+msgstr "Solução enviada"
+
+#: views/solution-submitted.php:4
+msgid ""
+"A manager will review your solution and will approve or reject it. If the "
+"manager add any notes, they will appear in the assignments page for this "
+"course"
+msgstr ""
+"Um supervisor irá verificar sua solução e aprová-la ou rejeitá-la. Se o "
+"supervisor adicionar quaisquer notas, elas irão aparecer na página de "
+"tarefas deste curso"
+
+#: views/solution-submitted.php:10 views/submit-solution.php:7
+msgid "Back to the assignments"
+msgstr "Voltar às atribuições"
+
+#: views/solution-submitted.php:12 views/submit-solution.php:9
+msgid "Back to assignments in"
+msgstr "Voltar a atribuições em"
+
+#: views/solution-submitted.php:13 views/submit-solution.php:10
+msgid "from course"
+msgstr "do curso"
+
+#: views/student-lessons.php:2
+msgid "Course Progress:"
+msgstr "Progresso do Curso:"
+
+#: views/student-lessons.php:5
+msgid "Back to students in this course"
+msgstr "Voltar aos alunos deste curso"
+
+#: views/student-lessons.php:14
+msgid "Student:"
+msgstr "Estudante:"
+
+#: views/student-lessons.php:21
+msgid "Test/Exam"
+msgstr "Teste/Prova"
+
+#: views/student-lessons.php:30 views/student-lessons.php:34
+msgid "None"
+msgstr "Nenhum"
+
+#: views/student-lessons.php:48
+msgid "[todo]"
+msgstr "[a fazer]"
+
+#: views/submit-solution.php:1
+msgid "Submitting a solution to assignment"
+msgstr "Enviando uma solução para atribuição"
+
+#: views/submit-solution.php:17
+msgid "Submit your solution below:"
+msgstr "Envie sua resposta abaixo:"
+
+#: views/submit-solution.php:21
+msgid "Upload file:"
+msgstr "Enviar arquivo:"
+
+#: views/submit-solution.php:28
+msgid "Submit your solution"
+msgstr "Envia sua resposta"
+
+#: views/view-solutions.php:1
+msgid "Viewing Solutions for "
+msgstr "Vendo soluções para "
+
+#: views/view-solutions.php:8 views/view-solutions.php:16
+#: views/view-solutions.php:18
+msgid "Back to assignments for \"%s\""
+msgstr "Voltar às atribuições para \"%s\""
+
+#: views/view-solutions.php:9
+msgid "Showing everyone's solutions on this assignment."
+msgstr "Exibindo as soluções de todos para esta atribuição."
+
+#: views/view-solutions.php:10 views/view-solutions.php:22
+msgid ""
+"Note: when one solution is approved, the assignment will be considered "
+"completed by this student and they will not be asked to submit more "
+"solutions for it."
+msgstr ""
+"Nota: Quando uma solução é aprovada, a atribuição será considerada completa "
+"para este aluno e não lhe será pedido que envie mais soluções para ela."
+
+#: views/view-solutions.php:21
+msgid "Showing solutions submitted by"
+msgstr "Exibindo soluções enviadas por"
+
+#: views/view-solutions.php:26
+msgid "The student has not submitted any solutions for this assignment yet."
+msgstr "O estudante não enviou nenhuma solução para esta atribuição até agora."
+
+#: views/view-solutions.php:27
+msgid "No one has submitted any solutions for this assignment yet."
+msgstr "Ninguém enviou nenhuma solução para esta atribuição ainda."
+
+#: views/view-solutions.php:37
+msgid "by"
+msgstr "por"
+
+#: views/view-solutions.php:45
+msgid "Attachment:"
+msgstr "Anexo:"
+
+#: views/view-solutions.php:51
+msgid "Approved"
+msgstr "Aprovado"
+
+#~ msgid "ERROR|||You are not allowed to delete homework notes."
+#~ msgstr "ERRO||| Você não têm permissão de apagar notas de lições."
+
+#~ msgid "Not enough %s."
+#~ msgstr "Não há %s suficiente."
+
+#~ msgid "Pay %d %s"
+#~ msgstr "Pagar %d %s"
+
+#~ msgid "course"
+#~ msgstr "curso"
+
+#~ msgid "Select module:"
+#~ msgstr "Selecione o módulo:"
+
+#~ msgid "- No module -"
+#~ msgstr "- Nenhum Módulo -"
+
+#~ msgid "You are not allowed to do this."
+#~ msgstr "Você não tem permissão para fazer isso."
+
+#~ msgid ""
+#~ "You need to read this lesson before you can submit solutions to "
+#~ "assignments."
+#~ msgstr ""
+#~ "Você precisa ler esta aula antes de poder enviar soluções para as tarefas."
