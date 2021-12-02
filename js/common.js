@@ -38,6 +38,17 @@ function namasteLoadModules(courseID) {
 	});
 }
 
+// set rating for a course
+function namasteSetRating(rating, courseID) {
+	jQuery('#namasteRatingCourse' + courseID + '_' + rating).prop('checked', 'true');
+	// color the stars
+	jQuery('#rateCourse' + courseID + ' label').each(function(i, elt){
+		
+		if(i + 1 > rating) jQuery('#namasteRatingSpan' + courseID + '_' + (i+1)).removeClass('dashicons-star-filled');
+		else jQuery('#namasteRatingSpan' + courseID + '_' + (i+1)).addClass('dashicons-star-filled');
+	});
+}
+
 NamastePay = {}
 NamastePay.payWithMoolaMojo = function(id, url, isBundle, redirectURL) {
 	isBundle = isBundle || 0; 

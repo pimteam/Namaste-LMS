@@ -457,6 +457,8 @@ class NamasteLMS {
 		add_shortcode('namaste-lesson-status', array("NamasteLMSShortcodesController", 'lesson_status'));
 		add_shortcode('namaste-course-status', array("NamasteLMSShortcodesController", 'course_status'));
 		add_shortcode('namaste-breadcrumb', array("NamasteLMSShortcodesController", 'breadcrumb'));
+		add_shortcode('namaste-review', array("NamasteLMSShortcodesController", 'review_course'));
+		add_shortcode('namaste-reviews', array("NamasteLMSShortcodesController", 'course_reviews'));
 		
 		// Paypal IPN
 		add_filter('query_vars', array(__CLASS__, "query_vars"));

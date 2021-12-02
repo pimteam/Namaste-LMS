@@ -848,8 +848,8 @@ class NamasteLMSShortcodesController {
 	} // end breadcrumb 
 	
 	// rate course shortcode
-	public static function review_course($atts) {
-		global $wpdb;
+	public static function review_course($atts, $contents = '') {
+		global $wpdb, $wp;
 		if(!is_user_logged_in()) return '';
 		$student_id = get_current_user_id();		
 		
@@ -870,19 +870,26 @@ class NamasteLMSShortcodesController {
 			$student_id, $course_id));
 			
 		if(!empty($has_review->id)) {
-			if($has_review->is_approved) return __('Your review has been accepted', 'namaste');
-			else return __('Your review has been received and is awaiting moderation', 'namaste');
+			if($has_review->is_approved) return __('Your review has been accepted.', 'namaste');
+			else return __('Your review has been received and is awaiting moderation.', 'namaste');
 		}	
 		
 		// finally, can review
-		if(!empty($_POST['namaste_review_course'])) {
-			NamasteLMSReviews :: submit($_POST);
+		if(!empty($_POST['namaste_review_course']) and !empty($_POST['course_id']) and $_POST['course_id'] == $course_id) {
+			NamasteLMSReviews :: submit($_POST);	
+			namaste_redirect(home_url($wp->request));		
 		}	
 		
 		// display the rating box
 		ob_start();
-		NamasteLMSReviews :: display_form();
+		echo apply_filters('the_content', $contents);
+		NamasteLMSReviews :: display_form($course_id);
 		$content  = ob_get_clean();
 		return $content;
 	} // end review_course
+	
+	// list reviews
+	public static function course_reviews($atts) {
+		return "NYI";
+	}
 }
