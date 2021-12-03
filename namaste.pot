@@ -129,6 +129,26 @@ msgstr ""
 msgid "You can download only your own solutions."
 msgstr ""
 
+#: controllers/reviews.php:133
+msgid "Poor"
+msgstr ""
+
+#: controllers/reviews.php:134
+msgid "Accedptable"
+msgstr ""
+
+#: controllers/reviews.php:135
+msgid "Average"
+msgstr ""
+
+#: controllers/reviews.php:136
+msgid "Good"
+msgstr ""
+
+#: controllers/reviews.php:137
+msgid "Great"
+msgstr ""
+
 #: controllers/shortcodes.php:42
 msgid "Completed"
 msgstr ""
@@ -229,6 +249,14 @@ msgstr ""
 msgid "Frozen"
 msgstr ""
 
+#: controllers/shortcodes.php:873
+msgid "Your review has been accepted."
+msgstr ""
+
+#: controllers/shortcodes.php:874
+msgid "Your review has been received and is awaiting moderation."
+msgstr ""
+
 #: controllers/shortcodes.php:23
 msgid "This lesson has been completed."
 msgstr ""
@@ -261,51 +289,51 @@ msgstr ""
 msgid "Advanced Reports"
 msgstr ""
 
-#: models/course-model.php:162
+#: models/course-model.php:166
 msgid "For advanced reports on this course, <a href=\"%s\">click here</a>."
 msgstr ""
 
-#: models/course-model.php:164
+#: models/course-model.php:168
 msgid "You can get <b>advanced reports</b> on this course if you install the <a href=\"%s\" target=\"_blank\">Namaste! Reports</a> plugin."
 msgstr ""
 
-#: models/course-model.php:265
+#: models/course-model.php:274
 msgid "You are enrolled in this course. Check \"My courses\" link in your dashboard to see the lessons and to-do list"
 msgstr ""
 
-#: models/course-model.php:315
+#: models/course-model.php:324
 msgid "Received %d points for completing course \"%s\"."
 msgstr ""
 
-#: models/course-model.php:329
+#: models/course-model.php:338
 msgid "Completed course \"%s\""
 msgstr ""
 
-#: models/course-model.php:393
+#: models/course-model.php:402
 msgid "You cannot enroll this course - other courses have to be completed first."
 msgstr ""
 
-#: models/course-model.php:410
+#: models/course-model.php:419
 msgid "Enrolled in course %s. Status: %s"
 msgstr ""
 
-#: models/course-model.php:476
+#: models/course-model.php:485
 msgid "Enroll for %1$s %2$s"
 msgstr ""
 
-#: models/course-model.php:477
+#: models/course-model.php:486
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:494
+#: models/course-model.php:503
 msgid "Payment for course"
 msgstr ""
 
-#: models/course-model.php:513
+#: models/course-model.php:522
 msgid "Buy Enrollment"
 msgstr ""
 
-#: models/course-model.php:563
+#: models/course-model.php:572
 msgid "These courses should be completed before you can enroll:"
 msgstr ""
 
@@ -453,123 +481,127 @@ msgstr ""
 msgid "Before accessing this module you must complete the following modules:"
 msgstr ""
 
-#: models/namaste-model.php:297
+#: models/namaste-model.php:314
 msgid "Namaste! LMS"
 msgstr ""
 
-#: models/namaste-model.php:298
+#: models/namaste-model.php:315
 msgid "To Do"
 msgstr ""
 
-#: models/namaste-model.php:305
+#: models/namaste-model.php:322
 msgid "Assignments"
 msgstr ""
 
-#: models/namaste-model.php:306
+#: models/namaste-model.php:323
 msgid "Students"
 msgstr ""
 
-#: models/namaste-model.php:308
+#: models/namaste-model.php:325
 msgid "Certificates"
 msgstr ""
 
-#: models/namaste-model.php:309
+#: models/namaste-model.php:326
 msgid "Students Earned Certificate"
 msgstr ""
 
-#: models/namaste-model.php:311
+#: models/namaste-model.php:332
+msgid "Student Reviews"
+msgstr ""
+
+#: models/namaste-model.php:336
 msgid "Gradebook"
 msgstr ""
 
-#: models/namaste-model.php:312
+#: models/namaste-model.php:337
 msgid "Settings"
 msgstr ""
 
-#: models/namaste-model.php:315
+#: models/namaste-model.php:341
 msgid "xAPI / Tin Can"
 msgstr ""
 
-#: models/namaste-model.php:318
+#: models/namaste-model.php:344
 msgid "Help"
 msgstr ""
 
-#: models/namaste-model.php:319
+#: models/namaste-model.php:345
 msgid "Namaste! Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:319
+#: models/namaste-model.php:345
 msgid "Plugins &amp; API"
 msgstr ""
 
-#: models/namaste-model.php:322
+#: models/namaste-model.php:348
 msgid "Student Lessons"
 msgstr ""
 
-#: models/namaste-model.php:324
+#: models/namaste-model.php:350
 msgid "Send note"
 msgstr ""
 
-#: models/namaste-model.php:325
+#: models/namaste-model.php:351
 msgid "Submit solution"
 msgstr ""
 
-#: models/namaste-model.php:326
+#: models/namaste-model.php:352
 msgid "View solutions"
 msgstr ""
 
-#: models/namaste-model.php:327
+#: models/namaste-model.php:353
 msgid "View all solutions"
 msgstr ""
 
-#: models/namaste-model.php:328
+#: models/namaste-model.php:354
 msgid "View Certificate"
 msgstr ""
 
-#: models/namaste-model.php:329
+#: models/namaste-model.php:355
 msgid "Download solution"
 msgstr ""
 
-#: models/namaste-model.php:330
+#: models/namaste-model.php:356
 msgid "Multi user configuration"
 msgstr ""
 
-#: models/namaste-model.php:331
+#: models/namaste-model.php:357
 msgid "Mass enroll students"
 msgstr ""
 
-#: models/namaste-model.php:332
+#: models/namaste-model.php:358
 msgid "Shortcode generator"
 msgstr ""
 
-#: models/namaste-model.php:347
+#: models/namaste-model.php:373
 msgid "My Courses"
 msgstr ""
 
-#: models/namaste-model.php:348
+#: models/namaste-model.php:374
 msgid "My Certificates"
 msgstr ""
 
-#: models/namaste-model.php:349
+#: models/namaste-model.php:375
 msgid "My Gradebook"
 msgstr ""
 
-#: models/namaste-model.php:493
+#: models/namaste-model.php:522
 msgid "You need to be <a href=\"%s\">logged in</a> to access this lesson."
 msgstr ""
 
-#: models/namaste-model.php:497
+#: models/namaste-model.php:526
 msgid "You can enroll in this course from your student dashboard. You need to be <a href=\"%s\">logged in</a>."
 msgstr ""
 
-#: models/namaste-model.php:501
+#: models/namaste-model.php:530
 msgid "You need to be <a href=\"%s\">logged in</a> to access this module."
 msgstr ""
 
-#: models/namaste-model.php:694
+#: models/namaste-model.php:723
 msgid "You can also buy access to this {{{item}}} with {{{credits}}} virtual credits from your balance. You currently have [moolamojo-balance] credits total."
 msgstr ""
 
-#: models/namaste-model.php:724
+#: models/namaste-model.php:753
 msgid "<p>Course: {{{course-link}}}</p>"
 msgstr ""
 
@@ -825,35 +857,43 @@ msgstr ""
 msgid "Automatically grade this course based on its lesson grades (<a href=\"%s\" target=\"_blank\">learn how this works</a>)"
 msgstr ""
 
-#: views/course-meta-box.php:120
+#: views/course-meta-box.php:128
+msgid "Use the shortcode %s to show the submitted reviews on the course:"
+msgstr ""
+
+#: views/course-meta-box.php:128
+msgid "Pass the attribute <b>%1$s</b> to show only the latest X reviews on this course. The attribute <b>%2$s </b>can contain values <b>%3$s</b> or <b>%4$s</b> to define whether you will display the username of the reviewer or their full name. "
+msgstr ""
+
+#: views/course-meta-box.php:137
 msgid "The same shortcode to use outside of the course page is %s"
 msgstr ""
 
-#: views/course-meta-box.php:122
+#: views/course-meta-box.php:139
 msgid "The shortcode <b>%s</b> on the other hand will display just the number of lessons in the course."
 msgstr ""
 
-#: views/course-meta-box.php:125
+#: views/course-meta-box.php:142
 msgid "Similar to the above, the shortcode %1$s will display the modules in this course and the shortcode <b>%2$s</b> will display the number of modules in it."
 msgstr ""
 
-#: views/course-meta-box.php:131
+#: views/course-meta-box.php:148
 msgid "The shortcode %s can be used to display conditional content to logged in or non-logged in users like this: %s. To use it outside of the course page pass also the attribute <b>%s</b>"
 msgstr ""
 
-#: views/course-meta-box.php:131
+#: views/course-meta-box.php:148
 msgid "Content enrolled users"
 msgstr ""
 
-#: views/course-meta-box.php:131
+#: views/course-meta-box.php:148
 msgid "Content for not enrolled users"
 msgstr ""
 
-#: views/course-meta-box.php:136
+#: views/course-meta-box.php:153
 msgid "You can limit the access to this course also by <a href=\"%s\" target=\"_blank\">class / group</a>."
 msgstr ""
 
-#: views/course-meta-box.php:138
+#: views/course-meta-box.php:155
 msgid "If you <a href=\"%s\" target=\"_blank\">upgrade to PRO</a> you will be able to assign courses to classes and restrict access based on class, have different managers for different classes, and a lot more."
 msgstr ""
 
@@ -965,31 +1005,59 @@ msgstr ""
 msgid "When someone completes this course join them in the following BuddyPress group:"
 msgstr ""
 
-#: views/course-meta-box.php:117
+#: views/course-meta-box.php:114
+msgid "Student Feedback"
+msgstr ""
+
+#: views/course-meta-box.php:116
+msgid "Accept reviews from students after completing the course."
+msgstr ""
+
+#: views/course-meta-box.php:118
+msgid "Hold reviews for moderation"
+msgstr ""
+
+#: views/course-meta-box.php:122
+msgid "Use the following shortcode to include the review feature on the course page:"
+msgstr ""
+
+#: views/course-meta-box.php:124
+msgid "The feature will be shown only when appropriate - i.e. after completing the course and only when the student has not already rated it."
+msgstr ""
+
+#: views/course-meta-box.php:125
+msgid "You can enclose content / text in the shortcode. In that case the text will be shown conditionally when the whole rating form is displayed. Example:"
+msgstr ""
+
+#: views/course-meta-box.php:126
+msgid "Thank you for competing this course! Please rate it now!"
+msgstr ""
+
+#: views/course-meta-box.php:134
 msgid "Shortcodes"
 msgstr ""
 
-#: views/course-meta-box.php:119
+#: views/course-meta-box.php:136
 msgid "inside the course content to display what the student needs to do to complete the course."
 msgstr ""
 
-#: views/course-meta-box.php:121
+#: views/course-meta-box.php:138
 msgid "will display the lessons in the course."
 msgstr ""
 
-#: views/course-meta-box.php:121
+#: views/course-meta-box.php:138
 msgid "It allows more advanced configurations explained on the "
 msgstr ""
 
-#: views/course-meta-box.php:121
+#: views/course-meta-box.php:138
 msgid "help page."
 msgstr ""
 
-#: views/course-meta-box.php:128
+#: views/course-meta-box.php:145
 msgid "inside the course content to display its current status for the logged in user."
 msgstr ""
 
-#: views/course-meta-box.php:133
+#: views/course-meta-box.php:150
 msgid "Did you know?"
 msgstr ""
 
@@ -1605,6 +1673,10 @@ msgstr ""
 msgid "To-do Test/Exam:"
 msgstr ""
 
+#: views/list-reviews.html.php:3
+msgid "%1$s on %2$s"
+msgstr ""
+
 #: views/manage-students.php:128
 msgid "None"
 msgstr ""
@@ -1889,7 +1961,7 @@ msgstr ""
 msgid "To edit this page you need to enable some roles to manage LMS on the <a href=\"%s\" target=_blank\">Namaste Settings page</a>."
 msgstr ""
 
-#: views/multiuser.html.php:70
+#: views/multiuser.html.php:75
 msgid "If you have <a href=\"%s\" target=\"_blank\">Namaste! PRO</a> all the above settings will also comply with any class (user group) limitations."
 msgstr ""
 
@@ -1982,46 +2054,58 @@ msgid "No access to gradebook"
 msgstr ""
 
 #: views/multiuser.html.php:51
-msgid "Settings page access:"
+msgid "Reviews access:"
 msgstr ""
 
 #: views/multiuser.html.php:52
-msgid "Manage settings"
+msgid "Access reviews"
 msgstr ""
 
 #: views/multiuser.html.php:53
-msgid "No access to manage settings"
+msgid "No access to reviews"
 msgstr ""
 
 #: views/multiuser.html.php:56
-msgid "Help page access:"
+msgid "Settings page access:"
 msgstr ""
 
 #: views/multiuser.html.php:57
-msgid "View Help page"
+msgid "Manage settings"
 msgstr ""
 
 #: views/multiuser.html.php:58
-msgid "No access to Help page"
+msgid "No access to manage settings"
 msgstr ""
 
 #: views/multiuser.html.php:61
-msgid "Plugins page access:"
+msgid "Help page access:"
 msgstr ""
 
 #: views/multiuser.html.php:62
-msgid "Access Plugins page"
+msgid "View Help page"
 msgstr ""
 
 #: views/multiuser.html.php:63
-msgid "No access to Plugins page"
+msgid "No access to Help page"
+msgstr ""
+
+#: views/multiuser.html.php:66
+msgid "Plugins page access:"
+msgstr ""
+
+#: views/multiuser.html.php:67
+msgid "Access Plugins page"
 msgstr ""
 
 #: views/multiuser.html.php:68
+msgid "No access to Plugins page"
+msgstr ""
+
+#: views/multiuser.html.php:73
 msgid "Don't display 'My Courses' link in the dashboard."
 msgstr ""
 
-#: views/multiuser.html.php:72
+#: views/multiuser.html.php:77
 msgid "Save configuration for this role"
 msgstr ""
 
@@ -2565,6 +2649,62 @@ msgstr ""
 msgid "Save Exam Options"
 msgstr ""
 
+#: views/review-course.html.php:3
+msgid "Rate this course:"
+msgstr ""
+
+#: views/review-course.html.php:14
+msgid "Your review"
+msgstr ""
+
+#: views/review-course.html.php:20
+msgid "Send Review"
+msgstr ""
+
+#: views/reviews.html.php:1
+msgid "Student Reviews on Courses"
+msgstr ""
+
+#: views/reviews.html.php:6
+msgid "Filter by course"
+msgstr ""
+
+#: views/reviews.html.php:7
+msgid "All courses"
+msgstr ""
+
+#: views/reviews.html.php:13
+msgid "Filter by status"
+msgstr ""
+
+#: views/reviews.html.php:15
+msgid "Approved"
+msgstr ""
+
+#: views/reviews.html.php:16
+msgid "Pending approval"
+msgstr ""
+
+#: views/reviews.html.php:19
+msgid "Filter courses"
+msgstr ""
+
+#: views/reviews.html.php:31
+msgid "Rating and Review"
+msgstr ""
+
+#: views/reviews.html.php:33
+msgid "Action"
+msgstr ""
+
+#: views/reviews.html.php:48
+msgid "Approve"
+msgstr ""
+
+#: views/reviews.html.php:77
+msgid "No reviews found."
+msgstr ""
+
 #: views/search-form.html.php:3
 msgid "Search in Courses and Lessons"
 msgstr ""
@@ -2575,10 +2715,6 @@ msgstr ""
 
 #: views/search-form.html.php:6
 msgid "in"
-msgstr ""
-
-#: views/search-form.html.php:7
-msgid "All courses"
 msgstr ""
 
 #: views/search-form.html.php:15
@@ -2923,10 +3059,6 @@ msgstr ""
 
 #: views/view-solutions.php:47
 msgid "Attachments:"
-msgstr ""
-
-#: views/view-solutions.php:56
-msgid "Approved"
 msgstr ""
 
 #: views/xapi-options.html.php:4

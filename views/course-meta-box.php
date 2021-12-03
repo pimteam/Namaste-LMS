@@ -111,7 +111,7 @@ endif;?>
 	</p>
 <?php endif;?>
 
-<h3><?php _e('Student Feedback', 'namaste-lms');?></h3>
+<h3><?php _e('Student Feedback', 'namaste');?></h3>
 
 <p><input type="checkbox" name="namaste_accept_reviews" value="1" <?php if($accept_reviews) echo 'checked';?> onclick="this.checked ? jQuery('.namaste-review-features').show() : jQuery('.namaste-review-features').hide();"> <?php _e("Accept reviews from students after completing the course.", 'namaste');?>
  <span class="namaste-review-features" style='display: <?php echo $accept_reviews ? 'inline' : 'none';?>'>
@@ -125,7 +125,7 @@ endif;?>
 	<p><?php _e('You can enclose content / text in the shortcode. In that case the text will be shown conditionally when the whole rating form is displayed. Example:', 'namaste');?><br>
 	[namaste-review course_id="<?php echo $post->ID;?>"]<?php _e('Thank you for competing this course! Please rate it now!', 'namaste');?>[/namaste-review]</p>
 	
-	<p><?php printf(__('Use the shortcode %s to show the submitted reviews on the course:', 'namaste'), '<input type="text" value="[namaste-reviews course_id='.$post->ID.']" readonly onclick="this.select();">');?></p>
+	<p><?php printf(__('Use the shortcode %s to show the submitted reviews on the course:', 'namaste'), '<input type="text" value="[namaste-reviews course_id='.$post->ID.']" readonly onclick="this.select();">');?> <?php printf(__('Pass the attribute <b>%1$s</b> to show only the latest X reviews on this course. The attribute <b>%2$s </b>can contain values <b>%3$s</b> or <b>%4$s</b> to define whether you will display the username of the reviewer or their full name. ', 'namaste'), 'number=X', 'show', 'user_login', 'display_name');?></p>
 </div>
 
 <p>&nbsp;</p>

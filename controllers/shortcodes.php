@@ -888,8 +888,19 @@ class NamasteLMSShortcodesController {
 		return $content;
 	} // end review_course
 	
-	// list reviews
+	// list reviews - for now just list them all without navigation.
+	// $atts[number] - show last number of reviews
 	public static function course_reviews($atts) {
-		return "NYI";
+		$course_id = empty($atts['course_id']) ? 0 : intval($atts['course_id']);
+		if(empty($course_id)) return "";
+		
+		$number = empty($atts['number']) ? 0 : intval($atts['number']);
+		$show = empty($atts['show']) ? 'user_login' : sanitize_text_field($atts['show']);
+		if(!in_array($show, ['user_login', 'display_name'])) $show = 'user_login';		
+		
+		ob_start();		
+		NamasteLMSReviews :: list_reviews($course_id, $number, $show);
+		$content  = ob_get_clean();
+		return $content;
 	}
 }

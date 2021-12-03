@@ -3,7 +3,7 @@ Contributors: prasunsen, wakeop
 Tags: LMS, learning, courses, lessons, ILE, wpmu, multisite, buddypress
 Requires at least: 4.2
 Tested up to: 5.8
-Stable tag: trunk
+Stable tag: 2.5.5
 License: GPL2
 
 Namaste! LMS is a learning management system for WordPress. Supports unlimited number of courses, lessons, assignments, students etc. You can create various rules for course and lesson access and completeness based on assignment completion, test results, or manual admin approval.
@@ -117,11 +117,12 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 
 == Changelog ==
 
-= Version 2.5.4 =
+= Version 2.5.5 =
 - Adjusted access control to module pages: their contents should not be visible if you are not enrolled in the course or if there are unsatisfied module pre-requisites.
 - Added shortcode [namaste-breadcrumb] to display a breadcrumb style hierarchical navigation on lesson and module pages.
 - Added order by Namaste! points in your main Users page (when using points system is enabled).
 - Homework assignments now allow being "self approving". For these assignments you will not accept and review solutions from students. Instead, they will mark the homework completed themselves.
+- Added option to accept reviews from students on completed course. The reviews with ratings can be shown on the front-end.
 
 = Version 2.5 =
 - Added filters by lesson status for each lesson in Manage Students page.

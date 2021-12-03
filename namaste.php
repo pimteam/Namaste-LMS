@@ -4,7 +4,7 @@ Plugin Name: Namaste! LMS
 Plugin URI: http://namaste-lms.org
 Description: Learning Management System for WordPress. Courses, modules, lessons, gradebook, and everything you need. 
 Author: Kiboko Labs
-Version: 2.5.4.2
+Version: 2.5.5
 Author URI: http://calendarscripts.info/
 License: GPLv2 or later
 Text Domain: namaste

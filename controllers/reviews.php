@@ -20,25 +20,28 @@ class NamasteLMSReviews {
 		}
 		
 		// list reviews
-		$course_filter = $status_filter = '';
+		$course_filter = $status_filter = $other_filter_sql = '';
+		$other_filter_sql = apply_filters('namaste-filter-reviews', $other_filter_sql);	
 		
 		if(!empty($_GET['course_id'])) $course_filter = $wpdb->prepare(" AND course_id=%d ", intval($_GET['course_id']));
 		if(isset($_GET['status']) and $_GET['status'] !== '') $status_filter = $wpdb->prepare(" AND is_approved=%d ", intval($_GET['status']));	
 		
 		$offset = empty($_GET['offset']) ? 0 : intval($_GET['offset']);
-		$limit = 20;
+		$page_limit = 20;
 		
-		$reviews = $wpdb->get_results($wpdb->prepare("SELECT tR.*, tP.post_title as course_name, tU.display_name as user_name 
+		$reviews = $wpdb->get_results($wpdb->prepare("SELECT SQL_CALC_FOUND_ROWS tR.*, tP.post_title as course_name, tU.display_name as user_name 
 			FROM ".NAMASTE_COURSE_REVIEWS." tR JOIN {$wpdb->posts} tP ON tP.ID = tR.course_id AND tP.post_type = 'namaste_course'
 			JOIN {$wpdb->users} tU ON tU.ID = tR.student_id
-			WHERE 1 $course_filter $status_filter ORDER BY tR.id DESC LIMIT %d, %d", $offset, $limit));	
-			
-		// add filter to allow Pro to reduce by class
-		$reviews = apply_filters('namaste-filter-reviews', $reviews);	
+			WHERE 1 $course_filter $status_filter $other_filter_sql ORDER BY tR.id DESC LIMIT %d, %d", $offset, $page_limit));	
+		
+		$count = $wpdb->get_var("SELECT FOUND_ROWS()");		
 		
 		// select courses for the drop-down
 		$_course = new NamasteLMSCourseModel();
 		$courses = $_course->select();
+		
+		$date_format = get_option('date_format');
+		$time_format = get_option('date_format');
 		
 		if(@file_exists(get_stylesheet_directory().'/namaste/reviews.html.php')) include get_stylesheet_directory().'/namaste/reviews.html.php';
 		else include(NAMASTE_PATH."/views/reviews.html.php");
@@ -64,13 +67,7 @@ class NamasteLMSReviews {
 	public static function display_form($course_id)	{
 		$course_id = intval($course_id);
 		
-		$rating_options = [
-		  1 => __('Poor', 'namaste'),
-		  2 => __('Accedptable', 'namaste'),
-		  3 => __('Average', 'namaste'),
-		  4 => __('Good', 'namaste'),
-		  5 => __('Great', 'namaste'),
-		];		
+		$rating_options = self :: get_rating_options();
 		
 		$content = '';
 		$editor_id = 'namaste_review_course_'.$course_id;
@@ -93,8 +90,36 @@ class NamasteLMSReviews {
 	} // end display_form
 	
 	// shows the reviews on a course
-	public static function list_reviews() {
+	public static function list_reviews($course_id, $number = 0, $show = 'user_login') {
+		global $wpdb;
+							
+		$limit_sql = $number ? " LIMIT ".intval($number) : '';							
+							
+		$reviews = $wpdb->get_results($wpdb->prepare("SELECT SQL_CALC_FOUND_ROWS tR.*, tP.post_title as course_name, tU.$show as user_name 
+			FROM ".NAMASTE_COURSE_REVIEWS." tR JOIN {$wpdb->posts} tP ON tP.ID = tR.course_id AND tP.post_type = 'namaste_course'
+			JOIN {$wpdb->users} tU ON tU.ID = tR.student_id
+			WHERE tR.course_id=%d AND is_approved=1 ORDER BY tR.id DESC $limit_sql", intval($course_id)));
+			
+		$date_format = get_option('date_format');
+		$time_format = get_option('date_format');	
+		
+		if(@file_exists(get_stylesheet_directory().'/namaste/list-reviews.html.php')) include get_stylesheet_directory().'/namaste/list-reviews.html.php';
+		else include(NAMASTE_PATH."/views/list-reviews.html.php");
 	} // end list_reviews
+	
+	// a helper to display the stars for a review
+	public static function stars($rating) {
+		$rating_options = self :: get_rating_options();
+	   
+	   $output = '';
+	   		
+		foreach($rating_options as $r => $option) {
+			$class = $r <= $rating ? 'filled' : 'empty';
+			$output .= '<span class="dashicons dashicons-star-'.$class.'" style="color:#ffb900 !important;""></span>';
+		}
+		
+		return $output;
+	} // end stars()
 	
 	// safety
 	private static function prepare_vars(&$vars) {		
@@ -102,4 +127,14 @@ class NamasteLMSReviews {
 		$vars['rating'] = intval($vars['namaste_rating']);
 		$vars['review'] = wp_kses_post($vars['review']);
 	}
+	
+	private static function get_rating_options() {
+		return [
+		  1 => __('Poor', 'namaste'),
+		  2 => __('Accedptable', 'namaste'),
+		  3 => __('Average', 'namaste'),
+		  4 => __('Good', 'namaste'),
+		  5 => __('Great', 'namaste'),
+		];
+	} 		
 }
