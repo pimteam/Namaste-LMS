@@ -48,6 +48,11 @@
 				<option value="no" <?php if(!empty($settings['gradebook_access']) and $settings['gradebook_access'] == 'no') echo "selected"?>><?php _e('No access to gradebook','namaste')?></option>
 			</select></p>
 			
+			<p><label><?php _e('Reviews access:', 'namaste')?></label> <select name="reviews_access">
+				<option value="all" <?php if(!empty($settings['reviews_access']) and $settings['reviews_access'] == 'all') echo "selected"?>><?php _e('Access reviews','namaste')?></option>				
+				<option value="no" <?php if(!empty($settings['reviews_access']) and $settings['reviews_access'] == 'no') echo "selected"?>><?php _e('No access to reviews','namaste')?></option>
+			</select></p>
+			
 			<p><label><?php _e('Settings page access:', 'namaste')?></label> <select name="settings_access">
 				<option value="all" <?php if(!empty($settings['settings_access']) and $settings['settings_access'] == 'all') echo "selected"?>><?php _e('Manage settings','namaste')?></option>
 				<option value="no" <?php if(!empty($settings['settings_access']) and $settings['settings_access'] == 'no') echo "selected"?>><?php _e('No access to manage settings','namaste')?></option>				
@@ -69,7 +74,7 @@
 			
 			<p><?php printf(__('If you have <a href="%s" target="_blank">Namaste! PRO</a> all the above settings will also comply with any class (user group) limitations.', 'namaste'), 'http://namaste-lms.org/pro.php')?></p>
 			
-			<p><input type="submit" value="<?php _e('Save configuration for this role','namaste')?>" name="config_role"></p>
+			<p><input type="submit" value="<?php _e('Save configuration for this role','namaste')?>" name="config_role" class="button button-primary"></p>
 		<?php endif;?>
 		</div>
 		<?php wp_nonce_field('namaste_role_settings');?>

@@ -1,6 +1,49 @@
 <?php
 // student reviews on courses
 class NamasteLMSReviews {
+	// admin management of reviews
+	public static function manage() {
+		global $wpdb;
+		
+		// approve a review
+		if(!empty($_POST['approve']) and check_admin_referer('namaste_reviews')) {
+			if(class_exists('NamastePROReviews') and method_exists(['NamastePROReviews', 'has_access'])) NamastePROReviews :: has_access($_POST['id']);
+			
+			$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_COURSE_REVIEWS." SET is_approved=1 WHERE id=%d", intval($_POST['id']) ));
+		}
+		
+		// delete a review
+		if(!empty($_POST['del']) and check_admin_referer('namaste_reviews')) {
+			if(class_exists('NamastePROReviews') and method_exists(['NamastePROReviews', 'has_access'])) NamastePROReviews :: has_access($_POST['id']);
+			
+			$wpdb->query($wpdb->prepare("DELETE FROM ".NAMASTE_COURSE_REVIEWS." WHERE id=%d", intval($_POST['id']) ));
+		}
+		
+		// list reviews
+		$course_filter = $status_filter = '';
+		
+		if(!empty($_GET['course_id'])) $course_filter = $wpdb->prepare(" AND course_id=%d ", intval($_GET['course_id']));
+		if(isset($_GET['status']) and $_GET['status'] !== '') $status_filter = $wpdb->prepare(" AND is_approved=%d ", intval($_GET['status']));	
+		
+		$offset = empty($_GET['offset']) ? 0 : intval($_GET['offset']);
+		$limit = 20;
+		
+		$reviews = $wpdb->get_results($wpdb->prepare("SELECT tR.*, tP.post_title as course_name, tU.display_name as user_name 
+			FROM ".NAMASTE_COURSE_REVIEWS." tR JOIN {$wpdb->posts} tP ON tP.ID = tR.course_id AND tP.post_type = 'namaste_course'
+			JOIN {$wpdb->users} tU ON tU.ID = tR.student_id
+			WHERE 1 $course_filter $status_filter ORDER BY tR.id DESC LIMIT %d, %d", $offset, $limit));	
+			
+		// add filter to allow Pro to reduce by class
+		$reviews = apply_filters('namaste-filter-reviews', $reviews);	
+		
+		// select courses for the drop-down
+		$_course = new NamasteLMSCourseModel();
+		$courses = $_course->select();
+		
+		if(@file_exists(get_stylesheet_directory().'/namaste/reviews.html.php')) include get_stylesheet_directory().'/namaste/reviews.html.php';
+		else include(NAMASTE_PATH."/views/reviews.html.php");
+	} // end manage			
+	
 	// submits a review 
 	// access for the student is checked before calling the function
 	public static function submit($vars) {

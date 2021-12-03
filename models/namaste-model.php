@@ -279,10 +279,11 @@ class NamasteLMS {
    
    // main menu
    static function menu() {   	  	
-   
+   	global $wpdb;
+   	
 		$namaste_cap = current_user_can('namaste_manage') ? 'namaste_manage' : 'namaste';   	
 		$use_grading_system = get_option('namaste_use_grading_system');
-		$homework_menu = $students_menu = $certificates_menu = $gradebook_menu = $settings_menu = $massenroll_menu = $help_menu = $plugins_menu = true;
+		$homework_menu = $students_menu = $certificates_menu = $gradebook_menu = $settings_menu = $massenroll_menu = $help_menu = $plugins_menu = $reviews_menu = true;
 		if(!current_user_can('administrator') and current_user_can('namaste_manage')) {
 			// perform these checks only for managers that are not admins, otherwise it's pointless use of resourses
 			global $user_ID, $wp_roles;
@@ -305,6 +306,7 @@ class NamasteLMS {
 			$settings_menu = NamasteLMSMultiUser :: item_access('settings_access', $role_settings, $user, $enabled_roles);			
 			$help_menu = NamasteLMSMultiUser :: item_access('help_access', $role_settings, $user, $enabled_roles);
 			$plugins_menu = NamasteLMSMultiUser :: item_access('plugins_access', $role_settings, $user, $enabled_roles);
+			$reviews_menu = NamasteLMSMultiUser :: item_access('reviews_access', $role_settings, $user, $enabled_roles);
 		}
 		
 		// if a manager has no access to the settings page, let's turn the to-do into the main menu
@@ -323,9 +325,18 @@ class NamasteLMS {
 			add_submenu_page('namaste_options', __("Certificates", 'namaste'), __("Certificates", 'namaste'), 'namaste_manage', 'namaste_certificates', array('NamasteLMSCertificatesController', "manage"));
 			add_submenu_page(NULL, __("Students Earned Certificate", 'namaste'), __("Students Earned Certificate", 'namaste'), 'namaste_manage', 'namaste_student_certificates', array('NamasteLMSCertificatesController', "student_certificates"));			
 		}
+		
+		if($reviews_menu) {
+			// display only if there's at least one review in the system
+			$has_reviews = $wpdb->get_var("SELECT id FROM ".NAMASTE_COURSE_REVIEWS." WHERE id>0 LIMIT 1");
+			if($has_reviews) add_submenu_page('namaste_options', __("Student Reviews", 'namaste'), __("Student Reviews", 'namaste'), 'namaste_manage', 'namaste_reviews', ['NamasteLMSReviews', 'manage']);
+		}     
+		
+		
 		if($gradebook_menu and !empty($use_grading_system)) add_submenu_page('namaste_options', __("Gradebook", 'namaste'), __("Gradebook", 'namaste'), 'namaste_manage', 'namaste_gradebook', array('NamasteLMSGradebookController', "manage"));
-		if($settings_menu) add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));     
-
+		if($settings_menu) add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));
+		
+		
 		if(class_exists('WP_Experience_API')) {
 			add_submenu_page('namaste_options', __("xAPI / Tin Can", 'namaste'), __("xAPI / Tin Can", 'namaste'), 'manage_options', 'namaste_xapi', array('NamasteXAPI', "options"));        
 		}		

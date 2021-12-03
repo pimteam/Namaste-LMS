@@ -17,7 +17,8 @@ class NamasteLMSMultiUser {
 				"students_access" => sanitize_text_field($_POST['students_access']), 
 				"gradebook_access" => sanitize_text_field($_POST['gradebook_access']), 
 				"no_mycourses" => $no_mycourses, "mass_enroll_access" => sanitize_text_field($_POST['mass_enroll_access']),
-				"help_access" => sanitize_text_field($_POST['help_access']), "plugins_access" => sanitize_text_field($_POST['plugins_access']));
+				"help_access" => sanitize_text_field($_POST['help_access']), "plugins_access" => sanitize_text_field($_POST['plugins_access']),
+				'reviews_access' => sanitize_text_field($_POST['reviews_access']));
 				
 			update_option('namaste_role_settings', serialize($role_settings));	
 			do_action('namaste-role-settings-saved', $_POST['role_key']);
