@@ -7,7 +7,7 @@ class NamasteLMS {
    	$collation = $wpdb->get_charset_collate();
    	
    	$old_version = get_option('namaste_version');
-   	update_option( 'namaste_version', "1.49");
+   	update_option( 'namaste_version', "1.50");
    	if(!$update) self::init();
    	
    	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -192,7 +192,20 @@ class NamasteLMS {
 			  is_approved tinyint UNSIGNED NOT NULL DEFAULT 0,
 			  PRIMARY KEY  (id)			  
 			) $collation";
-		dbDelta( $sql );	  	 
+		dbDelta( $sql );	  
+		
+		
+		// Webhooks
+        $sql = "CREATE TABLE " . NAMASTE_WEBHOOKS . " (
+			  id int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+			  item_id int(11) UNSIGNED NOT NULL DEFAULT 0, /* course ID, lesson ID, etc */
+			  item_type varchar(255) NOT NULL DEFAULT '', /* is it a course, a lesson, assignment, etc */
+			  action varchar(255) NOT NULL DEFAULT '',
+			  hook_url varchar(255) NOT NULL DEFAULT '',
+			  payload_config TEXT,
+			  PRIMARY KEY  (id)			  
+			) $collation";
+			dbDelta( $sql );	  		 
 	  
 	  // add extra fields in new versions
 	  namaste_add_db_fields(array(
@@ -334,7 +347,11 @@ class NamasteLMS {
 		
 		
 		if($gradebook_menu and !empty($use_grading_system)) add_submenu_page('namaste_options', __("Gradebook", 'namaste'), __("Gradebook", 'namaste'), 'namaste_manage', 'namaste_gradebook', array('NamasteLMSGradebookController', "manage"));
-		if($settings_menu) add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));
+		if($settings_menu) {
+			add_submenu_page('namaste_options', __("Webhooks / Zapier", 'namaste'), __("Webhooks / Zapier", 'namaste'), 'namaste_manage', 'namaste_webhooks', ['NamasteLMSWebhooks', 'manage']);
+			add_submenu_page('namaste_options', __("Namaste! Settings", 'namaste'), __("Settings", 'namaste'), 'namaste_manage', 'namaste_options', array(__CLASS__, "options"));
+		} 
+		
 		
 		
 		if(class_exists('WP_Experience_API')) {
@@ -430,6 +447,7 @@ class NamasteLMS {
 		define( 'NAMASTE_STUDENT_MODULES', $wpdb->prefix. "namaste_student_modules");
 		define( 'NAMASTE_SOLUTION_FILES', $wpdb->prefix. "namaste_solution_files");
 		define( 'NAMASTE_COURSE_REVIEWS', $wpdb->prefix. "namaste_course_reviews");
+		define( 'NAMASTE_WEBHOOKS', $wpdb->prefix. "namaste_webhooks");
 		
 		define( 'NAMASTE_VERSION', get_option('namaste_version'));
 		
@@ -514,8 +532,11 @@ class NamasteLMS {
 		// auto enroll in courses
 		add_action('user_register', array('NamasteLMSCourseModel', 'register_enroll'));
 		
+		// Webhooks
+		NamasteLMSWebhooks :: add_actions();
+		
 		$version = get_option('namaste_version');
-		if($version != '1.49') self::install(true);
+		if($version != '1.50') self::install(true);
 
 		// default 'you need to be logged in' messages for lessons and courses
 		if(get_option('namaste_need_login_text_lesson') == '') {
