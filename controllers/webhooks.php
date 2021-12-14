@@ -49,7 +49,7 @@ class NamasteLMSWebhooks {
 			
 				// select hooks join grades
 				$hooks = $wpdb->get_results("SELECT tH.id as id, tH.hook_url as hook_url, 
-					tC.post_title as course, tH.action as action
+					tC.post_title as course, tH.action as action, tH.item_type as item_type
 					FROM ".NAMASTE_WEBHOOKS." tH JOIN {$wpdb->posts} tC ON tH.item_id = tC.ID					
 					ORDER BY tH.id");		
 					
@@ -185,6 +185,9 @@ class NamasteLMSWebhooks {
 			
 		add_action('namaste_enrolled_course', $enroll_function, 10, 3);
 		add_action('namaste_admin_enrolled_course', $enroll_function, 10, 3);
+		add_action('namaste_enrollment_approved', function($student_id, $course_id) {			   
+				self :: dispatch($course_id, 'course', $student_id, 'enroll'); 
+			}, 10, 2);	
 			
 		add_action('namaste_completed_course', function($student_id, $course_id) {			   
 				self :: dispatch($course_id, 'course', $student_id, 'complete'); 

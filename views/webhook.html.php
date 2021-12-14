@@ -1,4 +1,4 @@
-<div class="wrap bftpro-wrap">
+<div class="wrap namaste-wrap">
 	<h1><?php _e('Add/Edit a Webhook', 'namaste');?></h1>
 	
 	<p><a href="admin.php?page=namaste_webhooks"><?php _e('Back to webhooks', 'namaste');?></a></p>
@@ -6,12 +6,13 @@
 	<div class="postbox">
 	<form method="post" class="namaste-form wrap" onsubmit="return validateHookForm(this);">
 		<div class="wrap">
-			<p><label><?php _e('When a student:', 'namaste');?></label> <select name="action">
-				<option value="enroll" <?php if(!empty($hook->action) and $hook->action == 'enroll') echo 'selected';?>><?php _e('Enrolls in (with approved status)', 'namaste');?></option>
-				<option value="complete" <?php if(!empty($hook->action) and $hook->action == 'complete') echo 'selected';?>><?php _e('Completes', 'namaste');?></option>
+			<p><label><?php _e('When a student:', 'namaste');?></label> <select name="action" onchange="changeHookAction(this);">
+				<option value="enroll" <?php if(!empty($hook->action) and $hook->action == 'enroll') echo 'selected';?>><?php _e('Enrolls in a course', 'namaste');?></option>
+				<option value="complete" <?php if(!empty($hook->action) and $hook->action == 'complete') echo 'selected';?>><?php _e('Completes a course', 'namaste');?></option>
+				<?php do_action('namaste_hook_actions', $hook ?? null);?>
 			</select></p>
 			
-			<p><label><?php _e('The course:', 'namaste');?></label> <select name="item_id">
+			<p><label id="hookItemLabel"><?php _e('Course:', 'namaste');?></label> <select name="item_id" id="hookItemId">
 				<?php foreach($courses as $course):?>
 					<option value="<?php echo $course->ID?>" <?php if(!empty($hook->item_id) and $hook->item_id == $course->ID) echo 'selected';?>><?php echo stripslashes($course->post_title);?></option>
 				<?php endforeach;?>
@@ -90,4 +91,35 @@ function validateHookForm(frm) {
 	
 	return true;
 }
+
+// change the item drop-down & info in case of a change in the hook action
+function changeHookAction(sel) {
+	let hookItems = {
+      courses: [<?php foreach($courses as $course):?>
+			[<?php echo $course->ID?>, "<?php echo stripslashes($course->post_title);?>"],      
+      <?php endforeach;?>],	
+      <?php do_action('namaste_hook_items');?>
+	};
+	
+	// figure out which items to load
+	items = [];
+	switch(sel.value) {
+		case 'enroll':
+		case 'complete':
+		   items = hookItems.courses;
+		   label = '<?php _e('Course:', 'namaste');?>';
+		break;
+		<?php do_action('namaste_hook_switch');?>
+	}
+	
+	// refill item type & options
+	jQuery('#hookItemLabel').text(label);
+	let hookOptions = '';
+	items.forEach((elt, index) => {
+		console.log(elt[1]);
+		hookOptions += '<option value="'+elt[0]+'">'+elt[1]+'</option>' + "\n";
+	} );
+	
+	jQuery('#hookItemId').html(hookOptions);
+} // end changeHookAction
 </script>
