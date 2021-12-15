@@ -45,13 +45,18 @@ class NamasteLMSWebhooks {
 				if(!empty($_GET['delete']) and wp_verify_nonce($_GET['namaste_hook_nonce'], 'delete_hook')) {
 					$wpdb->query($wpdb->prepare("DELETE FROM ".NAMASTE_WEBHOOKS." WHERE id=%d", intval($_GET['id'])));
 					namaste_redirect("admin.php?page=namaste_webhooks");
-				}			
+				}	
+				
+				$limit = 20;
+				$offset = empty($_GET['offset']) ? 0 : intval($_GET['offset']);		
 			
 				// select hooks join grades
-				$hooks = $wpdb->get_results("SELECT tH.id as id, tH.hook_url as hook_url, 
+				$hooks = $wpdb->get_results("SELECT SQL_CALC_FOUND_ROWS tH.id as id, tH.hook_url as hook_url, 
 					tC.post_title as course, tH.action as action, tH.item_type as item_type
 					FROM ".NAMASTE_WEBHOOKS." tH JOIN {$wpdb->posts} tC ON tH.item_id = tC.ID					
-					ORDER BY tH.id");		
+					ORDER BY tH.id LIMIT $offset, $limit");
+					
+				$count = $wpdb->get_var("SELECT FOUND_ROWS()");			
 					
 				// depending if there are hooks, set the option
 				update_option('namaste_webhooks', count($hooks));		

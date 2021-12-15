@@ -21,12 +21,7 @@
 				if(empty($class)) $class = 'alternate';
 				else $class = '';?>
 					<tr class="<?php echo $class;?>">
-						<td><?php switch($hook->item_type):
-							case 'course': printf(__('Course: %s', 'namaste'), stripslashes($hook->course)); break;
-							case 'lesson': printf(__('Lesson: %s', 'namaste'), stripslashes($hook->lesson)); break;
-							case 'homework': printf(__('Assignment: %s', 'namaste'), stripslashes($hook->homework)); break;
-							case 'certificate': printf(__('Certificate: %s', 'namaste'), stripslashes($hook->certificate)); break;
-						endswitch; ?></td>
+						<td><?php echo apply_filters('namaste_filter_hook_item', $hook->course, $hook); ?></td>
 						<td><?php echo $hook->action;?></td>
 						<td><?php echo $hook->hook_url;?></td>
 						<td><a href="admin.php?page=namaste_webhooks&action=edit&id=<?php echo $hook->id;?>"><?php _e('View/Edit', 'namaste');?></a></td>
@@ -36,6 +31,16 @@
 			</tbody>
 		</table>
 	<?php endif;?>
+	
+	<p align="center">
+		<?php if($offset > 0):?>
+			<a href="admin.php?page=namaste_webhooks&offset=<?php echo $offset - $limit;?>">&lt;&lt;&lt;</a>
+		<?php endif;?>
+		&nbsp;
+		<?php if($count > $offset + $limit):?>
+			<a href="admin.php?page=namaste_webhooks&offset=<?php echo $offset + $limit;?>">&gt;&gt;&gt;</a>
+		<?php endif;?>
+	</p>
 </div>
 
 <script type="text/javascript" >
