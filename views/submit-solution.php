@@ -2,7 +2,7 @@
 
 <div class="wrap">
 		<?php if($in_shortcode):$permalink = get_permalink($post->ID);
-		$params = array('lesson_id' => $_GET['lesson_id']);
+		$params = array('lesson_id' => (int)$_GET['lesson_id']);
 		$target_url = add_query_arg( $params, $permalink );?>
 		<p><a href="<?php echo $target_url;?>"><?php _e('Back to the assignments', 'namaste')?></a> | <a href="<?php echo get_permalink($lesson->ID);?>"><?php printf(__('Back to lesson "%s"', 'namaste'), stripslashes($lesson->post_title));?></a></p>
 		<?php else:?>
@@ -28,7 +28,7 @@
 	<?php else: wp_editor('', 'content');
 	endif;?></div>
 	<p align="center">
-		<input id="namasteSubmitSolition" type="submit" value="<?php _e('Submit your solution', 'namaste')?>">
+		<input id="namasteSubmitSolition" type="submit" value="<?php _e('Submit your solution', 'namaste')?>" class="button button-primary">
 		<input type="hidden" name="ok" value="1">
 		<input type="hidden" name="solution_files_uploaded" id="namasteSolutionFilesUploaded" value="0">
 	</p>

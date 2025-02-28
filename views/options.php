@@ -55,9 +55,9 @@
 			
 			<p><?php _e('These are shown on lesson / course pages when a non logged in visitors visits them. For lessons the text is shown only when there is no lesson excerpt.', 'namaste');?></p>
 
-			<p><?php _e('Text on course pages:', 'namaste');?> <textarea rows="3" cols="60" name="need_login_text_course"><?php echo stripslashes(get_option('namaste_need_login_text_course'));?></textarea></p>			
-			<p><?php _e('Text on lesson pages:', 'namaste');?> <textarea rows="3" cols="60" name="need_login_text_lesson"><?php echo stripslashes(get_option('namaste_need_login_text_lesson'));?></textarea></p>
-			<p><?php _e('Text on module pages:', 'namaste');?> <textarea rows="3" cols="60" name="need_login_text_module"><?php echo stripslashes(get_option('namaste_need_login_text_module'));?></textarea></p>
+			<p><?php _e('Text on course pages:', 'namaste');?> <textarea rows="3" cols="60" name="need_login_text_course"><?php echo esc_textarea(get_option('namaste_need_login_text_course'));?></textarea></p>			
+			<p><?php _e('Text on lesson pages:', 'namaste');?> <textarea rows="3" cols="60" name="need_login_text_lesson"><?php echo esc_textarea(get_option('namaste_need_login_text_lesson'));?></textarea></p>
+			<p><?php _e('Text on module pages:', 'namaste');?> <textarea rows="3" cols="60" name="need_login_text_module"><?php echo esc_textarea(get_option('namaste_need_login_text_module'));?></textarea></p>
 
 				
 			<h2><?php _e('Blog / Archive Pages Behavior', 'namaste')?></h2>
@@ -175,7 +175,7 @@
          <?php endforeach; ?>
 			<option value="" <?php if(!in_array($currency, $currency_keys)) echo 'selected'?>><?php _e('Custom', 'namaste')?></option>
 			</select>
-			<input type="text" id="customCurrency" name="custom_currency" style='display:<?php echo in_array($currency, $currency_keys) ? 'none' : 'inline';?>' value="<?php echo $currency?>"></p>
+			<input type="text" id="customCurrency" name="custom_currency" style='display:<?php echo in_array($currency, $currency_keys) ? 'none' : 'inline';?>' value="<?php echo esc_attr($currency)?>"></p>
 			
 			<p><?php _e('Here you can specify payment methods that you will accept to give access to courses. When a course requires payment, the enrollment (pending or active - depends on your other course settings) will be entered after the payment is completed.', 'namaste')?></p>
 			
@@ -208,8 +208,6 @@
 			<div id="stripeDiv" style='display:<?php echo $accept_stripe?'block':'none'?>;'>
 				<p><span style="color:red;"><b><?php _e('The built-in Stripe integration is deprecated.', 'namaste');?></b></span> 
 				<?php printf(__('We strongly recommend using the built-in <a href="%s" target="_blank">WooCommerce integration</a> instead. WooCommerce flawlessly supports Stripe and many other payment methods.', 'namaste'), 'https://blog.calendarscripts.info/namaste-lms-bridge-for-woocommerce/');?></p>
-				<p><label><?php _e('Your Public Key:', 'namaste')?></label> <input type="text" name="stripe_public" value="<?php echo get_option('namaste_stripe_public')?>"></p>
-				<p><label><?php _e('Your Secret Key:', 'namaste')?></label> <input type="text" name="stripe_secret" value="<?php echo get_option('namaste_stripe_secret')?>"></p>
 			</div>
 			
 			<p><input type="checkbox" name="accept_moolamojo" <?php if($accept_moolamojo) echo 'checked';?> value="1" onclick="this.checked ? jQuery('#namastePayMoola').show() : jQuery('#namastePayMoola').hide();"> <?php printf(__('Accept virtual credits from <a href="%s" target="_blank">MoolaMojo</a> (The plugin must be installed and active).', 'namaste'), 'https://moolamojo.com')?></p>

@@ -14,7 +14,9 @@ class NamasteLMSHomeworkController {
 		
 		// now submit
 		if(!empty($_POST['ok'])) {
-			if(empty($_POST['content']) and empty($_FILES['files']['tmp_name'][0]) and empty($_POST['solution_files_uploaded'])) wp_die(__('You cannot submit a solution without any text or files.', 'namaste'));			
+			if(empty($_POST['content']) and empty($_FILES['files']['tmp_name'][0]) and empty($_POST['solution_files_uploaded'])) wp_die(__('You cannot submit a solution without any text or files.', 'namaste'));		
+			
+			$status = empty($homework->auto_approve) ? 'pending' : 'approved';
 			
 			// avoid duplicates
 			$exists = $wpdb->get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_HOMEWORKS."
@@ -22,15 +24,15 @@ class NamasteLMSHomeworkController {
 				$_POST['content']));
 			if(!$exists) {
 				$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_STUDENT_HOMEWORKS." SET
-					homework_id=%d, student_id=%d, status='pending', date_submitted=CURDATE(), 
+					homework_id=%d, student_id=%d, status=%s, date_submitted=CURDATE(), 
 					content=%s",
-					$homework->id, $user_ID, $_POST['content']));
+					$homework->id, $user_ID, $status, wp_kses_post( $_POST['content'] ) ));
 				$solution_id = $wpdb->insert_id;	
 				
 				list($total_size_error, $file_errors, $file_size_errors, $file_not_uploaded_errors) = self :: upload_files($homework, $solution_id);
 
 				// these lines are in case of using Ajax uploads. Then we have stored the errors in session			
-				$namaste_file_errors = (!empty($_COOKIE['namaste_file_errors'])) ? @unserialize(stripslashes($_COOKIE['namaste_file_errors'])) : array('', '','','', '');
+				$namaste_file_errors = (!empty($_COOKIE['namaste_file_errors'])) ? json_decode(stripslashes($_COOKIE['namaste_file_errors']), true) : array('', '', '', '');
 				if(empty($total_size_error) and !empty($namaste_file_errors[0])) $total_size_error = $namaste_file_errors[0];
 				if(empty($file_errors) and !empty($namaste_file_errors[1])) $file_errors = $namaste_file_errors[1];
 				if(empty($file_size_errors) and !empty($namaste_file_errors[2])) $file_size_errors = $namaste_file_errors[2];
@@ -47,6 +49,12 @@ class NamasteLMSHomeworkController {
 			$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HISTORY." SET
 				user_id=%d, date=CURDATE(), datetime=NOW(), action='submitted_solution', value=%s, num_value=%d, course_id=%d",
 				$user_ID, sprintf(__('Submitted solution to assignment "%s"', 'namaste'), $homework->title), $homework->id, $course->ID));
+				
+				
+			// if the status is approved, maybe we also have to complete the lesson?
+			if( $status == 'approved' ) {
+                if(NamasteLMSLessonModel::is_ready($lesson->ID, $user_ID)) NamasteLMSLessonModel::complete($lesson->ID, $user_ID);		
+			}
 			
 			if(@file_exists(get_stylesheet_directory().'/namaste/solution-submitted.php')) require get_stylesheet_directory().'/namaste/solution-submitted.php';
 			else require(NAMASTE_PATH."/views/solution-submitted.php");
@@ -108,7 +116,7 @@ class NamasteLMSHomeworkController {
 			  	var d = new Date();
 				d.setTime(d.getTime() + (24*3600*1000));
 				var expires = "expires="+ d.toUTCString();     				
-			  	document.cookie = "namaste_file_errors=<?php echo serialize($namaste_file_errors);?>;" + expires + ";path=/";
+			  	            document.cookie = "namaste_file_errors=" + JSON.stringify(<?php echo json_encode($namaste_file_errors); ?>) + ";" + expires + ";path=/";
 			  	</script>
 				<?php				 
 				return $namaste_file_errors;
@@ -129,7 +137,7 @@ class NamasteLMSHomeworkController {
 			
 					
 			foreach($_FILES['files']['tmp_name'] as $cnt => $tmp_name) {
-				$file = $_FILES['files']['name'][$cnt];
+				$file = sanitize_text_field($_FILES['files']['name'][$cnt]);
 				
 				$filearr = array(
 					'name' => $_FILES['files']['name'][$cnt],
@@ -186,7 +194,7 @@ class NamasteLMSHomeworkController {
 	  	var d = new Date();
 		d.setTime(d.getTime() + (24*3600*1000));
 		var expires = "expires="+ d.toUTCString();     				
-	  	document.cookie = "namaste_file_errors=<?php echo serialize($namaste_file_errors);?>;" + expires + ";path=/";
+		document.cookie = "namaste_file_errors=" + JSON.stringify(<?php echo json_encode($namaste_file_errors); ?>) + ";" + expires + ";path=/";
 	  	</script>
 		<?php	
 		return array($total_size_error, $file_errors, $file_size_errors, $file_not_uploaded_errors);

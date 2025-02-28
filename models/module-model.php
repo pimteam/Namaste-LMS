@@ -6,6 +6,7 @@ class NamasteLMSModuleModel {
 		if(empty($use_modules)) return false;	
 		$module_slug = get_option('namaste_module_slug');
 	   if(empty($module_slug)) $module_slug = 'namaste-module';
+	   $has_archive = get_option('namaste_show_modules_in_blog');
 	  	   
 		$args=array(
 			"label" => __("Namaste! Modules", 'namaste'),
@@ -17,7 +18,7 @@ class NamasteLMSModuleModel {
 				),
 			"public"=> true,
 			"show_ui"=>true,
-			"has_archive"=>true,
+			"has_archive"=> $has_archive ? true : false,
 			"rewrite"=> array("slug"=>$module_slug, "with_front"=>false),
 			"description"=>__("This will create a new module in your Namaste! LMS.",'namaste'),
 			"supports"=>array("title", 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'post-formats'),
@@ -39,7 +40,7 @@ class NamasteLMSModuleModel {
 		if(!get_option('namaste_show_modules_in_blog')) return $query;
 		
 		if ( (is_home() or is_archive()) and $query->is_main_query() ) {
-			$post_types = @$query->query_vars['post_type'];
+			$post_types = $query->query_vars['post_type'] ?? null;
 			
 			// empty, so we'll have to create post_type setting			
 			if(empty($post_types)) {
@@ -135,7 +136,7 @@ class NamasteLMSModuleModel {
 	function select($id = null, $course_id = 0, $ob = 'post_title', $dir = 'ASC') {
 		global $wpdb;
 
-		$ob = sanitize_text_field($ob);
+		$ob = sanitize_sql_orderby($ob);
 		if(empty($ob)) $ob = 'post_title';
 		if($dir != 'ASC' and $dir != 'DESC') $dir = 'ASC';		
 				
@@ -149,6 +150,9 @@ class NamasteLMSModuleModel {
 		$id_sql ORDER BY $ob $dir");
 				
 		if($id) return $modules[0];
+		
+		// allow filtering
+		$modules = apply_filters( 'namaste_course_modules', $modules, $course_id );
 		
 		return $modules;	
 	} // end select()
@@ -274,6 +278,7 @@ class NamasteLMSModuleModel {
 		// fill arrays
 		foreach($lessons as $cnt => $lesson) {
 			$module_id = get_post_meta($lesson->ID, 'namaste_module', true);			
+			if( empty( $module_id )) continue;
 			$lessons[$cnt]->module_id = $module_id;
 			
 			if(!in_array($module_id, $module_ids)) {
@@ -295,7 +300,7 @@ class NamasteLMSModuleModel {
 			
 			$modules[$cnt]->lessons = $module_lessons;
 		} // end foreach module
-
+        
 		return $modules;
 	} // end regroup_lessons
 	
@@ -310,6 +315,11 @@ class NamasteLMSModuleModel {
 			// post excerpt?			
 			add_filter( 'comments_array', '__return_empty_array' );
 			if(!empty($post->post_excerpt)) return wpautop($post->post_excerpt);
+			
+			/** 
+            * IMPORTANT: This content MUST allow HTML and JavaScript. 
+            * This is not a vulnerability.
+            **/
 			return NAMASTE_NEED_LOGIN_TEXT_MODULE;
 		}
 		
@@ -404,4 +414,30 @@ class NamasteLMSModuleModel {
 		
 		return $content;
 	} // end access_module
+	
+	// adds course column in manage modules page
+	static function manage_post_columns($columns) {
+		// add this after title column 
+		$final_columns = array();
+		foreach($columns as $key=>$column) {			
+			$final_columns[$key] = $column;
+			if($key == 'title') {
+				$final_columns['namaste_course'] =  __( 'Course', 'namaste' );
+			}
+		}
+		return $final_columns;
+	}
+	
+	// actually displaying the course column value
+	static function custom_columns($column, $post_id) {
+        $post = get_post( $post_id );
+        if( $post->post_type != 'namaste_module' ) return;
+		switch($column) {
+			case 'namaste_course':
+				$course_id = get_post_meta($post_id, "namaste_course", true);
+				$course = get_post($course_id);
+				echo '<a href="post.php?post='.$course_id.'&action=edit">'.stripslashes($course->post_title).'</a>';
+			break;
+		}
+	}
 }

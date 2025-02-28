@@ -185,8 +185,8 @@ class NamasteLMSCertificatesController {
 				$output = str_replace("{{courses-extended}}", $courses_str, $output);
 			}					
 		
-			$date = date(get_option('date_format'), strtotime($certificate->date));
-		 	$output=str_replace("{{date}}", $date, $output);
+			$date = date_i18n(get_option('date_format'), strtotime($certificate->date));
+		 	$output = str_replace("{{date}}", $date, $output);
 		}	// end preparing content of specific student's certificate
 	 	
 	 	if(get_option('namaste_generate_pdf_certificates') == "1") {

@@ -25,7 +25,7 @@
 		
 <h4><?php _e('Lesson Access', 'namaste')?></h4>
 
-<?php if(!sizeof($other_lessons)):
+<?php if(!count($other_lessons)):
 	if(empty($post->post_title)):?>
 		<p><?php _e('You will be able to set lesson access after you create the lesson.', 'namaste')?></p>
 	<?php else:?>
@@ -38,13 +38,17 @@ foreach($other_lessons as $lesson):?>
 <?php endforeach;
 endif;?>
 
+<h4><?php _e('Preview Mode', 'namaste')?></h4>
+
+<p><input type="checkbox" name="namaste_is_preview" value="<?php echo $lesson->ID?>" <?php if($is_preview) echo "checked"?>> <?php _e('This lesson allowsbeing seen in "Preview mode". This means that non-enrolled and even non-logged-in users can see it. Once the user is enrolled in the course, all the usual restrictions and lesson actions will apply to the lesson.', 'namaste');?></p>
+
 <h4><?php _e('Lesson Completeness', 'namaste')?></h4>
 
 <p><?php _e('The minimum requirement for a lesson to be completed is to be visited by the student. However you can add some extra requirements here:', 'namaste')?></p>
 
 <p><input type="checkbox" name="namaste_completion[]" value="admin_approval" <?php if(in_array('admin_approval', $lesson_completion)) echo 'checked'?>> <?php _e('Lesson completion will be manually verified and approved by the admin for every student.', 'namaste')?></p>
 
-<?php if(!empty($homeworks) and sizeof($homeworks)):?>
+<?php if(!empty($homeworks) and count($homeworks)):?>
 <p><b><?php _e('The following assignments/homework must be completed:', 'namaste')?></b></p>
 <ul>
 	<?php foreach($homeworks as $homework):?>
@@ -53,7 +57,7 @@ endif;?>
 </ul>
 <?php endif;?>
 
-<?php if($use_exams and sizeof($exams)):?>	
+<?php if($use_exams and count($exams)):?>	
 	<p><b><?php _e('The following quiz must be completed:', 'namaste')?></b></p>
 	<p><select name="namaste_required_exam" onchange="namasteLoadGrades(this.value);">
 	<option value=""><?php _e('- No quiz required -', 'namaste')?></option>
@@ -109,6 +113,9 @@ endif;?>
 	"<a href='http://wordpress.org/extend/plugins/watu/' target='_blank'>Watu</a>", "<a href='http://calendarscripts.info/watupro/' target='_blank'>WatuPRO</a>").'</p>';
 endif;?>
 
+<h4><?php _e('Automation', 'namaste')?></h4>
+<p><input type="checkbox" name="namaste_lesson_auto_enroll" value="1" <?php if( $lesson_auto_enroll ) echo 'checked'?>> <?php _e('When a logged-in student access this lesson they will be automatically enrolled in the associated course', 'namaste');?></p>
+
 <?php do_action('namaste-lesson-requirements', $post);?>
 
 <?php if(!empty($use_points_system)):?>
@@ -132,6 +139,8 @@ endif;?>
 <p><?php _e('The shortcode', 'namaste')?> <input type="text" value="[namaste-module-link]" readonly="readonly" onclick="this.select();"> <?php _e('will display a link to the module that this lesson belongs to. You can pass attribute "text" to set a clickable text for the link. Otherwise the module title will be used.', 'namaste')?></p>
 
 <p><?php _e('The shortcode', 'namaste')?> <input type="text" value="[namaste-breadcrumb]" readonly="readonly" onclick="this.select();"> <?php _e('will display a breadcrumb style hierarchical navigation. You can pass the attribute separator to use a custom separator.', 'namaste')?></p>
+
+<p><?php printf(__('The shortcode %s can be used to display conditional content to logged in users like this: %s. To use it outside of the lesson page pass also the attribute <b>%s</b>', 'namaste'), '<input type="text" value="[namaste-condition]" readonly="readonly" onclick="this.select();">', '[namaste-condition is_lesson_completed=1]'.__('Content shown only when the lesson is completed', 'namaste').'[/namaste-condition] [namaste-condition is_lesson_completed=0]'.__('Content shown only when the lesson is not completed', 'namaste').'[/namaste-condition]', 'lesson_id='.$post->ID);?> </p>
 
 <h4><?php _e('Did you know?', 'namaste')?></h4>
 <?php if(is_plugin_active('namaste-pro/namaste-pro.php')):?>

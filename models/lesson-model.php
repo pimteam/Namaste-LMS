@@ -4,6 +4,7 @@ class NamasteLMSLessonModel {
 	static function register_lesson_type() {		
 		$lesson_slug = get_option('namaste_lesson_slug');
 	   if(empty($lesson_slug)) $lesson_slug = 'namaste-lesson';
+	   $has_archive = get_option('namaste_show_lessons_in_blog');
 	   
 		$args=array(
 			"label" => __("Namaste! Lessons", 'namaste'),
@@ -22,7 +23,7 @@ class NamasteLMSLessonModel {
 			"public"=> true,
 			"show_ui"=>true,
 			'show_in_rest' => true,
-			"has_archive"=>true,
+			"has_archive"=> $has_archive ? true : false,
 			"rewrite"=> array("slug"=>$lesson_slug, "with_front"=>false),
 			"description"=>__("This will create a new lesson in your Namaste! LMS.",'namaste'),
 			"supports"=>array("title", 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'post-formats', 'buddypress-activity', 'page-attributes'),
@@ -81,6 +82,7 @@ class NamasteLMSLessonModel {
 		$required_exam = get_post_meta($post->ID, 'namaste_required_exam', true);
 		$required_grade = get_post_meta($post->ID, 'namaste_required_grade', true); 
 		if(!is_array($required_grade)) $required_grade = array($required_grade);
+		$is_preview = get_post_meta($post->ID, 'namaste_is_preview', true); 
 		
 		// select assignments
 		$homeworks = NamasteLMSHomeworkModel::select($wpdb->prepare(' WHERE lesson_id = %d', $post->ID));
@@ -141,6 +143,8 @@ class NamasteLMSLessonModel {
 		$award_points = get_post_meta($post->ID, 'namaste_award_points', true);
 		if($award_points === '') $award_points = get_option('namaste_points_lesson');		
 		
+		$lesson_auto_enroll = get_post_meta($post->ID, 'namaste_lesson_auto_enroll', true);
+		
 		wp_nonce_field( plugin_basename( __FILE__ ), 'namaste_noncemeta' );		
 		if(@file_exists(get_stylesheet_directory().'/namaste/lesson-meta-box.php')) require get_stylesheet_directory().'/namaste/lesson-meta-box.php';
 		else require(NAMASTE_PATH."/views/lesson-meta-box.php");
@@ -169,6 +173,11 @@ class NamasteLMSLessonModel {
 	  	update_post_meta($post_id, "namaste_watu_transfer_grade", $_POST['namaste_watu_transfer_grade']);
 	  	$_POST['namaste_award_points'] = empty($_POST['namaste_award_points']) ? 0 : intval($_POST['namaste_award_points']);
 	  	if(isset($_POST['namaste_award_points'])) update_post_meta($post_id, "namaste_award_points", $_POST['namaste_award_points']);
+	  	$is_preview = empty($_POST['namaste_is_preview']) ? 0 : 1;
+	  	update_post_meta($post_id, "namaste_is_preview", $is_preview);
+	  	
+	  	$lesson_auto_enroll = empty($_POST['namaste_lesson_auto_enroll']) ? 0 : 1;
+	  	update_post_meta($post_id, "namaste_lesson_auto_enroll", $lesson_auto_enroll );
 	}
 	
 	// select lessons in course ID
@@ -185,6 +194,8 @@ class NamasteLMSLessonModel {
 			$reorder = true;
 		}
 		
+		$ob = sanitize_sql_orderby($ob);
+		
 		$parent_type = $is_module ? 'namaste_module' : 'namaste_course';
 		
 		$lessons = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->posts} tP
@@ -192,6 +203,9 @@ class NamasteLMSLessonModel {
 			AND tM.meta_value = %d
 			WHERE post_type = 'namaste_lesson'  AND (post_status='publish' OR post_status='draft') $id_sql
 			ORDER BY $ob $dir",  $course_id));
+			
+        // allow filtering
+        $lessons = apply_filters('namaste_course_lessons', $lessons, $course_id, $format, $is_module );	
 			
 		// external reorder?
 		if(!empty($reorder)) $lessons = apply_filters('namaste-reorder-lessons', $lessons);	
@@ -209,13 +223,13 @@ class NamasteLMSLessonModel {
 		global $wpdb, $user_ID; 
 		
 		// student_id
-		$student_id = (empty($_GET['student_id']) or !current_user_can('namaste_manage')) ? $user_ID : $_GET['student_id'];
+		$student_id = (empty($_GET['student_id']) or !current_user_can('namaste_manage')) ? $user_ID : absint($_GET['student_id']);
 				
 		// select this student
 		$student = $wpdb -> get_row($wpdb->prepare("SELECT * FROM {$wpdb->users} WHERE ID=%d", $student_id));
 		
 		// select this course or module
-		$course = $wpdb -> get_row($wpdb->prepare("SELECT * FROM {$wpdb->posts} WHERE id=%d", $_GET['course_id']));
+		$course = $wpdb -> get_row($wpdb->prepare("SELECT * FROM {$wpdb->posts} WHERE id=%d", absint($_GET['course_id'])));
 		
 		// am I enrolled?
 		if(!current_user_can('namaste_manage') and !$in_shortcode) {
@@ -320,9 +334,12 @@ class NamasteLMSLessonModel {
 		if(get_option('namaste_use_modules')) {
 			$modules = NamasteLMSModuleModel :: regroup_lessons($lessons);
 		}
-		
+				
 		$links_target = get_option('namaste_links_target');
 		if(empty($links_target)) $links_target = '_blank';
+		
+		// filter student lessons
+		$lessons = apply_filters('namaste_studnet_lessons', $lessons, $student_id );
 		
 		// enqueue thickbox
 		wp_enqueue_script('thickbox',null,array('jquery'));
@@ -336,12 +353,20 @@ class NamasteLMSLessonModel {
 		global $wpdb, $post, $user_ID, $comments_flat, $wp_query;		
 		if(empty($post->post_type) or $post->post_type != 'namaste_lesson') return $content;		
 		$_course = new NamasteLMSCourseModel();
+		
+		// if this is a "preview" lesson, you don't need to be enrolled to see it
+		$is_preview = get_post_meta($post->ID, 'namaste_is_preview', true);		
 				
-		if(!is_user_logged_in()) {
+		if(!is_user_logged_in() and !$is_preview) {
 			//echo $post->ID.'<br>';
 			// post excerpt?			
 			add_filter( 'comments_array', '__return_empty_array' );
 			if(!empty($post->post_excerpt)) return wpautop($post->post_excerpt);
+			
+			/** 
+            * IMPORTANT: This content MUST allow HTML and JavaScript. 
+            * This is not a vulnerability.
+            **/
 			return NAMASTE_NEED_LOGIN_TEXT_LESSON;
 		}
 		
@@ -351,11 +376,16 @@ class NamasteLMSLessonModel {
 		$course_id = get_post_meta($post->ID, 'namaste_course', true);
 		$course = $_course -> select($course_id);
 		
+		$lesson_auto_enroll = get_post_meta($post->ID, 'namaste_lesson_auto_enroll', true);
+		if( $lesson_auto_enroll and !NamasteLMSStudentModel :: is_enrolled( $user_ID, $course_id ) ) {
+            $_course -> enroll( $user_ID, $course_id, 'enrolled' );
+		}
+		
 		// add link to parent course?
 		if(get_option('namaste_link_to_course') == 1) {			
 			$link = stripslashes(get_option('namaste_link_to_course_text'));
 			$course_permalink = get_permalink($course_id);
-			$link = str_replace('{{{course-link}}}', '<a href="'.$course_permalink.'">'.stripslashes($course->post_name).'</a>', $link);
+			$link = str_replace('{{{course-link}}}', '<a href="'.$course_permalink.'">'.stripslashes($course->post_title).'</a>', $link);
 			
 			$content = $link . $content;
 		}		
@@ -372,16 +402,22 @@ class NamasteLMSLessonModel {
 			return $content; 
 		}
 		
-		// enrolled in the course?		
-		$enrolled = $wpdb -> get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_COURSES.
-			" WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status='completed')", $user_ID, $course_id));	
-		if(!$enrolled) {
-			if(!empty($post->post_excerpt)) $content = wpautop($post->post_excerpt);
-			else $content = __('In order to see this lesson you first have to be enrolled in the course', 'namaste').' <b>"'.$course->post_title.'"</b>';
-			// self :: mark_accessed();
-			add_filter('comments_array', array(__CLASS__, 'fix_comments_array'), 10, 2);
-			return $content; // no need to run further queries
-		}		
+        // enrolled in the course?		
+        $enrolled = $wpdb -> get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_COURSES.
+            " WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status='completed')", $user_ID, $course_id));	
+        if(!$enrolled and !$is_preview) {
+            if(!empty($post->post_excerpt)) $content = wpautop($post->post_excerpt);
+            else $content = __('In order to see this lesson you first have to be enrolled in the course', 'namaste').' <b>"'.$course->post_title.'"</b>';
+            // self :: mark_accessed();
+            add_filter('comments_array', array(__CLASS__, 'fix_comments_array'), 10, 2);
+            return $content; // no need to run further queries
+        }		
+		
+		// a preview-mode lesson and not enrolled user - no need to check any further
+		if($is_preview and !$is_enrolled) {
+            add_filter('comments_array', array(__CLASS__, 'fix_comments_array'), 10, 2);
+            return $content;
+        }
 		
 		// no access due to filters? (Classes from Namaste PRO etc)
 		list($no_access, $message) = apply_filters('namaste-course-access', array(false, ''), $user_ID, $course_id);
@@ -966,6 +1002,8 @@ class NamasteLMSLessonModel {
 	
 	// actually displaying the course column value
 	static function custom_columns($column, $post_id) {
+        $post = get_post( $post_id );
+        if( $post->post_type != 'namaste_lesson' ) return;
 		switch($column) {
 			case 'namaste_course':
 				$course_id = get_post_meta($post_id, "namaste_course", true);
@@ -975,8 +1013,10 @@ class NamasteLMSLessonModel {
 				if(get_option('namaste_use_modules')) {
 				   // get module if any
 				   $module_id = get_post_meta($post_id, "namaste_module", true);				   
-				   $module = get_post($module_id);
-				   if(!empty($module->ID)) echo '<br /><a href="post.php?post='.$module_id.'&action=edit">'.stripslashes($module->post_title).'</a>';
+				   if(!empty($module_id)) {
+                     $module = get_post($module_id);
+                     echo '<br /><a href="post.php?post='.$module_id.'&action=edit">'.stripslashes($module->post_title).'</a>';
+                   }
 				}
 			break;
 			case 'namaste_lesson_visits':
@@ -1010,7 +1050,7 @@ class NamasteLMSLessonModel {
 		if(!get_option('namaste_show_lessons_in_blog')) return $query;
 		
 		if ( (is_home() or is_archive()) and $query->is_main_query() ) {
-			$post_types = @$query->query_vars['post_type'];
+			$post_types = $query->query_vars['post_type'] ?? null;
 			
 			// empty, so we'll have to create post_type setting			
 			if(empty($post_types)) {

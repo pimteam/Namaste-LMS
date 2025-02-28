@@ -46,7 +46,7 @@
 		<?php if(!empty($solution_files) and count($solution_files)):?>
 			<p><?php _e('Attachments:', 'namaste');
 				foreach($solution_files as $file):?> 
-				<a href="<?php echo admin_url('admin.php?page=namaste_download_solution&id='.$solution->id.'&file_id='.$file->id.'&noheader=1')?>"><?php echo $file->file?></a>; 
+				<a href="<?php echo admin_url('admin.php?page=namaste_download_solution&id='.$solution->id.'&file_id='.$file->id.'&noheader=1')?>"><?php echo esc_attr($file->file)?></a>;
 				<?php endforeach;
 		endif;?></p></td>
 		<td><?php if(current_user_can('namaste_manage')):?>

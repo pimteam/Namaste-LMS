@@ -33,12 +33,12 @@ class NamasteLMSCertificateModel {
 		if(!is_array($vars['course_ids']) or empty($vars['course_ids'])) $vars['course_ids'] = array(0);
 		$vars['course_ids'] = namaste_int_array($vars['course_ids']);
 		$vars['title'] = sanitize_text_field($vars['title']);
-		$vars['content'] = namaste_strip_tags($vars['content']);
+		$vars['content'] = wp_kses_post($vars['content']);
 		$vars['has_expiration'] = empty($vars['has_expiration']) ? 0 : 1;
 		if(!is_numeric($vars['expiration_period_num'])) $vars['has_expiration'] = false;
 		$vars['expiration_period'] = $vars['expiration_period_num'].' '.$vars['expiration_period_period'];	
 		$vars['expiration_mode'] = empty($vars['expiration_mode']) ? 'period' : sanitize_text_field($vars['expiration_mode']);
-		$vars['expired_message'] = namaste_strip_tags($vars['expired_message']);
+		$vars['expired_message'] = wp_kses_post($vars['expired_message']);
 		$vars['expiration_date'] = sanitize_text_field($vars['expiration_date']);
 	}
 	

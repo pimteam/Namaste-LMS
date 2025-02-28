@@ -55,12 +55,13 @@ class NamasteLMSHomeworkModel {
 		if(!empty($_GET['lesson_id'])) $this_lesson = $_lesson -> select($_GET['course_id'], 'single', $_GET['lesson_id']);
 		
 		// sanitize / prepare vars
-		$_GET['course_id'] = intval(@$_GET['course_id']);
-		$_GET['lesson_id'] = intval(@$_GET['lesson_id']);
+		$_GET['course_id'] = intval( $_GET['course_id'] ?? 0 );
+		$_GET['lesson_id'] = intval( $_GET['lesson_id'] ?? 0 );
 		$accept_files = empty($_POST['accept_files']) ? 0 : 1;
       $award_points = intval(@$_POST['award_points']);
       $auto_grade_lesson = empty($_POST['auto_grade_lesson']) ? 0 : 1;
       $self_approving = empty($_POST['self_approving']) ? 0 : 1;
+      $auto_approve = empty($_POST['auto_approve']) ? 0 : 1;
 		
 		switch(@$_GET['do']) {
 			case 'add':
@@ -70,11 +71,11 @@ class NamasteLMSHomeworkModel {
 						$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HOMEWORKS." SET
 						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d, 
 						award_points=%d, editor_id=%d, limit_by_date=%d, accept_date_from=%s, 
-						accept_date_to=%s, auto_grade_lesson=%d, self_approving=%d",
+						accept_date_to=%s, auto_grade_lesson=%d, self_approving=%d, auto_approve=%d",
 						$_GET['course_id'], $_GET['lesson_id'], sanitize_text_field($_POST['title']), 
-						namaste_strip_tags($_POST['description']), $accept_files, $award_points,						 
+						wp_kses_post($_POST['description']), $accept_files, $award_points,						 
 						$user_ID, intval(@$_POST['limit_by_date']), sanitize_text_field($_POST['accept_date_from']), 
-						sanitize_text_field($_POST['accept_date_to']), $auto_grade_lesson, $self_approving));	
+						sanitize_text_field($_POST['accept_date_to']), $auto_grade_lesson, $self_approving, $auto_approve));	
 						
 						$id = $wpdb->insert_id;		
 						
@@ -110,12 +111,13 @@ class NamasteLMSHomeworkModel {
 				if(!empty($_POST['ok']) and check_admin_referer('namaste_homework')) {
 						$wpdb->query($wpdb->prepare("UPDATE ".NAMASTE_HOMEWORKS." SET
 						course_id=%d, lesson_id=%d, title=%s, description=%s, accept_files=%d, award_points=%d,
-						limit_by_date=%d, accept_date_from=%s, accept_date_to=%s, auto_grade_lesson=%d, self_approving=%d
+						limit_by_date=%d, accept_date_from=%s, accept_date_to=%s, auto_grade_lesson=%d, 
+						self_approving=%d, auto_approve=%d
 						WHERE id=%d",
 						$_GET['course_id'], $_GET['lesson_id'], sanitize_text_field($_POST['title']), 
-						namaste_strip_tags($_POST['description']), $accept_files, $award_points, 
+						wp_kses_post($_POST['description']), $accept_files, $award_points, 
 						intval(@$_POST['limit_by_date']), sanitize_text_field($_POST['accept_date_from']), 
-						sanitize_text_field($_POST['accept_date_to']), $auto_grade_lesson, $self_approving,
+						sanitize_text_field($_POST['accept_date_to']), $auto_grade_lesson, $self_approving, $auto_approve,
 						intval($_GET['id'])));		
 						
 						do_action('namaste_save_homework', $_GET['id']);					

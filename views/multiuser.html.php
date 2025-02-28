@@ -17,7 +17,7 @@
 		</select></p>
 		
 		<?php if(!empty($_POST['role_key'])):
-			$settings = @$role_settings[$_POST['role_key']];?>
+			$settings = $role_settings[$_POST['role_key']] ?? [];?>
 				<p><b><?php _e('Note: courses and lesson access depend on the selected role "post" settings. For example the Editor role can create and edit courses while the Contributor role can not.', 'namaste')?></b></p>			
 			
 			<p><label><?php _e('Assignments access:', 'namaste')?></label> <select name="homework_access">

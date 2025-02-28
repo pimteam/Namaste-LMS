@@ -7,7 +7,7 @@
 		<p><?php _e('Select course:', 'namaste')?> <select name="course_id" onchange="this.form.submit();">
 		<option value=""><?php _e('- please select -', 'namaste')?></option>
 		<?php foreach($courses as $course):?>
-			<option value="<?php echo $course->ID?>" <?php if(!empty($_GET['course_id']) and $_GET['course_id']==$course->ID) echo 'selected'?>><?php echo $course->post_title?></option>
+			<option value="<?php echo $course->ID?>" <?php if(!empty($_GET['course_id']) and $_GET['course_id']==$course->ID) echo 'selected'?>><?php echo stripslashes($course->post_title)?></option>
 		<?php endforeach;?>
 		</select>		
 		</p>

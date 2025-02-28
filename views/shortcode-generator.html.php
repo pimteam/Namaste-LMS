@@ -50,11 +50,11 @@
          <p><input type="text" value='[<?php
          echo empty($_POST['namaste_module']) ? 'namaste-course-lessons ' : 'namaste-module-lessons ';
          echo empty($_POST['status']) ? '0 ' : 'status ';
-         echo empty($_POST['course_id']) ? '0 ' : (empty($_POST['namaste_module']) ? $_POST['course_id'].' ' : $_POST['namaste_module'].' ');
-         if(!empty($_POST['orderby'])): echo $_POST['orderby'].' '.$_POST['dir'].' ';
+         echo empty($_POST['course_id']) ? '0 ' : (empty($_POST['namaste_module']) ? (int)$_POST['course_id'].' ' : (int)$_POST['namaste_module'].' ');
+         if(!empty($_POST['orderby'])): echo esc_attr($_POST['orderby']).' '.esc_attr($_POST['dir']).' ';
          else: echo "0 ASC ";
          endif;
-         if(!empty($_POST['list_tag'])) echo $_POST['list_tag'].' ';
+         if(!empty($_POST['list_tag'])) echo esc_attr($_POST['list_tag']).' ';
          if(!empty($_POST['show_excerpts'])) echo 'show_excerpts=1 '; 
          if(!empty($_POST['show_grade'])) echo 'show_grade=1 ';
          ?>]' size="60" readonly="readonly" onclick="this.select();"></p>

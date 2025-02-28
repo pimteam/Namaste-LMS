@@ -27,7 +27,7 @@
 	endif;	
 	?>
 
-	<?php if(!$simplified) do_action('namaste_course_progress_view', $student->ID, $_GET['course_id'])?>
+	<?php if(!$simplified) do_action('namaste_course_progress_view', $student->ID, (int)$_GET['course_id'])?>
 </div>
 
 <script type="text/javascript" >

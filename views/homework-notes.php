@@ -9,7 +9,7 @@
 			
 			<?php echo apply_filters('namaste_content', stripslashes($note->note));?>
 			<?php if(current_user_can('namaste_manage') and $multiuser_access == 'all'):?>
-				<p><a href="#" onclick="Namaste.deleteNote(<?php echo $_GET['student_id']?>, <?php echo $note->id?>);return false;"><?php _e('Delete note', 'namaste');?></a></p>
+				<p><a href="#" onclick="Namaste.deleteNote(<?php echo (int)$_GET['student_id']?>, <?php echo $note->id?>);return false;"><?php _e('Delete note', 'namaste');?></a></p>
 			<?php endif;?>
 		</div>
 	</div>

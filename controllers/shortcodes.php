@@ -81,10 +81,22 @@ class NamasteLMSShortcodesController {
    static function enroll($atts) {
    	global $wpdb, $user_ID, $user_email, $post;
    	$course = $post;
+   	
+   	$allowed_html = [
+       'a'      => [
+           'href'  => [],
+           'title' => [],
+       ],
+       'br'     => [],
+       'em'     => [],
+       'b' => [],
+       'p' => [],
+      ];          
 
    	if(!is_user_logged_in()) {
    		$text = get_option('namaste_need_login_text_course');
-   		$text = stripslashes($text);
+   		$text = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $text);
+   		//$text = esc_html($text);
    		if(!empty($text)) return $text;
    		else return sprintf(__('You need to be <a href="%s">logged in</a> to enroll in this course', 'namaste'), wp_login_url(get_permalink( $course->ID )));
    	}
@@ -109,6 +121,8 @@ class NamasteLMSShortcodesController {
    	if(!empty($atts['course_id'])) {
    		$course = get_post($atts['course_id']);
    	}
+   	
+   	if(empty($course)) return __('Invalid course ID', 'namaste');
    	
    	$enrolled = $wpdb -> get_row($wpdb->prepare("SELECT * FROM ".NAMASTE_STUDENT_COURSES.
 			" WHERE user_id = %d AND course_id = %d", $user_ID, $course->ID));
@@ -154,15 +168,15 @@ class NamasteLMSShortcodesController {
 		}	
 		else {
 			$post->namaste_course_status_shown = true;	
-			
+			//print_r($atts);
 			$course_url = get_permalink($course->ID);
-			$enrolled_text = empty($atts['enrolled_text']) ? __('You are enrolled in this course.', 'namaste') : esc_attr($atts['enrolled_text']);
+			$enrolled_text = empty($atts['enrolled_text']) ? __('You are enrolled in this course.', 'namaste') : wp_kses($atts['enrolled_text'], $allowed_html);
 			$enrolled_text = str_replace('{{{course-url}}}', $course_url, $enrolled_text);		
-			$pending_text = empty($atts['pending_text']) ? __('Your enroll request is received. Waiting for manager approval.', 'namaste') : esc_attr($atts['pending_text']);
+			$pending_text = empty($atts['pending_text']) ? __('Your enroll request is received. Waiting for manager approval.', 'namaste') : wp_kses($atts['pending_text'], $allowed_html);
 			$pending_text = str_replace('{{{course-url}}}', $course_url, $pending_text);
-			$completed_text = empty($atts['completed_text']) ? __('You have completed this course.', 'namaste') : esc_attr($atts['completed_text']);
+			$completed_text = empty($atts['completed_text']) ? __('You have completed this course.', 'namaste') : wp_kses($atts['completed_text'], $allowed_html);
 			$completed_text = str_replace('{{{course-url}}}', $course_url, $completed_text);
-			$rejected_text = empty($atts['rejected_text']) ? __('Your enrollment request is rejected.', 'namaste') : esc_attr($atts['rejected_text']);
+			$rejected_text = empty($atts['rejected_text']) ? __('Your enrollment request is rejected.', 'namaste') : wp_kses($atts['rejected_text'], $allowed_html);
 			$rejected_text = str_replace('{{{course-url}}}', $course_url, $rejected_text);
 			
 			switch($enrolled->status) {
@@ -304,7 +318,7 @@ class NamasteLMSShortcodesController {
    static function modules($atts) {
       global $post;
 		
-		$status = @$atts[0];
+		$status = $atts[0] ?? null;
 		
 		// assume we are on course page showing its modules, unless course ID is passed.		
 		$course_id = empty($atts[1]) ? $post->ID : $atts[1];
@@ -317,9 +331,10 @@ class NamasteLMSShortcodesController {
 		
 				
 		$ob = empty($atts[2]) ? '' : "tP.".$atts[2];
+		$ob = sanitize_sql_orderby($ob);
 		$dir = empty($atts[3]) ? 'ASC' : $atts[3];
 		$list_tag = empty($atts[4]) ? 'ul' : $atts[4];
-		$show_excerpts = @$atts['show_excerpts'] ? true : false;
+		$show_excerpts = !empty($atts['show_excerpts']) ? true : false;
 		
 		// validate the user input
 		if($list_tag !='ul' && $list_tag != 'ol') {
@@ -568,10 +583,16 @@ class NamasteLMSShortcodesController {
 		global $post, $user_ID;
 		if(!is_user_logged_in()) return '';
 		
-		$course_id = empty($atts['course_id']) ? @$post->ID : intval($atts['course_id']);
-		if(empty($course_id)) return '';
+		if( !empty( $atts['course_id'] ) ) $course_id = absint( $atts['course_id'] );
+		else {
+            if( $post->post_type === 'namaste_course' ) $course_id = $post->ID;
+            if( $post->post_type === 'namaste_lesson' ) $course_id = get_post_meta( $post->ID, 'namaste_course', true );
+            if( $post->post_type === 'namaste_module' ) $course_id = get_post_meta( $post->ID, 'namaste_course', true );
+		}
 		
-		$text = @$atts['text'];
+		if( empty( $course_id ) ) return '';
+		
+		$text = $atts['text'] ?? '';
 		
 		return NamasteLMSCertificatesController :: my_course_certificates($course_id, $user_ID, $text);
 	}
@@ -601,6 +622,7 @@ class NamasteLMSShortcodesController {
 	// conditional shortcode that allows displaying the enclosed content only when certain condition is / is not met
 	static function condition($atts, $content = null) {
 		if(isset($atts['is_enrolled'])) return NamasteLMSCoursesController :: is_enrolled_shortcode($atts, $content);
+		if(isset($atts['is_lesson_completed'])) return NamasteLMSLessonsController :: is_completed_shortcode($atts, $content);
 	}
 	
 	// create search form with courses and lessons

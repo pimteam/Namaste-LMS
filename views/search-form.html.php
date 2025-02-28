@@ -2,7 +2,7 @@
 	<form class="namaste-search-form" method="get" action="<?php echo home_url();?>">
 		<h3><?php _e('Search in Courses and Lessons', 'namaste');?></h3>
 		<p>
-			<input name="s" type="search" class="search-field" placeholder="<?php _e('Search...', 'namaste');?>" value="<?php echo empty($_GET['s']) ? '' : $_GET['s']?>">
+			<input name="s" type="search" class="search-field" placeholder="<?php _e('Search...', 'namaste');?>" value="<?php echo empty($_GET['s']) ? '' : esc_attr($_GET['s'])?>">
 			<?php _e('in', 'namaste');?> <select name="namaste_course_id" onchange="namasteSearchFillLessons(this.value);">
 				<option value="0"><?php _e('All courses', 'namaste');?></option>
 				<?php foreach($courses as $course):
@@ -11,7 +11,7 @@
 				<?php endforeach;?>
 			</select>
 			
-			<select name="namaste_lesson_id" id="namasteLessonSearchSelector" style="display:<?php echo (count($current_lessons) or is_user_logged_in()) ? 'inline' : 'none'; ?>">
+			<select name="namaste_lesson_id" id="namasteLessonSearchSelector" style='display:<?php echo (count($current_lessons) or is_user_logged_in()) ? 'inline' : 'none'; ?>'>
 				<option value="0"><?php _e('All lessons', 'namaste');?></option>
 				<?php if(count($current_lessons)): 
 					foreach($current_lessons as $lesson):
@@ -31,13 +31,15 @@
 // courses/lessons object for the dropdown
 function namasteSearchFillLessons(courseID) {
 	var lessons = new Array();
-	<?php foreach($courses as $course):?>
+	<?php if(!empty($courses) and count($courses)):
+	foreach($courses as $course):?>
 	lessons[<?php echo $course->ID?>] = [
 		<?php foreach($course->lessons as $lesson):		
 		echo '['.$lesson->ID.', "'.stripslashes($lesson->post_title).'"],';
 		endforeach;?>
 	];
-	<?php endforeach;?>
+	<?php endforeach;
+	endif;?>
 	
 	if(lessons[courseID] != null) {
 		if(lessons[courseID].length > 0 ) { 

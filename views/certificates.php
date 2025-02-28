@@ -28,7 +28,7 @@
 			<form method="post">
 				<p><input type="checkbox" name="no_rtf" value="1" <?php if(get_option('namaste_certificates_no_rtf') == '1') echo 'checked'?>> <?php _e('Do not use rich text editor on certificates (to prevent it from messing my certificate HTML code).', 'namaste')?>  </p>	
 				<p><input type="checkbox" name="generate_pdf_certificates" value="1" <?php if(get_option('namaste_generate_pdf_certificates') == '1') echo 'checked'?>> <?php printf(__('I have installed the free <a href="%s" target="_blank">PDF Bridge</a> plugin and I want the certificates to be generated as PDF', 'namaste'), 'http://blog.calendarscripts.info/using-the-free-pdf-bridge-plugin-in-watupro/')?></p> 
-				<p> <input type="submit" value="<?php _e('Save Settings', 'namaste')?>" name="save_global_settings"></p>
+				<p> <input type="submit" value="<?php _e('Save Settings', 'namaste')?>" name="save_global_settings" class="button button-primary"></p>
 				<?php wp_nonce_field('namaste_certificates');?>
 			</form>
 		<?php else:?>

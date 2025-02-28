@@ -75,7 +75,7 @@ class NamastePoint {
 	// allow sorting by points
 	static function pre_user_query($user_search) {
 		global $wpdb,$current_screen; 
-      if ( 'users' != $current_screen->id ) return;
+      if ( empty( $current_screen->id) or 'users' != $current_screen->id ) return;
       
       $vars = $user_search->query_vars;
       

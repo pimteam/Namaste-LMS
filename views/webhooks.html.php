@@ -22,7 +22,14 @@
 				else $class = '';?>
 					<tr class="<?php echo $class;?>">
 						<td><?php echo apply_filters('namaste_filter_hook_item', $hook->course, $hook); ?></td>
-						<td><?php echo $hook->action;?></td>
+						<td><?php switch($hook->action):
+							case 'enroll': _e('Enrolls', 'namaste'); break;
+							case 'complete': _e('Completes', 'namaste'); break;
+							case 'complete_lesson': _e('Completes', 'namaste'); break;
+							case 'start_lesson': _e('Starts', 'namaste'); break;
+							case 'complete_homework': _e('Completes', 'namaste'); break;
+							case 'achieve_certificate': _e('Achieves', 'namaste'); break;
+						endswitch;?></td>
 						<td><?php echo $hook->hook_url;?></td>
 						<td><a href="admin.php?page=namaste_webhooks&action=edit&id=<?php echo $hook->id;?>"><?php _e('View/Edit', 'namaste');?></a></td>
 						<td><a href="<?php echo wp_nonce_url('admin.php?page=namaste_webhooks&delete=1&id='.$hook->id, 'delete_hook', 'namaste_hook_nonce')?>" class="delete_link"><?php _e('Delete', 'namaste');?></a></td>

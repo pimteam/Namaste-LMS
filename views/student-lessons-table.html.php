@@ -30,7 +30,7 @@
 					<?php endif;?></td>
 				<?php endif; // end if $use_exams
 			endif; // end if not simplified?>
-			<td><?php if($student->ID == $user_ID or @$multiuser_access == 'view'): echo $lesson->status;
+			<td><?php if($student->ID == $user_ID or ($multiuser_access ?? null) == 'view'): echo $lesson->status;
 			else: ?>
 				<form method="post">
 				<select name="status" onchange="this.form.submit();">

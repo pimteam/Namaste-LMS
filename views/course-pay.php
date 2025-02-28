@@ -33,7 +33,12 @@
 	else: echo '<p>'.__('You can pay with your virtual credits balance but you must be logged in.', 'namaste').'</p>'; endif;
 	endif;?>
 	
-	<?php if($accept_other_payment_methods):?>
+	<?php if($accept_other_payment_methods):
+        /** 
+        * IMPORTANT: These buttons MUST allow HTML and JavaScript. 
+        * This is not a vulnerability.
+        **/
+        ?>
 		<div class="namaste-payment"><?php echo $other_payment_methods?></div>
 	<?php endif;?>
 </div>

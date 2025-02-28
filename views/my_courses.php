@@ -1,6 +1,6 @@
 <h1><?php _e('My Courses', 'namaste')?></h1>
 
-<?php if(!sizeof($courses)) :?>
+<?php if(!count($courses)) :?>
 	<p><?php _e('No courses are available at this time.', 'namaste')?></p>
 <?php return false;
 endif;?>
@@ -58,11 +58,9 @@ endif;?>
 <script type="text/javascript" >
 function namasteUnenrollCourse(id) {
 	if(confirm("<?php _e('Are you sure? This will blank out all your progress in this course', 'namaste')?>")) {
-		<?php if($simplified): // in shortcode?>
-		window.location='<?php echo $target_url;?>&unenroll=' + id;
-		<?php else:?>
-		window.location='admin.php?page=namaste_my_courses&unenroll=' + id;
-		<?php endif;?>
+		var unenrollUrl = '<?php echo esc_url(add_query_arg(['unenroll' => 'ID_REPLACE', 'namaste_unenroll_nonce' => wp_create_nonce('namaste_unenroll_action')], $target_url)); ?>';
+		window.location = unenrollUrl.replace('ID_REPLACE', id);
 	}
 }
+
 </script>

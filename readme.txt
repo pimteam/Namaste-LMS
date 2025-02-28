@@ -1,28 +1,13 @@
 === Namaste! LMS ===
 Contributors: prasunsen, wakeop
-Tags: LMS, learning, courses, lessons, ILE, wpmu, multisite, buddypress
-Requires at least: 4.2
-Tested up to: 5.8
-Stable tag: 2.5.5
+Tags: LMS, learning, courses, lessons, buddypress
+Requires at least: 5.0
+Tested up to: 6.7
+Stable tag: 2.6.5.1
+Requires PHP: 8.0
 License: GPL2
 
-Namaste! LMS is a learning management system for WordPress. Supports unlimited number of courses, lessons, assignments, students etc. You can create various rules for course and lesson access and completeness based on assignment completion, test results, or manual admin approval.
-
-/*** License
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.   
-    ***/
+Namaste! LMS is a learning management system for WordPress. Supports unlimited number of courses, lessons, assignments, students etc.
 
 == Description ==
 
@@ -30,9 +15,11 @@ Namaste! LMS is a learning management system for WordPress. Supports unlimited n
 
 Namaste! LMS is a learning management system for WordPress. Supports unlimited number of courses, lessons, assignments, students etc. You can create various rules for course and lesson access and completeness based on assignment completion, test results, or manual admin approval.
 
+[youtube https://www.youtube.com/watch?v=IBqSHNz4LLo]
+
 Namaste! LMS lets you assign different user roles to work with the LMS and other roles who will manage it.
 
-Students can earn certificates upon completing courses. 
+Students can earn certificates upon completing courses.
 
 Grade and Point systems let you mark the students performance.
 
@@ -40,11 +27,30 @@ For quick tour and more detailed help go to <a href="http://namaste-lms.org" tar
 
 Full documentation and demo is available on <a href="http://demo.namaste-lms.org" target="_blank">demo.namaste-lms.org</a>.
 
-= Community Translations =
+### Features ###
 
-Thanks to @Peter Baumgartner we have a German translation available [here](http://peter.baumgartner.name/namaste-deutsche-uebersetzung/ "German translation") 
+* Manage unlimited courses and enroll students or let them enroll themselves.
+* Free and paid courses
+* Manage unlimited number of lessons in each course.
+* Optionally use modules to organize lessons in courses.
+* Create certificates that will be assigned to students for completing course(s)
+* Create assignments and approve or reject student's solutions.
+* Manage a gradebook.
+* Connect to exams created with plugins like Watu or WatuPRO.
+* Manage students in each course and see their to-do lists for every lesson.
+* Auto-approve or manually review students who want to enroll in a course.
+* Define which lessons should be completed to complete a course. Some lessons can be optional.
+* [PRO] Create groups / classes and limit access to courses based on them.
+* [PRO] Assign teachers to the classes to have your team members manage content.
+* [PRO] Delayed access to course material.
+* [PRO] Award badges for completing courses and earning points.
+* [PRO] Reorder courses and classes.
+* [PRO] Manage protected files.
+* [PRO] Create discount coupons for paid courses and classes.
+* [PRO] Enable shopping cart for premium course / class signups.
+* [PRO] Boost your revenue by selling bundles of courses.
 
-Thanks to [Kaliningrad State Technical University](http://klgtu.ru/) for providing a Russian translation.
+Namaste! LMS is a developer-friendly extendible plugin. A list of WordPress action hooks and filters can be found [here](https://namaste-lms.org/developers.php "Namaste! LMS hooks and actions").
 
 = Integrations =
 
@@ -62,6 +68,8 @@ The plugin is integrated with:
 
 [WP Experience API](https://wordpress.org/plugins/wp-experience-api/ "WP xAPI") to send Tin Can statements to an LRS
 
+Namaste! LMS can send webhooks to Zapier and similar services.
+
 = BuddyPress Integration =
 
 The plugin has basic BuddyPress integration:
@@ -71,8 +79,15 @@ The plugin has basic BuddyPress integration:
 
 This way you can easily move members within groups as they start and complete courses.
 
-If you have the [Namaste! Connect](https://namaste-lms.org/connect.php "Namaste! Connect") module you can also tie the activity in Namaste! LMS into the associated enroll group activity in BuddyPress. 
+If you have the [Namaste! Connect](https://namaste-lms.org/connect.php "Namaste! Connect") module you can also tie the activity in Namaste! LMS into the associated enroll group activity in BuddyPress.
 
+= Community Translations =
+
+Newer German translation is available and included in the plugin. It's provided by [Tobias Eichner](http://www.tobiaseichner.com/ "Tobias Eichner")
+
+Thanks to @Peter Baumgartner we have a German translation available [here](http://peter.baumgartner.name/namaste-deutsche-uebersetzung/ "German translation")
+
+Thanks to [Kaliningrad State Technical University](http://klgtu.ru/) for providing a Russian translation.
 
 == Installation ==
 
@@ -117,18 +132,32 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 
 == Changelog ==
 
-= Version 2.5.5 =
+= Version 2.6.2 =
+- Added a "Preview mode" to lessons. This means that non-enrolled and even non-logged-in users can see it. Once the user is enrolled in the course, all the usual restrictions and lesson actions will apply to the lesson.
+- Fixed Woo integration issues
+
+= Version 2.6
+- Allowed safe HTML in the attributes for the namaste-enroll shortcode.
+- Added Course column in the Manage Modules page
+- Fixed wrong Module link in the Manage Lessons page
+- Added option to make assignments auto-approving upon submission.
+- A lesson can now automatically enroll the student to its associated course as soon as they visit the lesson page.
+- Added the [namaste-condition is_lesson_completed=1] (or is_lesson_completed=0) to show conditional content for lessons.
+- Security fixes.
+
+= Version 2.5.6 =
 - Adjusted access control to module pages: their contents should not be visible if you are not enrolled in the course or if there are unsatisfied module pre-requisites.
 - Added shortcode [namaste-breadcrumb] to display a breadcrumb style hierarchical navigation on lesson and module pages.
 - Added order by Namaste! points in your main Users page (when using points system is enabled).
 - Homework assignments now allow being "self approving". For these assignments you will not accept and review solutions from students. Instead, they will mark the homework completed themselves.
 - Added option to accept reviews from students on completed course. The reviews with ratings can be shown on the front-end.
+- Implemented Zapier webhooks.
 
 = Version 2.5 =
 - Added filters by lesson status for each lesson in Manage Students page.
 - Added "order" attribute to [namaste-assignments] shortcode to allow you to sort them by latest on top.
 - Passing "lesson_title" as a first parameter to [namaste-next-lesson] and [namaste-prev-lesson] shortcode will make them dynamically use the lesson title as hyperlinked text.
-- Added parameters enrolled_text, pending_text, rejected_text, and completed_text to the [namaste-enroll] shortcode. They can be used to override the default text which is shown instead of enroll button in case the student has been rejected, is pending, has completed or is already enrolled in the course. 
+- Added parameters enrolled_text, pending_text, rejected_text, and completed_text to the [namaste-enroll] shortcode. They can be used to override the default text which is shown instead of enroll button in case the student has been rejected, is pending, has completed or is already enrolled in the course.
 - Integrated the Chained Quiz plugin for tests/exams.
 - The WooCommerce integration is now built-in. [Learn more](https://blog.calendarscripts.info/namaste-lms-bridge-for-woocommerce/)
 - Improvement to the WooCommerce integration: now you can automatically link a course to a product from the course page.
@@ -143,7 +172,7 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 - BuddyPress integration: when a student completes a course join a selected BP group.
 - BuddyPress integration: when a student completes or joins a course remove them from a selected BP group.
 - Added navigation to lesson pages from assigmnets pages (both in backend dashboard and shortcodes).
-- Added shortcode [namaste-module-link] which can be used in lessons to link back to the module page. 
+- Added shortcode [namaste-module-link] which can be used in lessons to link back to the module page.
 - Added shortcode [namaste-num-modules] to show the number of modules under a course.
 - The shortcode [namaste-num-lessons] can now receive attribute "module_id" to show the number of lessons published in a module.
 - Added configuration for links target (same window/tab or new window/tab) for "My Courses" and related pages of students.
@@ -151,7 +180,7 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 
 = Version 2.3 =
 - Added custom post type namaste_homework - such a post will be automatically created when you add assignments to a lesson to ensure easier handling of "no dashboard access" LMS.
-- Fixed bug: when module is completed the associated course ID was not stored in history 
+- Fixed bug: when module is completed the associated course ID was not stored in history
 - When a non-admin has manager's access to the LMS but no access to the Namaste! Settings page, they will have "To-Do" as their default page for the Namaste! LMS menu.
 - Attribute "class" added to the shortcodes [namaste-first-lesson], [namaste-next-lesson], and [namaste-prev-lesson] to allow you passing a desired CSS class to the generated links.
 - Added option to not use the rich text editor on certificates. The purpose is to prevent it from messing custom HTML code and allow inserting external or embedded CSS.
@@ -165,8 +194,8 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 = Version 2.2 =
 - Added shortcode for the My Gradebook page.
 - Added Plugins & Help page to the role-based access control configuraiton.
-- Added option to restrict access to Watu / WatuPRO exam when it has been assigned to a lesson until that lesson is started.  
-- On the Lessons page added link to exam result from Watu / WatuPRO when exam is required for the lesson.  
+- Added option to restrict access to Watu / WatuPRO exam when it has been assigned to a lesson until that lesson is started.
+- On the Lessons page added link to exam result from Watu / WatuPRO when exam is required for the lesson.
 - Added shortcode [namaste-lesson-status] to display the status of a lesson.
 - Added parameter "compact" to the namaste-gradebook shortcode to allow more compact display when the horizontal table is too wide and won't fit well.
 - Added options to set expiration date or expiration period to certificates
@@ -181,7 +210,7 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 - Added option to automatically enroll students in course when they register on the site.
 - Solutions to assignments now can accept multiple file uploads.
 - You can now define a set of accepted file extensions for solution file uploads.
-- Added enrollment or completion date on the Manage Students page. 
+- Added enrollment or completion date on the Manage Students page.
 - Added class 'namaste-list' to all ordered/unordered lists generated by shortcodes.
 - Now you can choose to store solution files in Uploads directory instead of the database. This is not secure, do it if the content is not sensitive.
 - Added option to automatically create protected custom folder for homework solution uploads.
@@ -209,7 +238,7 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 - Added text attributes to the [namaste-enroll] shortcode that let you specify custom buttons text. See the internal Help page for details.
 - Added shortcode to display grade for a lesson (get the shortcode from your Gradebook)
 - Added option to automatically grade a course based on its lesson grades
-- Added Course filter on the Manage Lessons page. The Manage Courses page now has a link to manage the lessons in the course, which leads to filtered Manage Lessons page for that course. 
+- Added Course filter on the Manage Lessons page. The Manage Courses page now has a link to manage the lessons in the course, which leads to filtered Manage Lessons page for that course.
 - Introducing Modules as an intermediate level between courses and lessons. These can be enabled optionally from the Namaste! LMS Settings page.
 - Added shortcode generator for the [namaste-course-lessons] and [namaste-module-lessons] shortcodes.
 
@@ -267,7 +296,7 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 
 = Version 1.4 =
 - Advanced users only: You can now create your own versions of all Namaste views for high-level of customization
-- Added shortcode to display functional "lesson assignments" page 
+- Added shortcode to display functional "lesson assignments" page
 - Added shhortcode to display student grade on given course (see Gradebook)
 - Links are generated to exams/tests in [namaste-todo] shortcode
 - Allow multiple grades to be used in the "required quiz" for completing a lesson
@@ -288,7 +317,7 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 - Added arguments that let you control the order of lessons in [namaste-course-lessons] shortcode
 - Fixed possible bug with passing course ID through Paypal
 - Improved the Paypal error logging and added a "View errorlog" link on the main payment settings page (link visible only if there are errors)
-- Added [namaste-next-lesson] shortcode to display a link to the next lesson in a course (please see the Help page inside Namaste menu) 
+- Added [namaste-next-lesson] shortcode to display a link to the next lesson in a course (please see the Help page inside Namaste menu)
 - Similarly, added [namaste-prev-lesson] to show the previous lesson link
 - Improved course cleanup - now homework solutions are deleted on cleanup. If you use watu / watupro exams you can select to cleanup them as well (from the Namaste Settings page)
 - User can be enrolled in course using username as well
@@ -298,7 +327,7 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 - Avoids duplicate completion on lessons and courses
 - Allow using [namaste-course-lessons] inside a lesson page of the course
 - Added new shortcodes to allow exporting part of the functionality outside of the user's dashboard. Shorcodes added: [namaste-mycourses] and [namaste-course-lessons]. See the internal Help page for more details.
-- Added Help page and information about Namaste! Reports in the Plugins/API page 
+- Added Help page and information about Namaste! Reports in the Plugins/API page
 - Force activation hook on update because activation hook doesn't run sometimes
 - Completed the points system (see Namaste Settings page)
 - added shortcodes for user points and simple points-based leaderboard
@@ -316,7 +345,7 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 - Added action to allow other plugins add their submenu under Namaste! LMS
 - Added basic visit stats for courses and lessons
 
-= Version 1.0 = 
+= Version 1.0 =
 - Paypal payment button can now be generated automatically
 - Paypal IPN will be handled and enrollment will be automatically inserted after payment (pending or active, depends on your settings)
 - Added information about Namaste! Connect and the Developers API
@@ -330,9 +359,9 @@ If you want to add the breadcrumb navigation to the theme see how to do it [here
 - Fixed bug when cleaning up student/course record
 - Fixed several strick mode issues
 - Fixed problem with adding the custom post type to homepage
-- Added missing thickbox include 
+- Added missing thickbox include
 
-= Version 0.9 = 
+= Version 0.9 =
 - Important bug fixes on required homeworks
 - "In progress" popup showing what does a student has to do to complete a course
 - [namaste-todo] shortcode for lessons and courses to show what you need to do to complete them

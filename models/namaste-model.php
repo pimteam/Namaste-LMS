@@ -7,7 +7,7 @@ class NamasteLMS {
    	$collation = $wpdb->get_charset_collate();
    	
    	$old_version = get_option('namaste_version');
-   	update_option( 'namaste_version', "1.50");
+   	update_option( 'namaste_version', "1.51");
    	if(!$update) self::init();
    	
    	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -198,8 +198,8 @@ class NamasteLMS {
 		// Webhooks
         $sql = "CREATE TABLE " . NAMASTE_WEBHOOKS . " (
 			  id int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-			  item_id int(11) UNSIGNED NOT NULL DEFAULT 0, /* course ID, lesson ID, etc */
-			  item_type varchar(255) NOT NULL DEFAULT '', /* is it a course, a lesson, assignment, etc */
+			  item_id int(11) UNSIGNED NOT NULL DEFAULT 0, 
+			  item_type varchar(255) NOT NULL DEFAULT '', 
 			  action varchar(255) NOT NULL DEFAULT '',
 			  hook_url varchar(255) NOT NULL DEFAULT '',
 			  payload_config TEXT,
@@ -243,6 +243,7 @@ class NamasteLMS {
 		  array("name"=>"accept_date_to", "type"=>"DATE"),
 		  array("name"=>"auto_grade_lesson", "type"=>"TINYINT UNSIGNED NOT NULL DEFAULT 0"),
 		  array("name"=>"self_approving", "type"=>"TINYINT UNSIGNED NOT NULL DEFAULT 0"), /* does not require submission, just "mark completed" */
+		  array("name"=>"auto_approve", "type"=>"TINYINT UNSIGNED NOT NULL DEFAULT 0"), /* requires submission, but self-marks as completed" */
 	  ), NAMASTE_HOMEWORKS);
 	  
 	  namaste_add_db_fields(array(		   
@@ -420,7 +421,7 @@ class NamasteLMS {
 		// jQuery Validator
 		wp_enqueue_script(
 				'jquery-validator',
-				'//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js',
+				NAMASTE_URL.'/js/jquery.validate.min.js',
 				false,
 				'0.1.0',
 				false
@@ -508,6 +509,8 @@ class NamasteLMS {
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSLessonModel','custom_columns'), 10, 2 );
 		add_filter('manage_namaste_course_posts_columns', array('NamasteLMSCourseModel','manage_post_columns'));
 		add_action( 'manage_posts_custom_column' , array('NamasteLMSCourseModel','custom_columns'), 10, 2 );
+		add_filter('manage_namaste_module_posts_columns', array('NamasteLMSModuleModel','manage_post_columns'));
+		add_action( 'manage_posts_custom_column' , array('NamasteLMSModuleModel','custom_columns'), 10, 2 );
 		add_action('restrict_manage_posts',array('NamasteLMSLessonModel','restrict_manage_posts'));
 		add_action('parse_query',array('NamasteLMSLessonModel','parse_admin_query'));
 		add_action('restrict_manage_posts',array('NamasteLMSModuleModel','restrict_manage_posts'));
@@ -536,7 +539,7 @@ class NamasteLMS {
 		NamasteLMSWebhooks :: add_actions();
 		
 		$version = get_option('namaste_version');
-		if($version != '1.50') self::install(true);
+		if($version != '1.51') self::install(true);
 
 		// default 'you need to be logged in' messages for lessons and courses
 		if(get_option('namaste_need_login_text_lesson') == '') {
@@ -561,9 +564,9 @@ class NamasteLMS {
 		add_action('template_redirect', 'namastewoo_bridge_template_redirect');
 		add_action('woocommerce_thankyou', 'namastewoo_bridge_thankyou');
 		
-		define('NAMASTE_NEED_LOGIN_TEXT_LESSON', stripslashes(get_option('namaste_need_login_text_lesson')));
-		define('NAMASTE_NEED_LOGIN_TEXT_MODULE', stripslashes(get_option('namaste_need_login_text_module')));
-		define('NAMASTE_NEED_LOGIN_TEXT_COURSE', stripslashes(get_option('namaste_need_login_text_course')));
+		define('NAMASTE_NEED_LOGIN_TEXT_LESSON', preg_replace('#<script(.*?)>(.*?)</script>#is', '', get_option('namaste_need_login_text_lesson')));
+		define('NAMASTE_NEED_LOGIN_TEXT_MODULE', preg_replace('#<script(.*?)>(.*?)</script>#is', '', get_option('namaste_need_login_text_module')));
+		define('NAMASTE_NEED_LOGIN_TEXT_COURSE', preg_replace('#<script(.*?)>(.*?)</script>#is', '', get_option('namaste_need_login_text_course')));
 	}
 	
 	// handle Namaste vars in the request
@@ -635,12 +638,17 @@ class NamasteLMS {
 			$links_target = sanitize_text_field($_POST['links_target']);			
 			update_option('namaste_links_target', $links_target);			
 			
-			$wp_rewrite->flush_rules();  
+			 NamasteLMSCourseModel::register_course_type();
+		    NamasteLMSLessonModel::register_lesson_type();
+		    NamasteLMSModuleModel::register_module_type();
+		    NamasteLMSHomeworkModel::register_homework_type();
+		    flush_rewrite_rules();	  	  
+			 //$wp_rewrite->flush_rules();  			
 			
 			// login texts
-			update_option('namaste_need_login_text_lesson', namaste_strip_tags($_POST['need_login_text_lesson']));
-			update_option('namaste_need_login_text_course', namaste_strip_tags($_POST['need_login_text_course']));
-			update_option('namaste_need_login_text_module', namaste_strip_tags($_POST['need_login_text_module']));
+			update_option('namaste_need_login_text_lesson', wp_kses_post($_POST['need_login_text_lesson']));
+			update_option('namaste_need_login_text_course', wp_kses_post($_POST['need_login_text_course']));
+			update_option('namaste_need_login_text_module', wp_kses_post($_POST['need_login_text_module']));
 			
 			do_action('namaste-saved-options-main');
 		}
@@ -683,8 +691,8 @@ class NamasteLMS {
 		} // end homework options
 		
 		if(!empty($_POST['namaste_payment_options']) and check_admin_referer('save_payment_options', 'nonce_payment_options')) {
-			update_option('namaste_accept_other_payment_methods', @$_POST['accept_other_payment_methods']);
-			update_option('namaste_other_payment_methods', $_POST['other_payment_methods']);
+			update_option('namaste_accept_other_payment_methods', absint( $_POST['accept_other_payment_methods'] ?? 0 ));
+			update_option('namaste_other_payment_methods', wp_kses_post($_POST['other_payment_methods']));
 			if(empty($_POST['currency'])) $_POST['currency'] = sanitize_text_field($_POST['custom_currency']);
 			update_option('namaste_currency', sanitize_text_field($_POST['currency']));
 			update_option('namaste_accept_paypal', (empty($_POST['accept_paypal']) ? 0 : 1));
@@ -695,12 +703,12 @@ class NamasteLMS {
 			update_option('namaste_pdt_token', sanitize_text_field($_POST['pdt_token']));
 			
 			update_option('namaste_accept_stripe', (empty($_POST['accept_stripe']) ? 0 : 1));
-			update_option('namaste_stripe_public', sanitize_text_field($_POST['stripe_public']));
-			update_option('namaste_stripe_secret', sanitize_text_field($_POST['stripe_secret']));
+			//update_option('namaste_stripe_public', sanitize_text_field($_POST['stripe_public']));
+			//update_option('namaste_stripe_secret', sanitize_text_field($_POST['stripe_secret']));
 			
 			update_option('namaste_accept_moolamojo', (empty($_POST['accept_moolamojo']) ? 0 : 1));
 			update_option('namaste_moolamojo_price', intval($_POST['moolamojo_price']));
-			update_option('namaste_moolamojo_button', namaste_strip_tags($_POST['moolamojo_button']));
+			update_option('namaste_moolamojo_button', wp_kses_post($_POST['moolamojo_button']));
 			
 			$woocommerce = empty($_POST['namaste_woocommerce']) ? 0 : 1;
 			update_option('namaste_woocommerce', $woocommerce);

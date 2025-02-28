@@ -85,47 +85,47 @@ msgstr ""
 msgid "You cannot submit a solution without any text or files."
 msgstr ""
 
-#: controllers/homeworks.php:49
+#: controllers/homeworks.php:51
 msgid "Submitted solution to assignment \"%s\""
 msgstr ""
 
-#: controllers/homeworks.php:200
+#: controllers/homeworks.php:208
 msgid "You are not enrolled in this course!"
 msgstr ""
 
-#: controllers/homeworks.php:207
+#: controllers/homeworks.php:215
 msgid "You need to read this lesson before you can submit solutions to assignments."
 msgstr ""
 
-#: controllers/homeworks.php:214
+#: controllers/homeworks.php:222
 msgid "Before submitting solutions on this lesson you must complete the following lessons:"
 msgstr ""
 
-#: controllers/homeworks.php:233
+#: controllers/homeworks.php:241
 msgid "Solutions will be accepted between %s and %s."
 msgstr ""
 
-#: controllers/homeworks.php:248
+#: controllers/homeworks.php:256
 msgid "You are not allowed to see these solutions"
 msgstr ""
 
-#: controllers/homeworks.php:363
+#: controllers/homeworks.php:371
 msgid "You are not allowed to do this"
 msgstr ""
 
-#: controllers/homeworks.php:382
+#: controllers/homeworks.php:390
 msgid "Solution to assignment %s was %s"
 msgstr ""
 
-#: controllers/homeworks.php:387
+#: controllers/homeworks.php:395
 msgid "Received %d points for completing assignment \"%s\"."
 msgstr ""
 
-#: controllers/homeworks.php:406
+#: controllers/homeworks.php:414
 msgid "There is nothing to download."
 msgstr ""
 
-#: controllers/homeworks.php:408
+#: controllers/homeworks.php:416
 msgid "You can download only your own solutions."
 msgstr ""
 
@@ -157,103 +157,107 @@ msgstr ""
 msgid "Not completed"
 msgstr ""
 
-#: controllers/shortcodes.php:89
+#: controllers/shortcodes.php:101
 msgid "You need to be <a href=\"%s\">logged in</a> to enroll in this course"
 msgstr ""
 
-#: controllers/shortcodes.php:105
+#: controllers/shortcodes.php:117
 msgid "Your user role is not allowed to join this course."
 msgstr ""
 
-#: controllers/shortcodes.php:159
+#: controllers/shortcodes.php:125
+msgid "Invalid course ID"
+msgstr ""
+
+#: controllers/shortcodes.php:173
 msgid "You are enrolled in this course."
 msgstr ""
 
-#: controllers/shortcodes.php:161
+#: controllers/shortcodes.php:175
 msgid "Your enroll request is received. Waiting for manager approval."
 msgstr ""
 
-#: controllers/shortcodes.php:163
+#: controllers/shortcodes.php:177
 msgid "You have completed this course."
 msgstr ""
 
-#: controllers/shortcodes.php:165
+#: controllers/shortcodes.php:179
 msgid "Your enrollment request is rejected."
 msgstr ""
 
-#: controllers/shortcodes.php:209
+#: controllers/shortcodes.php:223
 msgid "User"
 msgstr ""
 
-#: controllers/shortcodes.php:209
+#: controllers/shortcodes.php:223
 msgid "Points"
 msgstr ""
 
-#: controllers/shortcodes.php:346
+#: controllers/shortcodes.php:360
 msgid "This content is for logged in users."
 msgstr ""
 
-#: controllers/shortcodes.php:371
+#: controllers/shortcodes.php:385
 msgid "next lesson"
 msgstr ""
 
-#: controllers/shortcodes.php:371
+#: controllers/shortcodes.php:385
 msgid "next module"
 msgstr ""
 
-#: controllers/shortcodes.php:393
+#: controllers/shortcodes.php:407
 msgid "previous lesson"
 msgstr ""
 
-#: controllers/shortcodes.php:393
+#: controllers/shortcodes.php:407
 msgid "previous module"
 msgstr ""
 
-#: controllers/shortcodes.php:476
+#: controllers/shortcodes.php:490
 msgid "Lesson completed!"
 msgstr ""
 
-#: controllers/shortcodes.php:480
+#: controllers/shortcodes.php:494
 msgid "Mark as completed"
 msgstr ""
 
-#: controllers/shortcodes.php:527
+#: controllers/shortcodes.php:541
 msgid "You cannot see these assignments because there are unsatisfied module access requirements."
 msgstr ""
 
-#: controllers/shortcodes.php:760
+#: controllers/shortcodes.php:781
 msgid "Not started"
 msgstr ""
 
-#: controllers/shortcodes.php:767
+#: controllers/shortcodes.php:788
 msgid "In progress"
 msgstr ""
 
-#: controllers/shortcodes.php:776
+#: controllers/shortcodes.php:797
 msgid "Not enrolled"
 msgstr ""
 
-#: controllers/shortcodes.php:784
+#: controllers/shortcodes.php:805
 msgid "Pending"
 msgstr ""
 
-#: controllers/shortcodes.php:785
+#: controllers/shortcodes.php:806
 msgid "Enrolled"
 msgstr ""
 
-#: controllers/shortcodes.php:786
+#: controllers/shortcodes.php:807
 msgid "Rejected"
 msgstr ""
 
-#: controllers/shortcodes.php:788
+#: controllers/shortcodes.php:809
 msgid "Frozen"
 msgstr ""
 
-#: controllers/shortcodes.php:873
+#: controllers/shortcodes.php:894
 msgid "Your review has been accepted."
 msgstr ""
 
-#: controllers/shortcodes.php:874
+#: controllers/shortcodes.php:895
 msgid "Your review has been received and is awaiting moderation."
 msgstr ""
 
@@ -261,79 +265,83 @@ msgstr ""
 msgid "This lesson has been completed."
 msgstr ""
 
-#: models/course-model.php:11
+#: controllers/webhooks.php:142
+msgid "Webhook error: %s"
+msgstr ""
+
+#: models/course-model.php:12
 msgid "Namaste! Courses"
 msgstr ""
 
-#: models/course-model.php:14
+#: models/course-model.php:15
 msgid "Courses"
 msgstr ""
 
-#: models/course-model.php:15
+#: models/course-model.php:16
 msgid "Course"
 msgstr ""
 
-#: models/course-model.php:16
+#: models/course-model.php:17
 msgid "Add New Course"
 msgstr ""
 
-#: models/course-model.php:22
+#: models/course-model.php:23
 msgid "This will create a new course in your Namaste! LMS."
 msgstr ""
 
-#: models/course-model.php:61
+#: models/course-model.php:62
 msgid "Namaste! Settings"
 msgstr ""
 
-#: models/course-model.php:63
+#: models/course-model.php:64
 msgid "Advanced Reports"
 msgstr ""
 
-#: models/course-model.php:166
+#: models/course-model.php:169
 msgid "For advanced reports on this course, <a href=\"%s\">click here</a>."
 msgstr ""
 
-#: models/course-model.php:168
+#: models/course-model.php:171
 msgid "You can get <b>advanced reports</b> on this course if you install the <a href=\"%s\" target=\"_blank\">Namaste! Reports</a> plugin."
 msgstr ""
 
-#: models/course-model.php:274
+#: models/course-model.php:282
 msgid "You are enrolled in this course. Check \"My courses\" link in your dashboard to see the lessons and to-do list"
 msgstr ""
 
-#: models/course-model.php:324
+#: models/course-model.php:332
 msgid "Received %d points for completing course \"%s\"."
 msgstr ""
 
-#: models/course-model.php:338
+#: models/course-model.php:346
 msgid "Completed course \"%s\""
 msgstr ""
 
-#: models/course-model.php:402
+#: models/course-model.php:411
 msgid "You cannot enroll this course - other courses have to be completed first."
 msgstr ""
 
-#: models/course-model.php:419
+#: models/course-model.php:428
 msgid "Enrolled in course %s. Status: %s"
 msgstr ""
 
-#: models/course-model.php:485
+#: models/course-model.php:494
 msgid "Enroll for %1$s %2$s"
 msgstr ""
 
-#: models/course-model.php:486
+#: models/course-model.php:495
 msgid "Click to Enroll"
 msgstr ""
 
-#: models/course-model.php:503
+#: models/course-model.php:512
 msgid "Payment for course"
 msgstr ""
 
-#: models/course-model.php:522
+#: models/course-model.php:531
 msgid "Buy Enrollment"
 msgstr ""
 
-#: models/course-model.php:572
+#: models/course-model.php:581
 msgid "These courses should be completed before you can enroll:"
 msgstr ""
 
@@ -357,251 +365,255 @@ msgstr ""
 msgid "This will create a new post with homeworks for a lesson in your Namaste! LMS."
 msgstr ""
 
-#: models/homework-model.php:101
+#: models/homework-model.php:102
 msgid "You are not allowed to edit or delete this assignment"
 msgstr ""
 
-#: models/homework-model.php:170
+#: models/homework-model.php:172
 msgid "You are not allowed to see this page"
 msgstr ""
 
-#: models/homework-model.php:179
+#: models/homework-model.php:181
 msgid "Invalid lesson ID."
 msgstr ""
 
-#: models/homework-model.php:322
+#: models/homework-model.php:324
 msgid "Homework for Lesson %s"
 msgstr ""
 
-#: models/lesson-model.php:9
+#: models/lesson-model.php:10
 msgid "Namaste! Lessons"
 msgstr ""
 
-#: models/lesson-model.php:12
+#: models/lesson-model.php:13
 msgid "Lessons"
 msgstr ""
 
-#: models/lesson-model.php:13
+#: models/lesson-model.php:14
 msgid "Lesson"
 msgstr ""
 
-#: models/lesson-model.php:14
+#: models/lesson-model.php:15
 msgid "Add New Lesson"
 msgstr ""
 
-#: models/lesson-model.php:27
+#: models/lesson-model.php:28
 msgid "This will create a new lesson in your Namaste! LMS."
 msgstr ""
 
-#: models/lesson-model.php:237
+#: models/lesson-model.php:249
 msgid "The lesson cannot be completed because there are unsatisfied requirements"
 msgstr ""
 
-#: models/lesson-model.php:305
+#: models/lesson-model.php:317
 msgid "Completed on"
 msgstr ""
 
-#: models/lesson-model.php:380
+#: models/lesson-model.php:408
 msgid "In order to see this lesson you first have to be enrolled in the course"
 msgstr ""
 
-#: models/lesson-model.php:431
+#: models/lesson-model.php:465
 msgid "Before accessing a lesson from this module you must complete the following modules:"
 msgstr ""
 
-#: models/lesson-model.php:448
+#: models/lesson-model.php:482
 msgid "Before accessing this lesson you must complete the following lessons:"
 msgstr ""
 
-#: models/lesson-model.php:518
+#: models/lesson-model.php:552
 msgid "Started reading lesson \"%s\""
 msgstr ""
 
-#: models/lesson-model.php:655
+#: models/lesson-model.php:689
 msgid "Received %d points for completing lesson \"%s\"."
 msgstr ""
 
-#: models/lesson-model.php:665
+#: models/lesson-model.php:699
 msgid "Completed lesson \"%s\""
 msgstr ""
 
-#: models/lesson-model.php:1045
+#: models/lesson-model.php:1083
 msgid "All Courses"
 msgstr ""
 
-#: models/lesson-model.php:1060
+#: models/lesson-model.php:1098
 msgid "All Modules"
 msgstr ""
 
-#: models/lesson-model.php:1108
+#: models/lesson-model.php:1146
 msgid "%s results"
 msgstr ""
 
-#: models/lesson-model.php:225
+#: models/lesson-model.php:237
 msgid "You must enroll in the course first before you can see the lessons"
 msgstr ""
 
-#: models/module-model.php:11
+#: models/module-model.php:12
 msgid "Namaste! Modules"
 msgstr ""
 
-#: models/module-model.php:14
+#: models/module-model.php:15
 msgid "Modules"
 msgstr ""
 
-#: models/module-model.php:15
+#: models/module-model.php:16
 msgid "Module"
 msgstr ""
 
-#: models/module-model.php:16
+#: models/module-model.php:17
 msgid "Add New Module"
 msgstr ""
 
-#: models/module-model.php:22
+#: models/module-model.php:23
 msgid "This will create a new module in your Namaste! LMS."
 msgstr ""
 
-#: models/module-model.php:114
+#: models/module-model.php:115
 msgid "For advanced reports on this module, <a href=\"%s\">click here</a>."
 msgstr ""
 
-#: models/module-model.php:193
+#: models/module-model.php:197
 msgid "Received %d points for completing module \"%s\"."
 msgstr ""
 
-#: models/module-model.php:205
+#: models/module-model.php:209
 msgid "Completed module \"%s\""
 msgstr ""
 
-#: models/module-model.php:348
+#: models/module-model.php:358
 msgid "In order to see this module you first have to be enrolled in the course"
 msgstr ""
 
-#: models/module-model.php:395
+#: models/module-model.php:405
 msgid "Before accessing this module you must complete the following modules:"
 msgstr ""
 
-#: models/namaste-model.php:314
+#: models/namaste-model.php:328
 msgid "Namaste! LMS"
 msgstr ""
 
-#: models/namaste-model.php:315
+#: models/namaste-model.php:329
 msgid "To Do"
 msgstr ""
 
-#: models/namaste-model.php:322
+#: models/namaste-model.php:336
 msgid "Assignments"
 msgstr ""
 
-#: models/namaste-model.php:323
+#: models/namaste-model.php:337
 msgid "Students"
 msgstr ""
 
-#: models/namaste-model.php:325
+#: models/namaste-model.php:339
 msgid "Certificates"
 msgstr ""
 
-#: models/namaste-model.php:326
+#: models/namaste-model.php:340
 msgid "Students Earned Certificate"
 msgstr ""
 
-#: models/namaste-model.php:332
+#: models/namaste-model.php:346
 msgid "Student Reviews"
 msgstr ""
 
-#: models/namaste-model.php:336
+#: models/namaste-model.php:350
 msgid "Gradebook"
 msgstr ""
 
-#: models/namaste-model.php:337
-msgid "Settings"
-msgstr ""
-
-#: models/namaste-model.php:341
-msgid "xAPI / Tin Can"
-msgstr ""
-
-#: models/namaste-model.php:344
-msgid "Help"
-msgstr ""
-
-#: models/namaste-model.php:345
-msgid "Namaste! Plugins &amp; API"
-msgstr ""
-
-#: models/namaste-model.php:345
-msgid "Plugins &amp; API"
-msgstr ""
-
-#: models/namaste-model.php:348
-msgid "Student Lessons"
-msgstr ""
-
-#: models/namaste-model.php:350
-msgid "Send note"
-msgstr ""
-
-#: models/namaste-model.php:351
-msgid "Submit solution"
-msgstr ""
-
 #: models/namaste-model.php:352
-msgid "View solutions"
+msgid "Webhooks / Zapier"
 msgstr ""
 
 #: models/namaste-model.php:353
+msgid "Settings"
+msgstr ""
+
+#: models/namaste-model.php:359
+msgid "xAPI / Tin Can"
+msgstr ""
+
+#: models/namaste-model.php:362
+msgid "Help"
+msgstr ""
+
+#: models/namaste-model.php:363
+msgid "Namaste! Plugins &amp; API"
+msgstr ""
+
+#: models/namaste-model.php:363
+msgid "Plugins &amp; API"
+msgstr ""
+
+#: models/namaste-model.php:366
+msgid "Student Lessons"
+msgstr ""
+
+#: models/namaste-model.php:368
+msgid "Send note"
+msgstr ""
+
+#: models/namaste-model.php:369
+msgid "Submit solution"
+msgstr ""
+
+#: models/namaste-model.php:370
+msgid "View solutions"
+msgstr ""
+
+#: models/namaste-model.php:371
 msgid "View all solutions"
 msgstr ""
 
-#: models/namaste-model.php:354
+#: models/namaste-model.php:372
 msgid "View Certificate"
 msgstr ""
 
-#: models/namaste-model.php:355
+#: models/namaste-model.php:373
 msgid "Download solution"
 msgstr ""
 
-#: models/namaste-model.php:356
+#: models/namaste-model.php:374
 msgid "Multi user configuration"
 msgstr ""
 
-#: models/namaste-model.php:357
+#: models/namaste-model.php:375
 msgid "Mass enroll students"
 msgstr ""
 
-#: models/namaste-model.php:358
+#: models/namaste-model.php:376
 msgid "Shortcode generator"
 msgstr ""
 
-#: models/namaste-model.php:373
+#: models/namaste-model.php:391
 msgid "My Courses"
 msgstr ""
 
-#: models/namaste-model.php:374
+#: models/namaste-model.php:392
 msgid "My Certificates"
 msgstr ""
 
-#: models/namaste-model.php:375
+#: models/namaste-model.php:393
 msgid "My Gradebook"
 msgstr ""
 
-#: models/namaste-model.php:522
+#: models/namaste-model.php:546
 msgid "You need to be <a href=\"%s\">logged in</a> to access this lesson."
 msgstr ""
 
-#: models/namaste-model.php:526
+#: models/namaste-model.php:550
 msgid "You can enroll in this course from your student dashboard. You need to be <a href=\"%s\">logged in</a>."
 msgstr ""
 
-#: models/namaste-model.php:530
+#: models/namaste-model.php:554
 msgid "You need to be <a href=\"%s\">logged in</a> to access this module."
 msgstr ""
 
-#: models/namaste-model.php:723
+#: models/namaste-model.php:752
 msgid "You can also buy access to this {{{item}}} with {{{credits}}} virtual credits from your balance. You currently have [moolamojo-balance] credits total."
 msgstr ""
 
-#: models/namaste-model.php:753
+#: models/namaste-model.php:782
 msgid "<p>Course: {{{course-link}}}</p>"
 msgstr ""
 
@@ -1381,47 +1393,51 @@ msgstr ""
 msgid "Accept file upload as solution"
 msgstr ""
 
-#: views/homework.php:16
+#: views/homework.php:15
+msgid "The assignment gets automatically approved upon submitting."
+msgstr ""
+
+#: views/homework.php:18
 msgid "points for successfully completing this assignment."
 msgstr ""
 
-#: views/homework.php:19
+#: views/homework.php:21
 msgid "Solutions will be accepted only within date interval:"
 msgstr ""
 
-#: views/homework.php:21
+#: views/homework.php:23
 msgid "From:"
 msgstr ""
 
-#: views/homework.php:22
+#: views/homework.php:24
 msgid "To:"
 msgstr ""
 
-#: views/homework.php:26
+#: views/homework.php:28
 msgid "The grade of this homework automatically becomes lesson grade."
 msgstr ""
 
-#: views/homework.php:32
+#: views/homework.php:34
 msgid "Create Assignment"
 msgstr ""
 
-#: views/homework.php:34
+#: views/homework.php:36
 msgid "Save Assignment"
 msgstr ""
 
-#: views/homework.php:35
+#: views/homework.php:37
 msgid "Delete Assignment"
 msgstr ""
 
-#: views/homework.php:35
+#: views/homework.php:37
 msgid "Are you sure?"
 msgstr ""
 
-#: views/homework.php:52
+#: views/homework.php:54
 msgid "Please enter at least title for the assignment"
 msgstr ""
 
-#: views/homework.php:58
+#: views/homework.php:60
 msgid "The end date is before the start date."
 msgstr ""
 
@@ -1533,19 +1549,31 @@ msgstr ""
 msgid "This lesson will be accessible only after the following lessons are completed:"
 msgstr ""
 
-#: views/lesson-meta-box.php:108
+#: views/lesson-meta-box.php:112
 msgid "If you install %s or %s you can also require certain tests and quizzes to be completed."
 msgstr ""
 
-#: views/lesson-meta-box.php:122
+#: views/lesson-meta-box.php:129
 msgid "The same shortcode to use outside of the lesson page is %s"
 msgstr ""
 
-#: views/lesson-meta-box.php:138
+#: views/lesson-meta-box.php:143
+msgid "The shortcode %s can be used to display conditional content to logged in users like this: %s. To use it outside of the lesson page pass also the attribute <b>%s</b>"
+msgstr ""
+
+#: views/lesson-meta-box.php:143
+msgid "Content shown only when the lesson is completed"
+msgstr ""
+
+#: views/lesson-meta-box.php:143
+msgid "Content shown only when the lesson is not completed"
+msgstr ""
+
+#: views/lesson-meta-box.php:147
 msgid "You can set <a href=\"%s\" target=\"_blank\">delayed access</a> to this lesson."
 msgstr ""
 
-#: views/lesson-meta-box.php:140
+#: views/lesson-meta-box.php:149
 msgid "If you <a href=\"%s\" target=\"_blank\">upgrade to PRO</a> you will be able to set delayed access to this lesson, namage classes and teachers, and a lot more."
 msgstr ""
 
@@ -1566,86 +1594,102 @@ msgid "There are no other lessons in this course. So this lesson will be accessi
 msgstr ""
 
 #: views/lesson-meta-box.php:41
-msgid "Lesson Completeness"
+msgid "Preview Mode"
 msgstr ""
 
 #: views/lesson-meta-box.php:43
-msgid "The minimum requirement for a lesson to be completed is to be visited by the student. However you can add some extra requirements here:"
+msgid "This lesson allowsbeing seen in \"Preview mode\". This means that non-enrolled and even non-logged-in users can see it. Once the user is enrolled in the course, all the usual restrictions and lesson actions will apply to the lesson."
 msgstr ""
 
 #: views/lesson-meta-box.php:45
+msgid "Lesson Completeness"
+msgstr ""
+
+#: views/lesson-meta-box.php:47
+msgid "The minimum requirement for a lesson to be completed is to be visited by the student. However you can add some extra requirements here:"
+msgstr ""
+
+#: views/lesson-meta-box.php:49
 msgid "Lesson completion will be manually verified and approved by the admin for every student."
 msgstr ""
 
-#: views/lesson-meta-box.php:48
+#: views/lesson-meta-box.php:52
 msgid "The following assignments/homework must be completed:"
 msgstr ""
 
-#: views/lesson-meta-box.php:57
+#: views/lesson-meta-box.php:61
 msgid "The following quiz must be completed:"
 msgstr ""
 
-#: views/lesson-meta-box.php:59
+#: views/lesson-meta-box.php:63
 msgid "- No quiz required -"
 msgstr ""
 
-#: views/lesson-meta-box.php:65
+#: views/lesson-meta-box.php:69
 msgid "with any of the following grade(s) achieved:"
 msgstr ""
 
-#: views/lesson-meta-box.php:78
+#: views/lesson-meta-box.php:82
 msgid "The grade from the quiz automatically becomes grade for the lesson (only if the grade title exactly matches one of your grades in Namaste)"
 msgstr ""
 
-#: views/lesson-meta-box.php:81
+#: views/lesson-meta-box.php:85
 msgid "This will work for quizzes that are published, not deactivated, and do not have the \\"Don't store user data\\" checkbox selected."
 msgstr ""
 
-#: views/lesson-meta-box.php:115
+#: views/lesson-meta-box.php:116
+msgid "Automation"
+msgstr ""
+
+#: views/lesson-meta-box.php:117
+msgid "When a logged-in student access this lesson they will be automatically enrolled in the associated course"
+msgstr ""
+
+#: views/lesson-meta-box.php:122
 msgid "points for completing this lesson."
 msgstr ""
 
-#: views/lesson-meta-box.php:121
+#: views/lesson-meta-box.php:128
 msgid "inside the lesson content to display what the student needs to do to complete the lesson."
 msgstr ""
 
-#: views/lesson-meta-box.php:124
+#: views/lesson-meta-box.php:131
 msgid "inside the lesson content to display its current status."
 msgstr ""
 
-#: views/lesson-meta-box.php:127
+#: views/lesson-meta-box.php:134
 msgid "will display a \"Mark Completed\" button so the student can mark the lesson completed themselves. <b>If such button is included in the lesson it will not be marked as completed until the student does it!</b> The button will appear <b>only after the \"Lesson Completeness\" requirements are satisfied.</b>"
 msgstr ""
 
-#: views/lesson-meta-box.php:128
+#: views/lesson-meta-box.php:135
 msgid "Do not test it with administrator account."
 msgstr ""
 
-#: views/lesson-meta-box.php:128
+#: views/lesson-meta-box.php:135
 msgid "The administrator bypasses many requiremnents and will not get the mark button."
 msgstr ""
 
-#: views/lesson-meta-box.php:130
+#: views/lesson-meta-box.php:137
 msgid "will display a link to the course that this lesson belongs to. You can pass attribute \"text\" to set a clickable text for the link. Otherwise the course title will be used."
 msgstr ""
 
-#: views/lesson-meta-box.php:132
+#: views/lesson-meta-box.php:139
 msgid "will display a link to the module that this lesson belongs to. You can pass attribute \"text\" to set a clickable text for the link. Otherwise the module title will be used."
 msgstr ""
 
-#: views/lesson-meta-box.php:134
+#: views/lesson-meta-box.php:141
 msgid "will display a breadcrumb style hierarchical navigation. You can pass the attribute separator to use a custom separator."
 msgstr ""
 
-#: views/lesson-meta-box.php:143
+#: views/lesson-meta-box.php:152
 msgid "Use the Excerpt Box Below:"
 msgstr ""
 
-#: views/lesson-meta-box.php:145
+#: views/lesson-meta-box.php:154
 msgid "If you enter some content in the Excerpt box on this page, the content will be shown to users who cannot access the lesson  for some reason: non-logged in students, students who did not enroll the course, students with unsatisfied lesson access requirements etc. The content will be shown instead of or before the default text that is shown in these cases. You can also show these excerpts by passing the <b>show_excerpts=1</b> attribute to the <b>namaste-course-lessons</b> shortcode."
 msgstr ""
 
-#: views/lesson-meta-box.php:150
+#: views/lesson-meta-box.php:159
 msgid "Loading modules..."
 msgstr ""
 
@@ -2925,11 +2969,11 @@ msgstr ""
 msgid "The following files could not be uploaded: %s"
 msgstr ""
 
-#: views/solution-submitted.php:22
+#: views/solution-submitted.php:26
 msgid "Back to lesson \"%s\""
 msgstr ""
 
-#: views/solution-submitted.php:26
+#: views/solution-submitted.php:30
 msgid "View lesson \"%s\""
 msgstr ""
 
@@ -2937,19 +2981,23 @@ msgstr ""
 msgid "Solution submitted"
 msgstr ""
 
-#: views/solution-submitted.php:16
+#: views/solution-submitted.php:17
 msgid "A manager will review your solution and will approve or reject it. If the manager add any notes, they will appear in the assignments page for this course"
 msgstr ""
 
-#: views/solution-submitted.php:22
+#: views/solution-submitted.php:19
+msgid "Thank you!"
+msgstr ""
+
+#: views/solution-submitted.php:26
 msgid "Back to the assignments"
 msgstr ""
 
-#: views/solution-submitted.php:24
+#: views/solution-submitted.php:28
 msgid "Back to assignments in"
 msgstr ""
 
-#: views/solution-submitted.php:25
+#: views/solution-submitted.php:29
 msgid "from course"
 msgstr ""
 
@@ -3059,6 +3107,162 @@ msgstr ""
 
 #: views/view-solutions.php:47
 msgid "Attachments:"
+msgstr ""
+
+#: views/webhook.html.php:16
+msgid "More webhooks are available in the <a href=\"%s\" target=\"_blank\">Namaste! Connect</a> module: on starting/completing a lesson, achieving a certificate, an completing an assignment."
+msgstr ""
+
+#: views/webhook.html.php:2
+msgid "Add/Edit a Webhook"
+msgstr ""
+
+#: views/webhook.html.php:4
+msgid "Back to webhooks"
+msgstr ""
+
+#: views/webhook.html.php:9
+msgid "When a student:"
+msgstr ""
+
+#: views/webhook.html.php:10
+msgid "Enrolls in a course"
+msgstr ""
+
+#: views/webhook.html.php:11
+msgid "Completes a course"
+msgstr ""
+
+#: views/webhook.html.php:25
+msgid "Webhook URL:"
+msgstr ""
+
+#: views/webhook.html.php:27
+msgid "The following data variables can be passed as a JSON array from Namaste! LMS to the webhook if they are available. You can set your names for each variable. If a variable has no name, it will not be included in the JSON array."
+msgstr ""
+
+#: views/webhook.html.php:29
+msgid "You can include several custom attributes with a predefined value in the request. You can use them for an API key, authorization keys, and so on."
+msgstr ""
+
+#: views/webhook.html.php:33
+msgid "Field / Data"
+msgstr ""
+
+#: views/webhook.html.php:33
+msgid "Variable name"
+msgstr ""
+
+#: views/webhook.html.php:33
+msgid "Variable value"
+msgstr ""
+
+#: views/webhook.html.php:36
+msgid "Student Username"
+msgstr ""
+
+#: views/webhook.html.php:38
+msgid "Dynamic / provided by user"
+msgstr ""
+
+#: views/webhook.html.php:39
+msgid "Email address"
+msgstr ""
+
+#: views/webhook.html.php:42
+msgid "Student Display Name"
+msgstr ""
+
+#: views/webhook.html.php:46
+msgid "Custom parameter 1"
+msgstr ""
+
+#: views/webhook.html.php:47
+msgid "Predefined variable 1"
+msgstr ""
+
+#: views/webhook.html.php:50
+msgid "Custom parameter 2"
+msgstr ""
+
+#: views/webhook.html.php:51
+msgid "Predefined variable 2"
+msgstr ""
+
+#: views/webhook.html.php:54
+msgid "Custom parameter 3"
+msgstr ""
+
+#: views/webhook.html.php:55
+msgid "Predefined variable 3"
+msgstr ""
+
+#: views/webhook.html.php:61
+msgid "Save Webhook"
+msgstr ""
+
+#: views/webhook.html.php:62
+msgid "Test Webhook"
+msgstr ""
+
+#: views/webhook.html.php:71
+msgid "Data sent"
+msgstr ""
+
+#: views/webhook.html.php:73
+msgid "Response from the hook"
+msgstr ""
+
+#: views/webhook.html.php:91
+msgid "Provide a valid Webhook URL"
+msgstr ""
+
+#: views/webhooks.html.php:4
+msgid "Here you can define webhooks which to be notified when an user subscribes to or unsubscribes from a mailing list. Webhooks are most often used with Zapier but can also be useful for integrations to other apps. Learn more about Zapier webhooks <a href=\"%1$s\" target=\"_blank\">here</a>."
+msgstr ""
+
+#: views/webhooks.html.php:2
+msgid "Manage Webhooks"
+msgstr ""
+
+#: views/webhooks.html.php:6
+msgid "Learn more how to use these webhooks with Namaste! LMS"
+msgstr ""
+
+#: views/webhooks.html.php:8
+msgid "Set up a new webhook"
+msgstr ""
+
+#: views/webhooks.html.php:13
+msgid "Item"
+msgstr ""
+
+#: views/webhooks.html.php:15
+msgid "Notifies hook URL"
+msgstr ""
+
+#: views/webhooks.html.php:16
+msgid "View/Edit"
+msgstr ""
+
+#: views/webhooks.html.php:26
+msgid "Enrolls"
+msgstr ""
+
+#: views/webhooks.html.php:27
+msgid "Completes"
+msgstr ""
+
+#: views/webhooks.html.php:29
+msgid "Starts"
+msgstr ""
+
+#: views/webhooks.html.php:31
+msgid "Achieves"
+msgstr ""
+
+#: views/webhooks.html.php:55
+msgid "Are you sure you want to delete the hook?"
 msgstr ""
 
 #: views/xapi-options.html.php:4

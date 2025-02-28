@@ -18,7 +18,7 @@ class NamasteLMSStudentModel {
 		 
 	 	$page_limit = empty($_GET['page_limit']) ? 20 : intval($_GET['page_limit']);
 	 	$offset = empty($_GET['offset']) ? 0 : intval($_GET['offset']);
-	 	$ob = empty($_GET['ob']) ? 'display_name' : sanitize_text_field($_GET['ob']);
+	 	$ob = empty($_GET['ob']) ? 'display_name' : sanitize_sql_orderby($_GET['ob']);
 	 	$dir = empty($_GET['dir']) ? 'ASC' : $_GET['dir'];
 	 	if(!in_array($dir, array('ASC', 'DESC'))) $dir = 'ASC';
 	 	$odir = ($dir == 'ASC') ? 'DESC' : 'ASC';
@@ -29,6 +29,10 @@ class NamasteLMSStudentModel {
 		 	
 				// cleanup student record
 				if(!empty($_GET['cleanup'])) {
+					if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'namaste_cleanup')) {
+						wp_die(__('Invalid request.', 'namaste'));
+					}
+
 					 if($multiuser_access  == 'view') wp_die(__('You are not allowed to do this.', 'namaste'));
                 self :: cleanup($_GET['course_id'], $_GET['student_id']); 
 					 	
@@ -285,6 +289,7 @@ class NamasteLMSStudentModel {
 					exit;				
 		 		}
 		 } // end if course selected
+
 		 
     	$dateformat = get_option('date_format');	 
 		wp_enqueue_script('thickbox',null,array('jquery'));

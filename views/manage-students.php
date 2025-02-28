@@ -31,7 +31,7 @@
 				 <input type="text" name="tags" size="20" placeholder="<?php _e('Separate with comma: tag1, tag 2...', 'namaste');?>">
 				<input type="submit" name="enroll" value="<?php _e('Enroll', 'namaste')?>" class="button button-primary">
 				<?php if(NamasteLMSMultiUser :: check_access('mass_enroll_access', true) == 'all'):?>
-				&nbsp; <a href="admin.php?page=namaste_mass_enroll&course_id=<?php echo $_GET['course_id']?>"><?php _e('[Mass enroll students]', 'namaste');?></a>
+				&nbsp; <a href="admin.php?page=namaste_mass_enroll&course_id=<?php echo (int)$_GET['course_id']?>"><?php _e('[Mass enroll students]', 'namaste');?></a>
 				<?php endif;?>				
 				</p>
 			<?php endif;?>
@@ -65,9 +65,9 @@
 		</p>
 	<?php endif;?>
    
-   <p><?php _e('Filter by user login:', 'namaste');?> <input type="text" name="user_login" value="<?php echo esc_attr(@$_GET['user_login'])?>">
-   <?php _e('Filter by email:', 'namaste');?> <input type="text" name="user_email" value="<?php echo esc_attr(@$_GET['user_email'])?>">
-   <?php _e('Filter by tag:', 'namaste');?> <input type="text" name="filter_tags" value="<?php echo esc_attr(@$_GET['filter_tags'])?>">
+   <p><?php _e('Filter by user login:', 'namaste');?> <input type="text" name="user_login" value="<?php echo esc_attr($_GET['user_login'] ?? '')?>">
+   <?php _e('Filter by email:', 'namaste');?> <input type="text" name="user_email" value="<?php echo esc_attr($_GET['user_email'] ?? '')?>">
+   <?php _e('Filter by tag:', 'namaste');?> <input type="text" name="filter_tags" value="<?php echo esc_attr($_GET['filter_tags'] ?? '')?>">
    
    
    
@@ -96,7 +96,7 @@
 		
 		
 		
-		<form method="post" action="admin.php?page=namaste_students&course_id=<?php echo $_GET['course_id']?>">
+		<form method="post" action="admin.php?page=namaste_students&course_id=<?php echo (int)$_GET['course_id']?>">
 		<table class="widefat">
 			<tr>
 				<?php if($multiuser_access != 'view'):?>
@@ -174,10 +174,10 @@
 		</form>
 		
 		<p align="center"><?php if($offset > 0):?>
-			<a href="admin.php?page=namaste_students&course_id=<?php echo intval($_GET['course_id'])?>&status=<?php echo esc_attr(@$_GET['status'])?>&offset=<?php echo $offset - $page_limit?>&user_login=<?php echo empty($_GET['user_login']) ? '' : esc_attr($_GET['user_login'])?>&user_email=<?php echo empty($_GET['user_email']) ? '' : esc_attr($_GET['user_email'])?>&ob=<?php echo $ob?>&dir=<?php echo $dir?>&page_limit=<?php echo $page_limit;?>&filter_tags=<?php echo empty($_GET['filter_tags']) ? '' : esc_attr($_GET['filter_tags']);?>"><?php _e('[previous page]', 'namaste')?></a>
+			<a href="admin.php?page=namaste_students&course_id=<?php echo intval($_GET['course_id'])?>&status=<?php echo esc_attr($_GET['status'] ?? '')?>&offset=<?php echo $offset - $page_limit?>&user_login=<?php echo empty($_GET['user_login']) ? '' : esc_attr($_GET['user_login'])?>&user_email=<?php echo empty($_GET['user_email']) ? '' : esc_attr($_GET['user_email'])?>&ob=<?php echo $ob?>&dir=<?php echo $dir?>&page_limit=<?php echo $page_limit;?>&filter_tags=<?php echo empty($_GET['filter_tags']) ? '' : esc_attr($_GET['filter_tags']);?>"><?php _e('[previous page]', 'namaste')?></a>
 		<?php endif;?> 
 		<?php if($count > ($page_limit + $offset)):?>
-			<a href="admin.php?page=namaste_students&course_id=<?php echo intval($_GET['course_id'])?>&status=<?php echo esc_attr(@$_GET['status'])?>&offset=<?php echo $offset + $page_limit?>&user_login=<?php echo empty($_GET['user_login']) ? '' : esc_attr($_GET['user_login'])?>&user_email=<?php echo empty($_GET['user_email']) ? '' : esc_attr($_GET['user_email'])?>&ob=<?php echo $ob?>&dir=<?php echo $dir?>&page_limit=<?php echo $page_limit;?>&filter_tags=<?php echo empty($_GET['filter_tags']) ? '' : esc_attr($_GET['filter_tags']);?>"><?php _e('[next page]', 'namaste')?></a>
+			<a href="admin.php?page=namaste_students&course_id=<?php echo intval($_GET['course_id'])?>&status=<?php echo esc_attr($_GET['status'] ?? '')?>&offset=<?php echo $offset + $page_limit?>&user_login=<?php echo empty($_GET['user_login']) ? '' : esc_attr($_GET['user_login'])?>&user_email=<?php echo empty($_GET['user_email']) ? '' : esc_attr($_GET['user_email'])?>&ob=<?php echo $ob?>&dir=<?php echo $dir?>&page_limit=<?php echo $page_limit;?>&filter_tags=<?php echo empty($_GET['filter_tags']) ? '' : esc_attr($_GET['filter_tags']);?>"><?php _e('[next page]', 'namaste')?></a>
 		<?php endif;?>	
 		</p>
 	<?php endif;?>
@@ -194,7 +194,7 @@
 function namasteConfirmStatus(status, id) {	
 	if(!confirm("<?php _e('Are you sure?','namaste')?>")) return false;
 	
-	window.location="admin.php?page=namaste_students&course_id=<?php echo intval(@$_GET['course_id'])?>&change_status=1&status="+status	
+	window.location="admin.php?page=namaste_students&course_id=<?php echo intval($_GET['course_id'] ?? 0)?>&change_status=1&status="+status	
 		+ "&student_id="+id;	
 }
 
@@ -204,10 +204,18 @@ function namasteInProgress(lessonID, studentID) {
 		'&student_id=' + studentID);
 }
 
+<?php
+// Generate the nonce in PHP
+$cleanup_nonce = wp_create_nonce('namaste_cleanup');
+?>
+
 function namasteConfirmCleanup(studentID) {
-	if(confirm("<?php _e('Are you sure to cleanup this record? It will be removed from the system and history and the user will be able to enroll or request enrollment again', 'namaste')?>")) {
-		window.location = 'admin.php?page=namaste_students&course_id=<?php echo intval(@$_GET["course_id"])?>&status=<?php echo sanitize_text_field(@$_GET["status"])?>&cleanup=1&student_id='+studentID;
-	}
+	let namaste_cleanup_nonce = "<?php echo esc_js($cleanup_nonce); ?>";
+
+    if (confirm("<?php _e('Are you sure to cleanup this record? It will be removed from the system and history and the user will be able to enroll or request enrollment again', 'namaste'); ?>")) {
+        // Append the nonce to the URL
+        window.location = 'admin.php?page=namaste_students&course_id=<?php echo intval($_GET["course_id"] ?? 0); ?>&status=<?php echo esc_attr($_GET["status"] ?? ''); ?>&cleanup=1&student_id=' + studentID + '&_wpnonce=' + namaste_cleanup_nonce;
+    }
 }
 
 function namasteSelectAll(status) {

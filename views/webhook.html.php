@@ -6,11 +6,15 @@
 	<div class="postbox">
 	<form method="post" class="namaste-form wrap" onsubmit="return validateHookForm(this);">
 		<div class="wrap">
-			<p><label><?php _e('When a student:', 'namaste');?></label> <select name="action" onchange="changeHookAction(this);">
+			<p><label><?php _e('When a student:', 'namaste');?></label> <select name="action" onchange="changeHookAction(this);" id="hookAction">
 				<option value="enroll" <?php if(!empty($hook->action) and $hook->action == 'enroll') echo 'selected';?>><?php _e('Enrolls in a course', 'namaste');?></option>
 				<option value="complete" <?php if(!empty($hook->action) and $hook->action == 'complete') echo 'selected';?>><?php _e('Completes a course', 'namaste');?></option>
 				<?php do_action('namaste_hook_actions', $hook ?? null);?>
 			</select></p>
+			
+			<?php if(!class_exists('NamasteCon')):?>
+				<p><b><?php printf(__('More webhooks are available in the <a href="%s" target="_blank">Namaste! Connect</a> module: on starting/completing a lesson, achieving a certificate, an completing an assignment.', 'namaste'), 'https://namaste-lms.org/connect.php');?></b></p>
+			<?php endif;?>
 			
 			<p><label id="hookItemLabel"><?php _e('Course:', 'namaste');?></label> <select name="item_id" id="hookItemId">
 				<?php foreach($courses as $course):?>
@@ -93,7 +97,9 @@ function validateHookForm(frm) {
 }
 
 // change the item drop-down & info in case of a change in the hook action
-function changeHookAction(sel) {
+function changeHookAction(sel, preselectedValue) {
+	preselectedValue = preselectedValue | null;
+	
 	let hookItems = {
       courses: [<?php foreach($courses as $course):?>
 			[<?php echo $course->ID?>, "<?php echo stripslashes($course->post_title);?>"],      
@@ -114,12 +120,16 @@ function changeHookAction(sel) {
 	
 	// refill item type & options
 	jQuery('#hookItemLabel').text(label);
-	let hookOptions = '';
+	let hookOptions = '<option value=""><?php _e('- please select -', 'namaste');?></option>' + "\n";
 	items.forEach((elt, index) => {
-		console.log(elt[1]);
-		hookOptions += '<option value="'+elt[0]+'">'+elt[1]+'</option>' + "\n";
+		let selected = '';
+		if(preselectedValue && preselectedValue == elt[0]) selected = ' selected';
+		hookOptions += '<option value="'+elt[0]+'"' + selected + '>'+elt[1]+'</option>' + "\n";
 	} );
 	
 	jQuery('#hookItemId').html(hookOptions);
 } // end changeHookAction
+
+// onload call changeHookAction in case we are coming from Connect
+changeHookAction(document.getElementById('hookAction'), <?php echo empty($hook->item_id) ? 'null' : $hook->item_id;?> );
 </script>

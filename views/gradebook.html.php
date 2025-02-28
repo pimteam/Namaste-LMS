@@ -32,7 +32,7 @@
 					<tr class="<?php echo $class?>"><td>
 					<?php if($in_shortcode): echo $student->user_nicename;
 					else:?> 
-					<a href="admin.php?page=namaste_student_lessons&course_id=<?php echo $_GET['course_id']?>&student_id=<?php echo $student->ID?>" target="_blank"><?php echo $student->user_nicename?></a>
+					<a href="admin.php?page=namaste_student_lessons&course_id=<?php echo (int)$_GET['course_id']?>&student_id=<?php echo $student->ID?>" target="_blank"><?php echo $student->user_nicename?></a>
 					<?php endif;?>
 					</td>
 					<?php

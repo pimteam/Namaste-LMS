@@ -2,13 +2,13 @@
 
 <div class="wrap">
 	<form class="namaste-form" onsubmit="return namasteValidateForm(this);" method="post">
-		<p><label><?php _e('Certificate Title:', 'namaste')?></label> <input type="text" name="title" value="<?php if(!empty($certificate->title)) echo $certificate->title?>" size="100"></p>
+		<p><label><?php _e('Certificate Title:', 'namaste')?></label> <input type="text" name="title" value="<?php if(!empty($certificate->title)) echo esc_attr($certificate->title)?>" size="100"></p>
 		
 		<p><label><?php _e('Certificate Contents:', 'namaste')?></label> 
 		<?php if(get_option('namaste_certificates_no_rtf')):?>
 		<textarea name="content" cols="100" rows="20"><?php echo stripslashes(@$certificate->content)?></textarea>		
 		<?php else:
-		 wp_editor(stripslashes(@$certificate->content), 'content');
+		 wp_editor(stripslashes($certificate->content ?? ''), 'content');
 		 endif;?></p>
 		
 		<p><?php _e('You can use the following variables in the certificate contents:', 'namaste')?></p>
@@ -39,7 +39,7 @@
 		
 		<p><input type="checkbox" name="has_expiration" value="1" <?php if(!empty($certificate->has_expiration)) echo 'checked'?> onclick="this.checked ? jQuery('#certificateExpirtation').show() : jQuery('#certificateExpirtation').hide();"> <?php _e('This certificate expires after selected period of time or on a fixed date.', 'namaste');?></p>
 		
-		<div id="certificateExpirtation" style="display:<?php echo empty($certificate->has_expiration) ? 'none' : 'block';?>">
+		<div id="certificateExpirtation" style='display:<?php echo empty($certificate->has_expiration) ? 'none' : 'block';?>'>
 		  <p><input type="radio" name="expiration_mode" value="period" <?php if(empty($certificate->expiration_mode) or $certificate->expiration_mode == 'period') echo 'checked'?>> <?php _e('Expiration period:', 'namaste');?> <input type="text" name="expiration_period_num" size="3" value="<?php echo $expiration_num?>">
 		  <select name="expiration_period_period">
 		     <option value="month"><?php _e('months', 'namaste');?></option>
@@ -54,15 +54,15 @@
 		  <p><?php _e('Message to display when the certificate has expired. if you leave it empty, default message will be used.', 'namaste');?><br>
 		  	<?php if(get_option('namaste_certificates_no_rtf')):?>
 	   		<textarea name="expired_message" cols="80" rows="5"><?php echo stripslashes(@$certificate->expired_message)?></textarea>
-	   	<?php else: wp_editor(stripslashes(@$certificate->expired_message), 'expired_message', array("editor_class" => 'i18n-multilingual')); endif; ?>
+	   	<?php else: wp_editor(stripslashes($certificate->expired_message ?? ''), 'expired_message', array("editor_class" => 'i18n-multilingual')); endif; ?>
 	   	</p>
 		</div>
 
 		
 		<div align="center">
-			<input type="submit" name="ok" value="<?php _e('Save Certificate', 'namaste')?>">
+			<input type="submit" name="ok" value="<?php _e('Save Certificate', 'namaste')?>" class="button button-primary">
 			<?php if(!empty($certificate->id)):?>
-				<input type="button" value="<?php _e('Delete', 'namaste')?>" onclick="namasteConfirmDelete(this.form);">
+				<input type="button" value="<?php _e('Delete', 'namaste')?>" onclick="namasteConfirmDelete(this.form);" class="button">
 				<input type="hidden" name='del' value='0'>
 			<?php endif;?>		
 		</div>		

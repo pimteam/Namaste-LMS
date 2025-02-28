@@ -6,7 +6,8 @@ class NamasteLMSCourseModel {
 		
 		$course_slug = get_option('namaste_course_slug');
 	   if(empty($course_slug)) $course_slug = 'namaste-course';
-	  	   
+	   $has_archive = get_option('namaste_show_courses_in_blog');
+	   	  	   
 		$args = array(
 			"label" => __("Namaste! Courses", 'namaste'),
 			"labels" => array
@@ -17,7 +18,7 @@ class NamasteLMSCourseModel {
 				),
 			"public"=> true,
 			"show_ui"=>true,
-			"has_archive"=>true,
+			"has_archive"=> $has_archive ? true : false,
 			"rewrite"=> array("slug"=>$course_slug, "with_front"=>false),
 			"description"=>__("This will create a new course in your Namaste! LMS.",'namaste'),
 			"supports"=>array("title", 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'post-formats'),
@@ -40,7 +41,7 @@ class NamasteLMSCourseModel {
 		if(!get_option('namaste_show_courses_in_blog')) return $query;
 		
 		if ( (is_home() or is_archive()) and $query->is_main_query() ) {
-			$post_types = @$query->query_vars['post_type'];
+			$post_types = $query->query_vars['post_type'] ?? null;
 			
 			// empty, so we'll have to create post_type setting			
 			if(empty($post_types)) {
@@ -113,18 +114,20 @@ class NamasteLMSCourseModel {
 			$hold_reviews = get_post_meta($post->ID, 'namaste_hold_reviews', true);
 			
 			// buddypress?
-			if(function_exists('bp_is_active') and bp_is_active( 'groups' )) {
+			if(function_exists('bp_is_active') and bp_is_active( 'groups' ) and class_exists('BP_Groups_Group')) {
+				
 				// select BP groups
 				$bp_groups = BP_Groups_Group::get(array(
 									'type'=>'alphabetical',
 									'per_page'=>999
 									));
 									
-				$bp = get_post_meta($post->ID, 'namaste_buddypress', true);
-				$bp_enroll_group = @$bp['enroll_group'];
-				$bp_complete_group = @$bp['complete_group'];
-				$bp_enroll_group_remove = @$bp['enroll_group_remove'];
-				$bp_complete_group_remove = @$bp['complete_group_remove'];
+				$bp = get_post_meta($post->ID ?? 0, 'namaste_buddypress', true);
+				$bp_enroll_group = $bp['enroll_group'] ?? null;
+				$bp_complete_group = $bp['complete_group'] ?? null;
+				$bp_enroll_group_remove = $bp['enroll_group_remove'] ?? null;
+				$bp_complete_group_remove = $bp['complete_group_remove'] ?? null;
+				
 			}
 			
 			// WooCommerce integration?
@@ -270,7 +273,12 @@ class NamasteLMSCourseModel {
 		if(is_user_logged_in()) {
 			$enrolled = $wpdb -> get_var($wpdb->prepare("SELECT id FROM ".NAMASTE_STUDENT_COURSES.
 			" WHERE user_id = %d AND course_id = %d AND (status = 'enrolled' OR status='completed')", $user_ID, $post->ID));
-		}			
+		}
+		
+		/** 
+        * IMPORTANT: This content MUST allow HTML and JavaScript. 
+        * This is not a vulnerability.
+        **/
 		if($enrolled) $text = __('You are enrolled in this course. Check "My courses" link in your dashboard to see the lessons and to-do list', 'namaste');
 		else $text = NAMASTE_NEED_LOGIN_TEXT_COURSE;
 		
@@ -379,7 +387,8 @@ class NamasteLMSCourseModel {
    	$require_roles = get_post_meta($course_id, 'namaste_require_roles', true);
 		$required_roles = get_post_meta($course_id, 'namaste_required_roles', true); // this is the array of roles
 		if($require_roles == 1 and !empty($required_roles) and is_array($required_roles)) {
-			$user = wp_get_current_user();
+			$user = get_user_by('id', $student_id);
+			
 			$restricted = true;
 			foreach($required_roles as $required_role) {
 				if ( in_array( $required_role, (array) $user->roles ) )  {
@@ -525,10 +534,11 @@ class NamasteLMSCourseModel {
 		}	
 		else {
 			$output .= '<form method="post">
+				<input type="hidden" name="namaste_enroll_nonce" value="' . esc_attr(wp_create_nonce('namaste_enroll_action')) . '">
 				<input type="submit" value="'.$free_button_text.'" class="namaste-button button button-primary">
 				<input type="hidden" name="enroll" value="1">
 				<input type="hidden" name="course_id" value="'.$course->post_id.'">
-			</form>';				
+			</form>';
 		}  
 		
 		return $output;

@@ -1,7 +1,9 @@
 <?php
 // stripe integration model
+// DEPRECATED
 class NamasteStripe {
 	static function load() {
+		return false;
 		if(!class_exists('\Stripe\Stripe')) require_once(NAMASTE_PATH.'/lib/Stripe.php');
  
 		$stripe = array(

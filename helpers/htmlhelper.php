@@ -98,7 +98,8 @@ function NamasteQuickDDDate($name, $date=NULL, $format=NULL, $markup=NULL, $star
 
 // safe redirect
 function namaste_redirect($url) {
-	echo "<meta http-equiv='refresh' content='0;url=$url' />"; 
+	$url = esc_url_raw($url);
+	echo "<meta http-equiv='refresh' content='0;url=$url' />";
 	exit;
 }
 

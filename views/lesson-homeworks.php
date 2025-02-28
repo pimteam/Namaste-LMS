@@ -5,7 +5,7 @@
 <?php endif;?>
 
 <?php if(!$in_shortcode):?>
-	<p><a href="admin.php?page=namaste_student_lessons&course_id=<?php echo $course_id?>&student_id=<?php echo $_GET['student_id']?>"><?php _e('Back to the lessons page in this course', 'namaste')?></a></p>
+	<p><a href="admin.php?page=namaste_student_lessons&course_id=<?php echo $course_id?>&student_id=<?php echo (int)$_GET['student_id']?>"><?php _e('Back to the lessons page in this course', 'namaste')?></a></p>
 <?php endif;?>	
 
 <?php if(!sizeof($homeworks)):
@@ -68,11 +68,11 @@ endif;?>
 		<?php if($manager_mode):
 					if($in_shortcode):
 				   	$permalink = get_permalink($post->ID);
-				   	$params = array('id' => $homework->id, 'add_note' => 1, 'lesson_id' => $lesson->ID, 'student_id' => $_GET['student_id'], 'homework_id'=>$homework->id);
+				   	$params = array('id' => $homework->id, 'add_note' => 1, 'lesson_id' => $lesson->ID, 'student_id' => (int)$_GET['student_id'], 'homework_id'=>$homework->id);
 						$target_url = add_query_arg( $params, $permalink );?>
 				   	<p><a href="<?php echo $target_url ?>"><?php _e('Add note / feedback', 'namaste')?></a></p>
 			  		 <?php else:?>
-						<p><a href="admin.php?page=namaste_add_note&lesson_id=<?php echo $lesson->ID?>&student_id=<?php echo $_GET['student_id']?>&homework_id=<?php echo $homework->id?>"><?php _e('Add note / feedback', 'namaste')?></a></p>
+						<p><a href="admin.php?page=namaste_add_note&lesson_id=<?php echo $lesson->ID?>&student_id=<?php echo (int)$_GET['student_id']?>&homework_id=<?php echo $homework->id?>"><?php _e('Add note / feedback', 'namaste')?></a></p>
  		<?php endif; // end if not in shortcode 
 		endif; // end if manager mode?></td>
 		<?php do_action('namaste_extra_td', 'lesson_homeworks', $homework, $in_shortcode);?></tr>

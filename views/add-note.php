@@ -10,7 +10,7 @@
 
 	<?php	if($in_shortcode):
 		$permalink = get_permalink($post->ID);
-		$params = array('lesson_id' => $_GET['lesson_id']);
+		$params = array('lesson_id' => (int)$_GET['lesson_id']);
 		$target_url = add_query_arg( $params, $permalink );?>
 		<p><a href="<?php echo $target_url?>"><?php printf(__('Back to assignments for "%s"', 'namaste'), $lesson->post_title);?></a></p>
 		<?php else:?>

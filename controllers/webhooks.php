@@ -8,13 +8,21 @@ class NamasteLMSWebhooks {
 		// select courses
 		$_course = new NamasteLMSCourseModel();
 		$courses = $_course->select();
+		
+		// define item_type based on action
+		$item_type = 'course';
+		if(!empty($_POST['action'])) {
+			if(strstr($_POST['action'], 'lesson')) $item_type = 'lesson';
+			if(strstr($_POST['action'], 'homework')) $item_type = 'homework';
+			if(strstr($_POST['action'], 'certificate')) $item_type = 'certificate';
+		}
 				
 		switch($action) {
 			case 'add':
 				if(!empty($_POST['ok']) and check_admin_referer('namaste_webhooks')) {
 					$payload_config = self :: payload_config();
 					$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_WEBHOOKS." SET item_id=%d, item_type=%s, hook_url = %s, action=%s, payload_config=%s",
-					intval($_POST['item_id']), 'course', esc_url_raw($_POST['hook_url']), sanitize_text_field($_POST['action']), serialize($payload_config) ));
+					intval($_POST['item_id']), $item_type, esc_url_raw($_POST['hook_url']), sanitize_text_field($_POST['action']), serialize($payload_config) ));
 					
 					namaste_redirect("admin.php?page=namaste_webhooks");
 				}
@@ -52,7 +60,7 @@ class NamasteLMSWebhooks {
 			
 				// select hooks join grades
 				$hooks = $wpdb->get_results("SELECT SQL_CALC_FOUND_ROWS tH.id as id, tH.hook_url as hook_url, 
-					tC.post_title as course, tH.action as action, tH.item_type as item_type
+					tC.post_title as course, tH.action as action, tH.item_type as item_type, tH.item_id as item_id
 					FROM ".NAMASTE_WEBHOOKS." tH JOIN {$wpdb->posts} tC ON tH.item_id = tC.ID					
 					ORDER BY tH.id LIMIT $offset, $limit");
 					

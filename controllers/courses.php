@@ -11,7 +11,7 @@ class NamasteLMSCoursesController {
 		$_course = new NamasteLMSCourseModel();
 		
 		// stripe integration goes right on this page
-		$accept_stripe = get_option('namaste_accept_stripe');
+		$accept_stripe = false;
 		$accept_paypal = get_option('namaste_accept_paypal');
 		$accept_other_payment_methods = get_option('namaste_accept_other_payment_methods');
 		$accept_moolamojo = get_option('namaste_accept_moolamojo');
@@ -23,18 +23,21 @@ class NamasteLMSCoursesController {
 		}
 		
 		if(!empty($_POST['stripe_pay'])) {
-			 NamasteStripe::pay($currency);			
+			 //NamasteStripe::pay($currency);
 			 namaste_redirect('admin.php?page=namaste_my_courses');
 		}	
 		
-		if(!empty($_POST['enroll'])) $mesage = self::enroll($is_manager);
-		
+		if(!empty($_POST['enroll']) && !empty($_POST['namaste_enroll_nonce']) && wp_verify_nonce($_POST['namaste_enroll_nonce'], 'namaste_enroll_action')) {
+			$mesage = self::enroll($is_manager);
+		}
+
 		// unenroll?
-		if(!empty($_GET['unenroll'])) {
-			NamasteLMSStudentModel :: cleanup($_GET['unenroll'], $user_ID);
+		if(!empty($_GET['unenroll']) && !empty($_GET['namaste_unenroll_nonce']) && wp_verify_nonce($_GET['namaste_unenroll_nonce'], 'namaste_unenroll_action')) {
+			NamasteLMSStudentModel::cleanup($_GET['unenroll'], $user_ID);
 			if($simplified) namaste_redirect($current_url);
 			else namaste_redirect("admin.php?page=namaste_my_courses");
 		}
+
 
 		// filters from other plugins like Namaste! PRO		
 		$filter_sql = '';
@@ -143,7 +146,7 @@ class NamasteLMSCoursesController {
 		// get course
 		$course = get_post($_GET['course_id']);		
 		$offset = empty($_GET['offset']) ? 0 : intval($_GET['offset']);
-		$ob = empty($_GET['ob']) ? 'display_name' : sanitize_text_field($_GET['ob']);
+		$ob = empty($_GET['ob']) ? 'display_name' : sanitize_sql_orderby($_GET['ob']);
  		$dir = empty($_GET['dir']) ? 'ASC' : $_GET['dir'];
  		if(!in_array($dir, array('ASC', 'DESC'))) $dir = 'ASC';
  		$odir = ($dir == 'ASC') ? 'DESC' : 'ASC'; 		

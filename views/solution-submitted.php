@@ -13,11 +13,15 @@
 	<?php if(!empty($file_not_uploaded_errors) and count($file_not_uploaded_errors)):?>
 		<p class="error"><strong><?php printf(__('The following files could not be uploaded: %s', 'namaste'), implode(', ', $file_not_uploaded_errors));?></strong></p>
 	<?php endif;?>
-	<p><?php _e('A manager will review your solution and will approve or reject it. If the manager add any notes, they will appear in the assignments page for this course', 'namaste')?></p>
+	<?php if( $status != 'approved' ):?>
+        <p><?php _e('A manager will review your solution and will approve or reject it. If the manager add any notes, they will appear in the assignments page for this course', 'namaste')?></p>
+	<?php else:?>
+        <p><?php _e('Thank you!', 'namaste')?></p>
+	<?php endif;?>
 	
 	<?php if($in_shortcode):
 		$permalink = get_permalink($post->ID);
-		$params = array('lesson_id' => $_GET['lesson_id']);
+		$params = array('lesson_id' => (int)$_GET['lesson_id']);
 		$target_url = add_query_arg( $params, $permalink );?>
 		<p><a href="<?php echo $target_url;?>"><?php _e('Back to the assignments', 'namaste')?></a> | <a href="<?php echo get_permalink($lesson->ID);?>"><?php printf(__('Back to lesson "%s"', 'namaste'), stripslashes($lesson->post_title));?></a></p>
 	<?php else:?>	

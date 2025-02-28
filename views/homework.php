@@ -4,7 +4,7 @@
 
 <form method="post" onsubmit="return namasteValidateForm(this);">
 	<div class="postbox namaste-form namaste-box">
-		<p><label><?php _e('Title:', 'namaste')?></label> <input type="text" name="title" value="<?php echo stripslashes(@$homework->title)?>" size='80'></p>
+		<p><label><?php _e('Title:', 'namaste')?></label> <input type="text" name="title" value="<?php echo stripslashes($homework->title ?? '')?>" size='80'></p>
 		<p><label><?php _e('Description/Requirements:', 'namaste')?></label>
 		<?php echo wp_editor(stripslashes(@$homework->description), 'description');?></p>
 
@@ -12,8 +12,10 @@
 		
 		<p class="no-self-approving" style='display:<?php echo empty($homework->self_approving) ? 'block' : 'none';?>'><input type="checkbox" name="accept_files" value="1" <?php if(!empty($homework->accept_files)) echo 'checked'?>> <?php _e('Accept file upload as solution', 'namaste')?></p>
 		
+		<p class="no-self-approving" style='display:<?php echo empty($homework->self_approving) ? 'block' : 'none';?>'><input type="checkbox" name="auto_approve" value="1" <?php if(!empty($homework->auto_approve)) echo 'checked'?>> <?php _e('The assignment gets automatically approved upon submitting.', 'namaste')?></p>
+		
 		<?php if(get_option('namaste_use_points_system')):?>
-			<p><?php _e('Reward', 'namaste')?> <input type="text" size="4" name="award_points" value="<?php echo @$homework->award_points?>"> <?php _e('points for successfully completing this assignment.', 'namaste')?></p>
+			<p><?php _e('Reward', 'namaste')?> <input type="text" size="4" name="award_points" value="<?php echo $homework->award_points ?? ''?>"> <?php _e('points for successfully completing this assignment.', 'namaste')?></p>
 		<?php endif;?>
 		
 		<p class="no-self-approving" style='display:<?php echo empty($homework->self_approving) ? 'block' : 'none';?>'><input type="checkbox" name="limit_by_date" value="1" <?php if(!empty($homework->limit_by_date)) echo 'checked'?> onclick="this.checked ? jQuery('#limitByDate').show() : jQuery('#limitByDate').hide();"> <?php _e('Solutions will be accepted only within date interval:', 'namaste');?>

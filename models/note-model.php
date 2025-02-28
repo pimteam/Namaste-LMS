@@ -4,10 +4,10 @@ class NamasteLMSNoteModel {
 		global $wpdb, $user_ID, $post;
 		
 		// select lesson
-		$lesson = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->posts} WHERE ID=%d", $_GET['lesson_id']));	
+		$lesson = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->posts} WHERE ID=%d", (int)$_GET['lesson_id']));
 		
 		// select student
-		$student = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->users} WHERE ID=%d", $_GET['student_id']));
+		$student = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->users} WHERE ID=%d", (int)$_GET['student_id']));
 		
 		// select course		
 		$course_id = get_post_meta($lesson->ID, 'namaste_course', true);
@@ -20,7 +20,7 @@ class NamasteLMSNoteModel {
 			// add the note
 			$wpdb->query($wpdb->prepare("INSERT INTO ".NAMASTE_HOMEWORK_NOTES." SET
 				homework_id=%d, student_id=%d, teacher_id=%d, note=%s, datetime=NOW()",
-				$homework->id, $student->ID, $user_ID, $_POST['note']));			
+				$homework->id, $student->ID, $user_ID, wp_kses_post($_POST['note'])));
 				
 			do_action('namaste_added_homework_note', $student->ID, $homework->id, $_POST['note']);	
 			
