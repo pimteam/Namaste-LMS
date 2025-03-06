@@ -30,42 +30,49 @@ None yet, please ask in the forum.
 
 ### **Create/Edit Course**
 ![Create/Edit Course](https://namaste-lms.org/img/scr/screenshot-1.png)
+
 Courses are custom post types and support rich formatting, categorization, etc. The course page is a presentation page about the course content.
 
 ---
 
 ### **Create/Edit Lesson**
 ![Create/Edit Lesson](https://namaste-lms.org/img/scr/screenshot-2.png)
+
 Lessons are custom post types and support rich formatting and all kinds of categorization. There are various rules for lesson access and completion.
 
 ---
 
 ### **Manage Assignments/Homework**
 ![Manage Assignments/Homework](https://namaste-lms.org/img/scr/screenshot-3.png)
+
 Manage assignments and homework for students.
 
 ---
 
 ### **Student Enrollments**
 ![Student Enrollments](https://namaste-lms.org/img/scr/screenshot-4.png)
+
 View student enrollments in a course.
 
 ---
 
 ### **Student Progress**
 ![Student Progress](https://namaste-lms.org/img/scr/screenshot-5.png)
+
 Track the progress of a given student in the course.
 
 ---
 
 ### **Assignments for a Lesson**
 ![Assignments for a Lesson](https://namaste-lms.org/img/scr/screenshot-6.png)
+
 View assignments associated with a specific lesson.
 
 ---
 
 ### **Submit Assignment**
 ![Submit Assignment](https://namaste-lms.org/img/scr/screenshot-7.png)
+
 Students can submit solutions for assignments.
 
 ## Changelog
